@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import ReactMapGL from 'react-map-gl';
 import 'dotenv/config';
 
-export const Map = () => {
-  const tok = process.env.REACT_APP_MAPBOX_API_TOKEN;
+type Props = {
+  children: React.ReactNode
+};
+
+export function Map({ children }: Props){
   const username = process.env.REACT_APP_USERNAME;
   const [viewport, setViewport] = useState({
     latitude: 45.0,
@@ -14,11 +17,13 @@ export const Map = () => {
   return (
     <ReactMapGL
       {...viewport} 
-      mapboxApiAccessToken={tok}
+      mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_API_TOKEN}
       width='100vw'
       height='100vw'
       onViewportChange={nextViewport => setViewport(nextViewport)}
-    />
+    >
+      {children}
+    </ReactMapGL>
   );
 };
 

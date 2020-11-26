@@ -7,10 +7,9 @@ import {
 
 function App(){
   return (
-    <>
-      <Map />
+    <Map>
       <Pin />
-    </>
+    </Map>
   );
 } 
 
