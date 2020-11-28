@@ -4,29 +4,29 @@ import {
   Map,
   Pin,
 } from './components';
-import { SkiObj } from './components/interfaces/SkiObj';
+import { MarkerProps } from './components/map';
+import { SkiObj} from './components/interfaces/SkiObj';
 
-//json not going to work, parses weird??
 const data = require('./skiInfoReduced.json');
-//integrate w/ fetching
 const parsed: SkiObj[] = JSON.parse(JSON.stringify(data));
-console.log(parsed[0]);
 
-/*
-<div>
-  {
-    parsed.map((place) => {
-      return <p key={place.SkiArea.id}>{place.SkiArea.name}</p>
-    })
-  }
-</div>
- */
-
+function PlotPins(){
+  return parsed.map((skiobj) => {
+    return (
+      <Pin 
+        {...{
+          latitude: Number(skiobj.SkiArea.geo_lat),
+          longitude: Number(skiobj.SkiArea.geo_lng)
+        } as MarkerProps }
+      />
+    );
+  });
+}
 
 function App(){
   return (
     <Map>
-      <Pin />
+      {PlotPins()}  
     </Map>
   );
 } 

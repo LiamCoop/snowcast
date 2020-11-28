@@ -1,25 +1,31 @@
+
 export interface SkiObj {
   SkiArea: SkiAreaObj;
-  Region: RegionObj;
+  Region: RegionObjArr;
 }
 
-interface SkiAreaObj {
-    id: number;
-    name: string;
-    official_website: string;
-    geo_lat: number;
-    geo_lng: number;
-    top_elevation: number;
-    bottom_elevation: number;
+export interface SkiAreaObj {
+  id: number;
+  name: string;
+  official_website: string;
+  geo_lat: number;
+  geo_lng: number;
+  top_elevation: number | null;
+  bottom_elevation: number | null;
+  vertical_drop: number | null;
+  operating_status: number;
+  has_downhill: boolean;
+  has_nordic: boolean;
 }
+export interface RegionObjArr extends Array<RegionObj>{}
 
-interface RegionObj {
+export interface RegionObj {
     name: string;
     id: number;
     RegionsSkiArea: RegionsSkiArea;
 }
 
-interface RegionsSkiArea {
+export interface RegionsSkiArea {
   id: number;
   ski_area_id: number;
   region_id: number;
