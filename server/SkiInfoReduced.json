@@ -1,0 +1,86 @@
+[
+  {
+    "SkiArea": {
+      "id": "1",
+      "name": "Smokey Mountain Ski Club",
+      "official_website": "http://www.skismokey.ca/",
+      "geo_lat": "52.977947",
+      "geo_lng": "-66.92094",
+      "top_elevation": null,
+      "bottom_elevation": null,
+      "vertical_drop": null,
+      "operating_status": "1",
+      "has_downhill": true,
+      "has_nordic": false
+    },
+    "Region": [
+      {
+        "name": "Newfoundland and Labrador",
+        "id": "335",
+        "RegionsSkiArea": {
+          "id": "1",
+          "ski_area_id": "1",
+          "region_id": "335",
+          "temp_region": "60",
+          "temp_country": "31"
+        }
+      }
+    ]
+  },
+  {
+    "SkiArea": {
+      "id": "2",
+      "name": "Northern Lights Ski Club",
+      "official_website": "https://www.facebook.com/northern.lights.ski.club/",
+      "geo_lat": "53.52358",
+      "geo_lng": "-64.020094",
+      "top_elevation": null,
+      "bottom_elevation": null,
+      "vertical_drop": null,
+      "operating_status": "1",
+      "has_downhill": true,
+      "has_nordic": false
+    },
+    "Region": [
+      {
+        "name": "Newfoundland and Labrador",
+        "id": "335",
+        "RegionsSkiArea": {
+          "id": "2",
+          "ski_area_id": "2",
+          "region_id": "335",
+          "temp_region": "60",
+          "temp_country": "31"
+        }
+      }
+    ]
+  },
+  {
+    "SkiArea": {
+      "id": "3",
+      "name": "White Hills",
+      "official_website": "http://www.whitehillsresort.com/",
+      "geo_lat": "48.161777",
+      "geo_lng": "-54.046468",
+      "top_elevation": null,
+      "bottom_elevation": null,
+      "vertical_drop": null,
+      "operating_status": "1",
+      "has_downhill": true,
+      "has_nordic": false
+    },
+    "Region": [
+      {
+        "name": "Newfoundland and Labrador",
+        "id": "335",
+        "RegionsSkiArea": {
+          "id": "3",
+          "ski_area_id": "3",
+          "region_id": "335",
+          "temp_region": "60",
+          "temp_country": "31"
+        }
+      }
+    ]
+  }
+]
