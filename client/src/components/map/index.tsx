@@ -3,16 +3,17 @@ import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import 'dotenv/config';
 import { SkiObj } from '../'
 
-//latitude={obj.SkiArea.geo_lat}
-//longitude={obj.SkiArea.geo_lng}
 export function Pin(obj: SkiObj){
 
   const [showPopup, setShowPopup] = useState(false);
-  console.log(obj.SkiArea.name);
 
   return (
     <>
-      <Marker captureClick={true} >
+      <Marker 
+        captureClick={true} 
+        latitude={Number(obj.SkiArea.geo_lat)}
+        longitude={Number(obj.SkiArea.geo_lng)}
+      >
         <div onClick={(event) => {setShowPopup(!showPopup)}}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -35,8 +36,8 @@ export function Pin(obj: SkiObj){
       { 
         showPopup ? (
           <Popup
-            latitude={obj.SkiArea.geo_lat}
-            longitude={obj.SkiArea.geo_lng}
+            latitude={Number(obj.SkiArea.geo_lat)}
+            longitude={Number(obj.SkiArea.geo_lng)}
             closeButton={false}
             closeOnClick={true}
             onClose={() => {setShowPopup(!showPopup)}}
@@ -46,7 +47,7 @@ export function Pin(obj: SkiObj){
             sortByDepth={true}
           >
             <div>
-              <h1>hello</h1>
+              <p>{obj.SkiArea.name}</p>
             </div>
           </Popup>
         ) : null 
@@ -60,7 +61,6 @@ export function Map(){
   const [showdropdown, setShowdropdown] = useState(false);
   const [regions, setRegions] = useState([]);
   const [currentRegion, setCurrentRegion] = useState();
-  const [showSkiObjects, setShowSkiObjects] = useState(false);
   const [currentSkiObjects, setCurrentSkiObjects] = useState([]);
 
   const [viewport, setViewport] = useState({
@@ -83,7 +83,6 @@ export function Map(){
       const response = await fetch(`http://localhost:3001/?region=${currentRegion}`);
       const data = await response.json();
       setCurrentSkiObjects(data);
-      setShowSkiObjects(true);
     });
     loadRegionPins();
   }, [currentRegion]);
@@ -125,8 +124,7 @@ export function Map(){
               </button>)) : null
         }
       </div>
-      <Pin {...currentSkiObjects[0]} /> 
-
+      {currentSkiObjects.map((obj:SkiObj) => <Pin {...obj} />)}
     </ReactMapGL>
   );
 }

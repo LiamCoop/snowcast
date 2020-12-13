@@ -1,7 +1,7 @@
 
 export interface SkiObj {
   SkiArea: SkiAreaObj;
-  Region: RegionObjArr;
+  Region: Array<RegionObj>;
 }
 
 export interface SkiAreaObj {
@@ -17,7 +17,7 @@ export interface SkiAreaObj {
   has_downhill: boolean;
   has_nordic: boolean;
 }
-export interface RegionObjArr extends Array<RegionObj>{}
+//export interface RegionObjArr extends Array<RegionObj>{}
 
 export interface RegionObj {
     name: string;
