@@ -11,6 +11,7 @@ const data = require('../SkiInfo.json');
 
 app.use(cors({ origin: 'http://localhost:3000', }));
 
+
 app.get('/regions', (req, res) => {
   const regions: Set<string> = new Set(data.map((obj) => {
     return (typeof obj.Region[0] != 'undefined') ? obj.Region[0].name : 'null';

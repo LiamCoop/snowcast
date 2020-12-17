@@ -47,7 +47,27 @@ export function Pin(obj: SkiObj){
             sortByDepth={true}
           >
             <div>
-              <p>{obj.SkiArea.name}</p>
+              <link href="//www.snow-forecast.com/stylesheets/feed.css" 
+                  media="screen" 
+                  rel="stylesheet" 
+                  type="text/css" 
+              />
+              <div id="wf-weatherfeed">
+                  <iframe 
+                    title="key"
+                    style={{ overflow:"hidden", border:"none"}}
+                    allowTransparency={true}
+                    height="272" 
+                    width="469" 
+                    src="https://www.snow-forecast.com/resorts/MountCain/forecasts/feed/mid/m"
+                    scrolling="no" 
+                    frameBorder="0" 
+                    marginWidth={0}
+                    marginHeight={0}
+                  >
+                  <p>Your browser does not support iframes.</p>
+                  </iframe>
+              </div>
             </div>
           </Popup>
         ) : null 
@@ -55,6 +75,7 @@ export function Pin(obj: SkiObj){
     </>
   );
 }
+
 
 export function Map(){
 
@@ -78,6 +99,7 @@ export function Map(){
     loadData();
   }, []);
 
+  //should consider also going and getting resort information for all in region
   useEffect(() => {
     const loadRegionPins = (async () => { 
       const response = await fetch(`http://localhost:3001/?region=${currentRegion}`);
@@ -85,7 +107,16 @@ export function Map(){
       setCurrentSkiObjects(data);
     });
     loadRegionPins();
+
+    /*
+    const loadRegionPins = (async () => { 
+      const response = await fetch(`http://localhost:3001/?region=${currentRegion}`);
+      const data = await response.json();
+      setCurrentSkiObjects(data);
+    });
+    */
   }, [currentRegion]);
+
 
   return (
     <ReactMapGL
