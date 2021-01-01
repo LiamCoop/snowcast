@@ -5,7 +5,30 @@ import { SkiObj } from '../'
 
 export function Pin(obj: SkiObj){
 
+  //showing the popup or not.
   const [showPopup, setShowPopup] = useState(false);
+  //For holding the data for a given pin
+  const [weather, setWeather] = useState({});
+  //Manage weather load state
+  const [loadWeather, setLoadWeather] = useState(false);
+  
+  //when the user clicks a pin, trigger the fetching of the weather data for that pin.
+  useEffect(() => {
+    const loadWeather = (async () => {
+      const response = await fetch("https://community-open-weather-map.p.rapidapi.com/forecast?lat="+obj.SkiArea.geo_lat+"&lon="+obj.SkiArea.geo_lng, {
+        "method": "GET",
+        "headers": {
+          "x-rapidapi-key": "eaa029e7efmshe51c46837334214p1add8ejsn9eb660b86a63",
+          "x-rapidapi-host": "community-open-weather-map.p.rapidapi.com"
+        }
+      });
+      const dt = await response.json();
+      console.log(dt);
+      setWeather(dt);
+      setLoadWeather(true);
+    });
+    if(showPopup){loadWeather();}
+  }, [showPopup]);
 
   return (
     <>
@@ -14,7 +37,7 @@ export function Pin(obj: SkiObj){
         latitude={Number(obj.SkiArea.geo_lat)}
         longitude={Number(obj.SkiArea.geo_lng)}
       >
-        <div onClick={(event) => {setShowPopup(!showPopup)}}>
+        <div onClick={() => {setShowPopup(true)}}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="32" 
@@ -32,45 +55,23 @@ export function Pin(obj: SkiObj){
           </svg>
         </div>
       </Marker>
-
-      { 
+      {
         showPopup ? (
-          <Popup
-            latitude={Number(obj.SkiArea.geo_lat)}
-            longitude={Number(obj.SkiArea.geo_lng)}
-            closeButton={false}
-            closeOnClick={true}
-            onClose={() => {setShowPopup(!showPopup)}}
-            anchor="bottom"
-            offsetLeft={12}
-            offsetTop={12}
-            sortByDepth={true}
-          >
-            <div>
-              <link href="//www.snow-forecast.com/stylesheets/feed.css" 
-                  media="screen" 
-                  rel="stylesheet" 
-                  type="text/css" 
-              />
-              <div id="wf-weatherfeed">
-                  <iframe 
-                    title="key"
-                    style={{ overflow:"hidden", border:"none"}}
-                    allowTransparency={true}
-                    height="272" 
-                    width="469" 
-                    src="https://www.snow-forecast.com/resorts/MountCain/forecasts/feed/mid/m"
-                    scrolling="no" 
-                    frameBorder="0" 
-                    marginWidth={0}
-                    marginHeight={0}
-                  >
-                  <p>Your browser does not support iframes.</p>
-                  </iframe>
-              </div>
-            </div>
-          </Popup>
-        ) : null 
+        <Popup
+          latitude={Number(obj.SkiArea.geo_lat)}
+          longitude={Number(obj.SkiArea.geo_lng)}
+          closeButton={false}
+          closeOnClick={true}
+          onClose={() => {setShowPopup(!showPopup)}}
+          anchor="bottom"
+          offsetLeft={12}
+          offsetTop={12}
+          sortByDepth={true}
+        >
+          <div>
+            <p>{obj.SkiArea.name}</p>
+          </div> 
+        </Popup> ) : null
       }
     </>
   );
@@ -91,11 +92,11 @@ export function Map(){
   });
 
   useEffect(() => {
-    const loadData = async () => {
+    const loadData = (async () => {
       const response = await fetch('http://localhost:3001/regions');
       const dt = await response.json();
       setRegions(dt);
-    } 
+    }); 
     loadData();
   }, []);
 
@@ -107,14 +108,6 @@ export function Map(){
       setCurrentSkiObjects(data);
     });
     loadRegionPins();
-
-    /*
-    const loadRegionPins = (async () => { 
-      const response = await fetch(`http://localhost:3001/?region=${currentRegion}`);
-      const data = await response.json();
-      setCurrentSkiObjects(data);
-    });
-    */
   }, [currentRegion]);
 
 
