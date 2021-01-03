@@ -1,21 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import 'dotenv/config';
-import { SkiObj, Button } from '../'
+import { 
+  skiObj, 
+  conditions,
+  /*weatherObj,*/
+  Button, 
+  Loading, 
+  WeatherDisplay,
+} from '../'
 
-export function Pin(obj: SkiObj){
+export function Pin(obj: skiObj){
 
   //showing the popup or not.
   const [showPopup, setShowPopup] = useState(false);
   //For holding the data for a given pin
   const [weather, setWeather] = useState({});
-  //Manage weather load state
+  //Manage weather load state, false when loading, true when loaded
   const [loadWeather, setLoadWeather] = useState(false);
   
   //when the user clicks a pin, trigger the fetching of the weather data for that pin.
   useEffect(() => {
     const loadWeather = (async () => {
-      const response = await fetch("https://community-open-weather-map.p.rapidapi.com/forecast?lat="+obj.SkiArea.geo_lat+"&lon="+obj.SkiArea.geo_lng, {
+      const response = await fetch("https://community-open-weather-map.p.rapidapi.com/forecast?lat="+obj.SkiArea.geo_lat+"&lon="+obj.SkiArea.geo_lng+"&units=metric", {
         "method": "GET",
         "headers": {
           "x-rapidapi-key": "eaa029e7efmshe51c46837334214p1add8ejsn9eb660b86a63",
@@ -23,13 +30,12 @@ export function Pin(obj: SkiObj){
         }
       });
       const dt = await response.json();
-      //console.log(dt);
       setWeather(dt);
       setLoadWeather(true);
     });
 
     if(showPopup) loadWeather();
-  }, [showPopup]);
+  }, [showPopup, obj.SkiArea]);
 
   return (
     <>
@@ -71,13 +77,13 @@ export function Pin(obj: SkiObj){
         >
           <div>
             <p>{obj.SkiArea.name}</p>
+            {loadWeather ? <WeatherDisplay {...weather} /> : <Loading />}
           </div> 
         </Popup> ) : null
       }
     </>
   );
 }
-
 
 export function Map(){
 
@@ -134,7 +140,7 @@ export function Map(){
               </button>)) : null
         }
       </div>
-      {currentSkiObjects.map( (obj:SkiObj) => <Pin {...obj} /> )}
+      {currentSkiObjects.map( (obj: skiObj) => <Pin key={obj.SkiArea.name}{...obj} /> )}
     </ReactMapGL>
   );
 }

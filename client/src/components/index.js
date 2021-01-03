@@ -1,3 +1,5 @@
 export { Map, Pin } from './map';
-export { SkiObj } from './ts_interfaces/SkiObj';
+export { skiObj, weatherObj, conditions } from './ts_interfaces';
 export { Button } from './button';
+export { Loading } from './loading';
+export { WeatherDisplay } from './weatherDisplay';
