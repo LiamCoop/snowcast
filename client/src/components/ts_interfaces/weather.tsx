@@ -6,7 +6,7 @@ export interface weatherObj {
     //internal parameter
     message: string;
     //list of actual, usable weather data (see conditions)
-    list: Array<conditions>;
+    list: Array<conditionsObj>;
     //city contains info about the city (if available)
     city: {
         coord: {
@@ -23,7 +23,7 @@ export interface weatherObj {
     };
 }
 
-export interface conditions {
+export interface conditionsObj {
     main: {
         feels_like: number;
         grnd_level: number;
@@ -38,14 +38,11 @@ export interface conditions {
         temp_max: number;
         temp_min: number;
     };
-    clouds: {
-        all: number;
-        dt: number;
-        dt_txt: string
-    };
+    clouds: { all: number; };
     pop: number;
-    rain: any;
-    sys: { pod: string };
+    rain?: { '3h': number; };
+    snow?: { '3h': number; };
+    sys: { pod: string; };
     visibility: number;
     weather: Array<{
         description: string;
