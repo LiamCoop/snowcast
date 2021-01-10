@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './map.css';
 import ReactMapGL from 'react-map-gl';
 import 'dotenv/config';
 import { 
@@ -7,7 +6,7 @@ import {
   Button, 
   Pin,
 } from '../'
-
+import './map.css';
 const skiInfo = require('../../SkiInfo.json');
 
 export function Map(){
@@ -35,7 +34,7 @@ export function Map(){
   //occurs on currentRegion update
   useEffect(() => {
     setCurrentSkiObjects(skiInfo.filter((obj:skiObj) => {
-      if(typeof obj.Region[0] == 'undefined') return false;
+      if(typeof obj.Region[0] == 'undefined' || obj.SkiArea.geo_lat == null || obj.SkiArea.geo_lng == null) return false;
       else { return (obj.Region[0].name === currentRegion); }
     }));
   }, [currentRegion]);
@@ -48,14 +47,17 @@ export function Map(){
       height='100vw'
       onViewportChange={nextViewport => setViewport(nextViewport)}
     > 
-      <div onClick={() => setShowdropdown(!showdropdown)}>
+      <div className="btn" onClick={() => setShowdropdown(!showdropdown)}>
         <Button />
       </div>
       <div>
         {
           showdropdown ? 
             regions.map((region) => (
-              <button key={region} onClick={() => {
+              <button 
+                className="button" 
+                key={region} 
+                onClick={() => {
                   setCurrentRegion(region); 
                   setShowdropdown(false); }}
               >
@@ -63,7 +65,7 @@ export function Map(){
               </button>)) : null
         }
       </div>
-      {currentSkiObjects.map( (obj: skiObj) => <Pin key={obj.SkiArea.name}{...obj} /> )}
+      {currentSkiObjects.map((obj: skiObj) => <Pin key={obj.SkiArea.name}{...obj} /> )}
     </ReactMapGL>
   );
 }

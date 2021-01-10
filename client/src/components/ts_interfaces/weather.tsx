@@ -24,6 +24,8 @@ export interface weatherObj {
 }
 
 export interface conditionsObj {
+    dt: number;
+    dt_txt: string;
     main: {
         feels_like: number;
         grnd_level: number;

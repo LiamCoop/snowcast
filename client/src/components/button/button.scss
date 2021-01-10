@@ -1,21 +1,7 @@
 
-:root {
-  --background-color: #000000;
-  --color: #000000;
-  --light-theme: #ffffff;
-}
-
 body {
   font-family: "Mulish", sans-serif;
   background-color: var(--background-color);
-}
-
-.container {
-  display: flexbox;
-  /*justify-content: center;*/
-  /*align-items: center;*/
-
-  height: 100vh;
 }
 
 .btn {
@@ -26,7 +12,7 @@ body {
   width: 220px;
   height: 60px;
   
-  background-color: var(--light-theme);
+  background-color: #161616;
   cursor: pointer;
   font-size: 24px;
   color: var(--color);
@@ -38,16 +24,14 @@ body {
 
   border-radius: 5px;
   box-shadow: 0 6px 30px -10px rgba(#CCCCCC, 1);
-  
-  /*
-  &:hover {
-    transform: translateX(5px) translateY(-7px);
-  }
-  */
+  z-index: 1;
 }
 
 .btn-name {
   position: relative;
+  color: #fff;
+  animation: flash 3s infinite;
+  z-index: 1;
   .santa-icon {
     position: absolute;
     width: 30px;
@@ -101,7 +85,6 @@ body {
 
 .border-left {
   border-left: 4px solid #e6dada;
-  
 }
 
 .border-right {

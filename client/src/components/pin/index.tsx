@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Marker, Popup } from 'react-map-gl';
 import { skiObj, Loading, WeatherDisplay } from '../';
+import './pin.css';
 
 export function Pin(obj: skiObj){
 
-  //showing the popup or not.
+  //boolean to determine whether to show the popup or not.
   const [showPopup, setShowPopup] = useState(false);
-  //For holding the data for a given pin
+  //Contains the weather data for a given pin
   const [weather, setWeather] = useState({});
   //Manage weather load state, false when loading, true when loaded
   const [loadWeather, setLoadWeather] = useState(false);
@@ -14,7 +15,8 @@ export function Pin(obj: skiObj){
   //when the user clicks a pin, trigger the fetching of the weather data for that pin.
   useEffect(() => {
     const loadWeather = (async () => {
-      const response = await fetch("https://community-open-weather-map.p.rapidapi.com/forecast?lat="+obj.SkiArea.geo_lat+"&lon="+obj.SkiArea.geo_lng+"&units=metric", {
+      const response = await fetch("https://community-open-weather-map.p.rapidapi.com/forecast?lat="
+        + obj.SkiArea.geo_lat + "&lon=" + obj.SkiArea.geo_lng + "&units=metric", {
         "method": "GET",
         "headers": {
           "x-rapidapi-key": "eaa029e7efmshe51c46837334214p1add8ejsn9eb660b86a63",
@@ -30,7 +32,7 @@ export function Pin(obj: skiObj){
   }, [showPopup, obj.SkiArea]);
 
   return (
-    <>
+    <div style={{zIndex:-1}}>
       <Marker 
         captureClick={true} 
         latitude={Number(obj.SkiArea.geo_lat)}
@@ -59,21 +61,23 @@ export function Pin(obj: skiObj){
           <Popup
             latitude={Number(obj.SkiArea.geo_lat)}
             longitude={Number(obj.SkiArea.geo_lng)}
-            closeButton={false}
-            closeOnClick={true}
+            closeButton={true}
+            closeOnClick={false}
             onClose={() => {setShowPopup(!showPopup)}}
             anchor="bottom"
             offsetLeft={12}
             offsetTop={12}
             sortByDepth={true}
           >
-            <div>
-              <p style={{zIndex:1,backgroundColor:'black'}}>{obj.SkiArea.name}</p>
-              {loadWeather ? weather !== {} ? <WeatherDisplay {...weather} /> : 
-                <h1>Can't get weather data, sorry!</h1> : <Loading />}
-            </div> 
+            <div className="col">
+              <h1>Ski Area: {obj.SkiArea.name}</h1>
+              { 
+                loadWeather ? weather !== {} ? <WeatherDisplay {...weather} /> : 
+                  <h1>Can't get weather data, sorry!</h1> : <Loading />
+              }
+            </div>
           </Popup> ) : null
       }
-    </>
+    </div>
   );
 }
