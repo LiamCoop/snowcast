@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Marker, Popup } from 'react-map-gl';
 import { skiObj, Loading, WeatherDisplay } from '../';
-import './pin.css';
+import './Pin.css';
+const wthr = require('../../weather.json');
 
 export function Pin(obj: skiObj){
 
@@ -24,11 +25,17 @@ export function Pin(obj: skiObj){
         }
       });
       const dt = await response.json();
+      //console.log(dt);
       setWeather(dt);
       setLoadWeather(true);
     });
 
-    if(showPopup) loadWeather();
+    if(showPopup){
+      //loadWeather();
+      //console.log(wthr)
+      setWeather(wthr);
+      setLoadWeather(true);
+    }
   }, [showPopup, obj.SkiArea]);
 
   return (

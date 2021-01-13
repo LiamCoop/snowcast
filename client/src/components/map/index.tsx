@@ -5,8 +5,8 @@ import {
   skiObj, 
   Button, 
   Pin,
-} from '../'
-import './map.css';
+} from '..'
+import './Map.css';
 const skiInfo = require('../../SkiInfo.json');
 
 export function Map(){
