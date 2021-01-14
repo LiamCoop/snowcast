@@ -32,7 +32,6 @@ export function Pin(obj: skiObj){
 
     if(showPopup){
       //loadWeather();
-      //console.log(wthr)
       setWeather(wthr);
       setLoadWeather(true);
     }
@@ -78,6 +77,7 @@ export function Pin(obj: skiObj){
           >
             <div className="col">
               <h1>Ski Area: {obj.SkiArea.name}</h1>
+              {/*Could refactor & clean up*/}
               { 
                 loadWeather ? weather !== {} ? <WeatherDisplay {...weather} /> : 
                   <h1>Can't get weather data, sorry!</h1> : <Loading />
