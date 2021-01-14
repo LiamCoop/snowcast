@@ -1,10 +1,10 @@
 import React from 'react';
-import './Button.scss';
+import './RegionButton.scss';
 
 // found this button on code-pen, thought it fit the project theme.
 // Shoutout Sowmya Seshadri for this!
 // https://codepen.io/sowmyaseshadri/pen/LYRjGpr?editors=1100
-export function Button() {
+export function RegionsButton() {
   return (
     <>
       <div className="btn-name">View Regions</div>
