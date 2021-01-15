@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ReactMapGL from 'react-map-gl';
 import 'dotenv/config';
 import {
-  skiObj,
+  SkiObj,
   RegionsButton,
 } from '../../components';
 import { Pin } from '../pin';
@@ -25,7 +25,7 @@ export function Map() {
   // display the names of all regions containing ski locations
   // occurs on first page load
   useEffect(() => {
-    setRegions(Array.from(new Set(skiInfo.map((obj:skiObj) => (
+    setRegions(Array.from(new Set(skiInfo.map((obj:SkiObj) => (
         (typeof obj.Region[0] !== 'undefined') ? obj.Region[0].name : 'null'
       )
       ))));
@@ -34,7 +34,7 @@ export function Map() {
   // filter skiInfo down to only the one in the selected region (currentRegion)
   // occurs on currentRegion update
   useEffect(() => {
-    setCurrentSkiObjects(skiInfo.filter((obj:skiObj) => {
+    setCurrentSkiObjects(skiInfo.filter((obj:SkiObj) => {
       if (
         typeof(obj.Region[0]) === 'undefined' || 
           obj.SkiArea.geo_lat == null || 
@@ -73,7 +73,7 @@ export function Map() {
         }
       </div>
       {
-        currentSkiObjects.map((obj: skiObj) => 
+        currentSkiObjects.map((obj: SkiObj) => 
           <Pin key={obj.SkiArea.name} {...obj} />
         )
       }

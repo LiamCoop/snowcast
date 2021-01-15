@@ -1,11 +1,11 @@
 import React, { useState/*, useEffect*/ } from 'react';
 import {
-  dayObj,
+  DayObj,
   Icon,
   TimeBanner,
 } from '../'
 
-export function DisplayCenterPane(props: {current: dayObj, city: string}) {
+export function DisplayCenterPane(props: {current: DayObj, city: string}) {
     const [currentTime, setCurrentTime] = useState(props.current.list[0]);
     let dailySnow = 0;
     props.current.list.map((timeSlice) => {

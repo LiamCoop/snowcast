@@ -1,11 +1,11 @@
 import React from 'react';
 import { 
-    dayObj,
+    DayObj,
     Icon,
 } from '../';
 import './DayButton.css';
 
-export function DayButton(day:dayObj) {
+export function DayButton(day:DayObj) {
     return (
         <button className="col">
             <h1>{day.date}</h1>

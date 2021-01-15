@@ -1,11 +1,11 @@
 import React from 'react';
 import './banner.css';
 import {
-    conditionsObj,
+    ConditionsObj,
     Icon,
 } from '../'
 
-export function TimeBanner(time: conditionsObj) {
+export function TimeBanner(time: ConditionsObj) {
     return (
         <button id="bannerbtn">
             <span id="banner">

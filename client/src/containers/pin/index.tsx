@@ -2,22 +2,22 @@ import React, { useState, useEffect } from 'react';
 import { Marker, Popup } from 'react-map-gl';
 
 import { 
-  skiObj, 
+  SkiObj, 
   Loading, 
-  weatherObj 
+  WeatherObj 
 } from '../../components';
 import { WeatherDisplay } from '../weatherDisplay';
 
 import './Pin.css';
 const wthr = require('../../weather.json');
 
-export function Pin(obj: skiObj) {
+export function Pin(obj: SkiObj) {
 
   //boolean to determine whether to show the popup or not.
   const [showPopup, setShowPopup] = useState(false);
   //Contains the weather data for a given pin
-  const weatherInit = {} as weatherObj;
-  const [weather, setWeather] = useState<weatherObj> (weatherInit);
+  const weatherInit = {} as WeatherObj;
+  const [weather, setWeather] = useState<WeatherObj> (weatherInit);
   //Manage weather load state, false when loading, true when loaded
   const [loadWeather, setLoadWeather] = useState(false);
   

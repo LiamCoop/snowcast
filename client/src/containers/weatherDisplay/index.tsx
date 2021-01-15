@@ -4,16 +4,16 @@ import {
     DisplayCenterPane,
     DayButton,
     //interfaces
-    weatherObj,
-    conditionsObj,
-    dayObj,
+    WeatherObj,
+    ConditionsObj,
+    DayObj,
 } from '../../components';
 import './WeatherDisplay.css';
 
 
 
 export function WeatherDisplay(
-    props: {weather: weatherObj, SkiAreaName: string}
+    props: {weather: WeatherObj, SkiAreaName: string}
 ) {
     //each day is a slice of 8, 3-hour sections
     const days = [
