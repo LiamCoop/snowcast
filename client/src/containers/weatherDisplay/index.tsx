@@ -45,13 +45,13 @@ export function WeatherDisplay(
                     {
                         days.map((day) => {
                             return (
-                                <div 
-                                    id="buttonDiv"
+                                <button 
+                                    id="dayButton"
                                     onClick={() => setCurrent(day)} 
                                     key={day.list[0].dt}
                                 > 
-                                    <DayButton {...day} />
-                                </div>
+                                    <DayButton day={day} />
+                                </button>
                             );
                         })
                     }

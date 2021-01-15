@@ -5,8 +5,11 @@ import {
   TimeBanner,
 } from '../'
 
+import './DisplayCenterPane.css';
+
 export function DisplayCenterPane(props: {current: DayObj, city: string}) {
     const [currentTime, setCurrentTime] = useState(props.current.list[0]);
+
     let dailySnow = 0;
     props.current.list.map((timeSlice) => {
         dailySnow += timeSlice.snow ? timeSlice.snow?.['3h'] : 0;
@@ -38,7 +41,7 @@ export function DisplayCenterPane(props: {current: DayObj, city: string}) {
                                 </p>
                                 <p className="vis">
                                     Vis: {currentTime.visibility}m
-                                </p>
+                                </p> 
                                 <p className="cloudiness">
                                     Cloud: {currentTime.clouds.all}%
                                 </p>
@@ -71,7 +74,11 @@ export function DisplayCenterPane(props: {current: DayObj, city: string}) {
                 <div className="col">
                     {
                         props.current.list.map((timeSlice) => {
-                            return <TimeBanner {...timeSlice} />
+                            return (
+                                <button id="bannerbtn" onClick={() => {setCurrentTime(timeSlice)}}>
+                                    <TimeBanner {...timeSlice} />
+                                </button>
+                            );
                         })
                     }
                 </div>

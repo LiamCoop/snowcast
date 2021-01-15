@@ -7,4 +7,9 @@
     align-items: center;
     padding: 2vh 2vw;
     background: #161616; 
+    border-radius: 1.2%;
+}
+
+.mapboxgl-popup-close-button {
+    color: #fff;
 }
