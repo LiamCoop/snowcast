@@ -7,4 +7,4 @@ export { TimeBanner } from './TimeBanner';
 export { DisplayCenterPane } from './DisplayCenterPane';
 
 //typescript interfaces
-export { skiObj, weatherObj, conditionsObj, dayObj } from './ts_interfaces';
+export { SkiObj, WeatherObj, ConditionsObj, DayObj } from './ts_interfaces';
