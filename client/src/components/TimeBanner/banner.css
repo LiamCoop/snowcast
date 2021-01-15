@@ -1,0 +1,14 @@
+#bannerbtn {
+    background-color:#161616;
+    border: #fff solid 1px;
+}
+
+#banner {
+    display: flex;
+    flex-direction: row;
+    background-color: #161616;
+    align-items: center;
+}
+#banner p {
+    color: #fff;
+}
