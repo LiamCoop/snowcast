@@ -1,17 +1,19 @@
 import React from 'react';
+
 import { 
     DayObj,
     Icon,
 } from '../';
+
 import './DayButton.css';
 
-export function DayButton(day:DayObj) {
+export function DayButton(props: {day:DayObj} ) {
     return (
-        <button className="col">
-            <h1>{day.date}</h1>
+        <>
+            <h1>{props.day.date}</h1>
             <div>
-                <Icon icID={day.list[0].weather[0].icon} imgHeight={"70vh"}/>
+                <Icon icID={props.day.list[0].weather[0].icon} imgHeight={"70vh"}/>
             </div>
-        </button>
+        </>
     );
 }

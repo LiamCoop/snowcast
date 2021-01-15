@@ -1,14 +1,11 @@
-#bannerbtn {
-    background-color:#161616;
-    border: #fff solid 1px;
-}
-
 #banner {
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
     background-color: #161616;
     align-items: center;
 }
+
 #banner p {
     color: #fff;
 }

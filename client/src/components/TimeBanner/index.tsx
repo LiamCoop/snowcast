@@ -7,23 +7,23 @@ import {
 
 export function TimeBanner(time: ConditionsObj) {
     return (
-        <button id="bannerbtn">
             <span id="banner">
                 <p>{time.dt_txt.split(' ')[1]}</p>
                 <Icon icID={time.weather[0].icon} imgHeight={"45vh"}/>
                 <div id="col">
                     <p>
+                        {/*Rounds avg of min/max*/}
+                        {/*Nobody wants 2 sigfigs on temp*/}
                         temp: { Math.round(
-                            (time.main.temp_min - time.main.temp_max)/2+
-                            time.main.temp_max
+                            (time.main.temp_min - time.main.temp_max) / 2 + 
+                                time.main.temp_max
                         )
-                    }&deg;C</p>
+                        }&deg;C</p>
                     {
                         time.snow ? 
                             <p>{time.snow?.['3h']}cm</p> : <p>no new snow</p>
                     }
                 </div>
             </span>
-        </button>
     );
 }
