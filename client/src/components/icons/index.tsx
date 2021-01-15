@@ -1,90 +1,37 @@
 import React from 'react';
+
+import { ClearSky } from './ClearSky';
+import { Clouds } from './Clouds';
+import { ShowerRain } from './ShowerRain';
+import { Rain } from './Rain';
+import { Thunder } from './Thunder';
+import { Snow } from './Snow';
+import { Mist } from './Mist';
+
 //import './Icons.css';
 
-function ClearSky() {
-  return (
-    <img
-      src="http://openweathermap.org/img/wn/01d@2x.png"
-      alt="ClearSky"
-    />
-  );
-}
-
-function Clouds() {
-  return (
-    <img
-      src="http://openweathermap.org/img/wn/02d@2x.png"
-      alt="Clouds"
-    />
-  );
-}
-
-function ShowerRain() {
-  return (
-    <img
-      src="http://openweathermap.org/img/wn/09d@2x.png"
-      alt="ShowerRain"
-    />
-  );
-}
-
-function Rain() {
-  return (
-    <img
-      src="http://openweathermap.org/img/wn/10d@2x.png"
-      alt="Rain"
-    />
-  );
-}
-
-function Thunder() {
-  return (
-    <img
-      src="http://openweathermap.org/img/wn/11d@2x.png"
-      alt="Thunder"
-    />
-  );
-}
-
-/* <h1>Snow</h1> */
-function Snow() {
-  return (
-    <img
-      src="http://openweathermap.org/img/wn/13d@2x.png"
-      alt="Snow"
-    />
-  );
-}
-
-function Mist() {
-  return (
-    <img
-      src="http://openweathermap.org/img/wn/50d@2x.png"
-      alt="Mist"
-    />
-  );
-}
-
-export function Icon(props: {icID:string}): JSX.Element {
+export function Icon(props: {icID: string, imgHeight: string}): JSX.Element {
   const mp:Map<String, JSX.Element> = new Map([
-    ['01d', ClearSky()],
-    ['01n', ClearSky()],
-    ['02d', Clouds()],
-    ['02n', Clouds()],
-    ['03d', Clouds()],
-    ['03n', Clouds()],
-    ['04d', Clouds()],
-    ['04n', Clouds()],
-    ['09d', ShowerRain()],
-    ['09n', ShowerRain()],
-    ['10d', Rain()],
-    ['10n', Rain()],
-    ['11d', Thunder()],
-    ['11n', Thunder()],
-    ['13d', Snow()],
-    ['13n', Snow()],
-    ['50d', Mist()],
-    ['50n', Mist()],
+    ['01d', ClearSky(props.imgHeight)],
+    ['01n', ClearSky(props.imgHeight)],
+    ['02d', Clouds(props.imgHeight)],
+    ['02n', Clouds(props.imgHeight)],
+    ['03d', Clouds(props.imgHeight)],
+    ['03n', Clouds(props.imgHeight)],
+    ['04d', Clouds(props.imgHeight)],
+    ['04n', Clouds(props.imgHeight)],
+    ['09d', ShowerRain(props.imgHeight)],
+    ['09n', ShowerRain(props.imgHeight)],
+    ['10d', Rain(props.imgHeight)],
+    ['10n', Rain(props.imgHeight)],
+    ['11d', Thunder(props.imgHeight)],
+    ['11n', Thunder(props.imgHeight)],
+    ['13d', Snow(props.imgHeight)],
+    ['13n', Snow(props.imgHeight)],
+    ['50d', Mist(props.imgHeight)],
+    ['50n', Mist(props.imgHeight)],
   ]);
-  return (<>{mp.get(props.icID) !== undefined ? mp.get(props.icID) : null}</>);
+  return (
+    <>{mp.get(props.icID) !== undefined ? mp.get(props.icID) : null}</>
+  );
 }
