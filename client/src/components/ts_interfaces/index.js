@@ -1,6 +1,6 @@
 export { 
-  weatherObj, 
-  conditionsObj 
-} from './weather';
-export { skiObj } from './skiObj';
-export { dayObj } from './dayObj';
+  WeatherObj, 
+  ConditionsObj 
+} from './Weather';
+export { SkiObj } from './SkiObj';
+export { DayObj } from './DayObj';
