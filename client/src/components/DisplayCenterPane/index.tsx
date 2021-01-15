@@ -7,7 +7,9 @@ import {
 
 import './DisplayCenterPane.css';
 
-export function DisplayCenterPane(props: {current: DayObj, city: string}) {
+export function DisplayCenterPane(props: 
+    {current: DayObj, city: string, skiAreaName: string}) {
+
     const [currentTime, setCurrentTime] = useState(props.current.list[0]);
 
     let dailySnow = 0;
@@ -18,7 +20,13 @@ export function DisplayCenterPane(props: {current: DayObj, city: string}) {
         <>
             <div className="row">
                 <div className="currentPane">
-                    <p>Conditions: {currentTime.weather[0].description}</p>
+                    <div className="row">
+                        <p>Ski Area:{props.skiAreaName}</p>
+                        <p>City: {props.city}</p>
+                    </div>
+                    <div className="row">
+                        <p>Conditions: {currentTime.weather[0].description}</p>
+                    </div>
                     <div className="row">
                         <div className="row">
                             <div id="temp">

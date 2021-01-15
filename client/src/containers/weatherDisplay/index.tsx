@@ -13,7 +13,7 @@ import './WeatherDisplay.css';
 
 
 export function WeatherDisplay(
-    props: {weather: WeatherObj, SkiAreaName: string}
+    props: {weather: WeatherObj, skiAreaName: string}
 ) {
     //each day is a slice of 8, 3-hour sections
     const days = [
@@ -40,22 +40,26 @@ export function WeatherDisplay(
     return (
         <div className="card">
             <div className="col">
-                <DisplayCenterPane current={current} city={props.weather.city.name}/>
-                <div className="row">
-                    {
-                        days.map((day) => {
-                            return (
-                                <button 
-                                    id="dayButton"
-                                    onClick={() => setCurrent(day)} 
-                                    key={day.list[0].dt}
-                                > 
-                                    <DayButton day={day} />
-                                </button>
-                            );
-                        })
-                    }
-                </div>
+                <DisplayCenterPane 
+                    current={current} 
+                    city={props.weather.city.name}
+                    skiAreaName={props.skiAreaName}
+                />
+                    <div className="row">
+                        {
+                            days.map((day) => {
+                                return (
+                                    <button 
+                                        id="dayButton"
+                                        onClick={() => setCurrent(day)} 
+                                        key={day.list[0].dt}
+                                    > 
+                                        <DayButton day={day} />
+                                    </button>
+                                );
+                            })
+                        }
+                    </div>
             </div>
         </div>
     );

@@ -4,7 +4,7 @@ import { Marker, Popup } from 'react-map-gl';
 import { 
   SkiObj, 
   Loading, 
-  WeatherObj 
+  WeatherObj, 
 } from '../../components';
 import { WeatherDisplay } from '../weatherDisplay';
 
@@ -89,7 +89,7 @@ export function Pin(obj: SkiObj) {
                 loadWeather ? 
                   <WeatherDisplay 
                     weather={weather} 
-                    SkiAreaName={obj.SkiArea.name} 
+                    skiAreaName={obj.SkiArea.name}
                   /> : <Loading />
               }
             </div>
