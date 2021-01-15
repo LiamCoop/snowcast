@@ -5,7 +5,7 @@ import { weatherObj } from '../ts_interfaces';
 import './Pin.css';
 const wthr = require('../../weather.json');
 
-export function Pin(obj: skiObj){
+export function Pin(obj: skiObj) {
 
   //boolean to determine whether to show the popup or not.
   const [showPopup, setShowPopup] = useState(false);

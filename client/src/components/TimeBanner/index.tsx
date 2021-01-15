@@ -10,7 +10,7 @@ export function TimeBanner(time: conditionsObj) {
         <button id="bannerbtn">
             <span id="banner">
                 <p>{time.dt_txt.split(' ')[1]}</p>
-                <Icon icID={time.weather[0].icon} imgHeight={'45vh'}/>
+                <Icon icID={time.weather[0].icon} imgHeight={"45vh"}/>
                 <div id="col">
                     <p>
                         temp: { Math.round(

@@ -1,4 +1,4 @@
-//functional components
+//components
 export { Map } from './map';
 export { Pin } from './pin';
 export { RegionsButton } from './regionsButton';

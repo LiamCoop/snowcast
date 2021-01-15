@@ -11,7 +11,7 @@ import {
 } from '../';
 import './WeatherDisplay.css';
 
-function CenterPane(props: {current: dayObj, city: string}){
+function CenterPane(props: {current: dayObj, city: string}) {
     const [currentTime, setCurrentTime] = useState(props.current.list[0]);
     let dailySnow = 0;
     props.current.list.map((timeSlice) => {
@@ -88,8 +88,8 @@ function CenterPane(props: {current: dayObj, city: string}){
 
 
 export function WeatherDisplay(
-    props: {weather: weatherObj, SkiAreaName:string}
-){
+    props: {weather: weatherObj, SkiAreaName: string}
+) {
     //each day is a slice of 8, 3-hour sections
     const days = [
         {
