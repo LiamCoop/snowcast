@@ -16,8 +16,7 @@ export function Pin(obj: SkiObj) {
   //boolean to determine whether to show the popup or not.
   const [showPopup, setShowPopup] = useState(false);
   //Contains the weather data for a given pin
-  const weatherInit = {} as WeatherObj;
-  const [weather, setWeather] = useState<WeatherObj> (weatherInit);
+  const [weather, setWeather] = useState<WeatherObj> ({} as WeatherObj);
   //Manage weather load state, false when loading, true when loaded
   const [loadWeather, setLoadWeather] = useState(false);
   
