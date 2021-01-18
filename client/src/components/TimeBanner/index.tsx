@@ -8,13 +8,14 @@ import {
 export function TimeBanner(time: ConditionsObj) {
     return (
             <span id="banner">
-                <p>{time.dt_txt.split(' ')[1]}</p>
+                <p>
+                    {time.dt_txt.split(' ')[1].split(':')[0]}:
+                    {time.dt_txt.split(' ')[1].split(':')[1]}
+                </p>
                 <Icon icID={time.weather[0].icon} imgHeight={"45vh"}/>
-                <div id="col">
+                <div id="tempSnow">
                     <p>
-                        {/*Rounds avg of min/max*/}
-                        {/*Nobody wants 2 sigfigs on temp*/}
-                        temp: { Math.round(
+                        { Math.round(
                             (time.main.temp_min - time.main.temp_max) / 2 + 
                                 time.main.temp_max
                         )

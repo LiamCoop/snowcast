@@ -9,3 +9,9 @@
 #banner p {
     color: #fff;
 }
+#tempSnow {
+    display: flex;
+    flex-direction: column;
+    /*justify-content: center;*/
+    height: 20vh;
+}

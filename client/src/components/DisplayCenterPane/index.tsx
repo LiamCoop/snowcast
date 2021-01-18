@@ -1,4 +1,4 @@
-import React, { useState/*, useEffect*/ } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   DayObj,
   Icon,
@@ -7,10 +7,14 @@ import {
 
 import './DisplayCenterPane.css';
 
-export function DisplayCenterPane(props: 
-    {current: DayObj, city: string, skiAreaName: string}) {
+export function DisplayCenterPane(
+    props: { current: DayObj, city: string, skiAreaName: string }) {
 
     const [currentTime, setCurrentTime] = useState(props.current.list[0]);
+
+    useEffect(() => {
+        setCurrentTime(props.current.list[0])
+    },[props.current]);
 
     let dailySnow = 0;
     props.current.list.map((timeSlice) => {
@@ -18,11 +22,12 @@ export function DisplayCenterPane(props:
     }); 
     return (
         <>
+            <h1>{props.current.date}</h1>
             <div className="row">
                 <div className="currentPane">
                     <div className="row">
-                        <p>Ski Area:{props.skiAreaName}</p>
-                        <p>City: {props.city}</p>
+                        <h1>City: {props.city}</h1>
+                        <h1>Ski Area: {props.skiAreaName}</h1>
                     </div>
                     <div className="row">
                         <p>Conditions: {currentTime.weather[0].description}</p>
@@ -47,9 +52,15 @@ export function DisplayCenterPane(props:
                                 <p className="hum">
                                     Humidity: {currentTime.main.humidity}%
                                 </p>
-                                <p className="vis">
-                                    Vis: {currentTime.visibility}m
-                                </p> 
+                                {
+                                    currentTime.visibility === 10000 ? 
+                                        <p className="vis">
+                                            Vis: &infin; m
+                                        </p> : <p className="vis">
+                                            Vis: {currentTime.visibility === 10000 ? 
+                                                currentTime.visibility : '&infin;'}m
+                                    </p>
+                                }
                                 <p className="cloudiness">
                                     Cloud: {currentTime.clouds.all}%
                                 </p>
@@ -67,15 +78,14 @@ export function DisplayCenterPane(props:
                         {
                             currentTime.rain ? 
                                 <p>
-                                    Rainfall for previous 3hr: 
-                                    {currentTime.rain["3h"]}
+                                    Rainfall for previous 3hr: {currentTime.rain["3h"]}
                                 </p> : null
                         }
                         {
                             currentTime.snow ? 
                                 <p>
                                     Snowfall for previous 3hr: {currentTime.snow["3h"]}
-                                    </p>:null
+                                </p> : null
                         }
                     </div>
                 </div>
