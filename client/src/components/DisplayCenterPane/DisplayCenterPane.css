@@ -48,4 +48,10 @@
   font-size: 14px;
 }
 
+#titleblock {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 35vw;
+}
 

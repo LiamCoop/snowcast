@@ -5,9 +5,8 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 2vh 2vw;
+    /*padding: 0vh 0vw;*/
     background: #161616; 
-    border-radius: 1.2%;
 }
 
 .mapboxgl-popup-close-button {

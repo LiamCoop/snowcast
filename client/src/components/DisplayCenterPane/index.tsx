@@ -7,8 +7,9 @@ import {
 
 import './DisplayCenterPane.css';
 
-export function DisplayCenterPane(
-    props: { current: DayObj, city: string, skiAreaName: string }) {
+export function DisplayCenterPane(props: { 
+    current: DayObj, city: string, skiAreaName: string 
+}) {
 
     const [currentTime, setCurrentTime] = useState(props.current.list[0]);
 
@@ -20,15 +21,16 @@ export function DisplayCenterPane(
     props.current.list.map((timeSlice) => {
         dailySnow += timeSlice.snow ? timeSlice.snow?.['3h'] : 0;
     }); 
+
     return (
         <>
-            <h1>{props.current.date}</h1>
+            <div id="titleblock">
+                <h1>City: {props.city}</h1>
+                <h1>{currentTime.dt_txt.split(' ')[0]}</h1>
+                <h1>Ski Area: {props.skiAreaName}</h1>
+            </div>
             <div className="row">
                 <div className="currentPane">
-                    <div className="col">
-                        <h1>City: {props.city}</h1>
-                        <h1>Ski Area: {props.skiAreaName}</h1>
-                    </div>
                     <div className="col">
                         <Icon 
                             icID={currentTime.weather[0].icon} 
@@ -87,6 +89,7 @@ export function DisplayCenterPane(
                     </div>
                 </div>
                 <div className="col">
+                    <p>3 Hour Chunks</p>
                     {
                         props.current.list.map((timeSlice) => {
                             return (
