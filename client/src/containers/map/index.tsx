@@ -11,10 +11,10 @@ import './Map.css';
 const skiInfo = require('../../SkiInfo.json');
 
 export function Map() {
-  const [showdropdown, setShowdropdown] = useState(false);
   const [regions, setRegions] = useState([]);
   const [currentRegion, setCurrentRegion] = useState();
   const [currentSkiObjects, setCurrentSkiObjects] = useState([]);
+  const [showdropdown, setShowdropdown] = useState(false);
 
   const [viewport, setViewport] = useState({
     latitude: 45.0,
@@ -28,7 +28,7 @@ export function Map() {
     setRegions(Array.from(new Set(skiInfo.map((obj:SkiObj) => (
         (typeof obj.Region[0] !== 'undefined') ? obj.Region[0].name : 'null'
       )
-      ))));
+    ))));
   }, []);
 
   // filter skiInfo down to only the one in the selected region (currentRegion)
@@ -52,7 +52,7 @@ export function Map() {
       height="100vw"
       onViewportChange={(nextViewport) => setViewport(nextViewport)}
     >
-      <div className="btn" onClick={() => setShowdropdown(!showdropdown)} >
+      <div onClick={() => setShowdropdown(!showdropdown)}>
         <RegionsButton />
       </div>
       <div>
