@@ -16,7 +16,46 @@ export function Pin(obj: SkiObj) {
   //boolean to determine whether to show the popup or not.
   const [showPopup, setShowPopup] = useState(false);
   //Contains the weather data for a given pin
-  const [weather, setWeather] = useState<WeatherObj> ({} as WeatherObj);
+  const weatherInit = {
+    cod:"",
+    cnt:0,
+    message:"",
+    list:[],
+    city:{
+      coord: {
+        lat: 0,
+        lon: 0,
+      },
+      country: "",
+      id: 0,
+      name: "",
+      population: 0,
+      sunrise: 0,
+      sunset: 0,
+      timezone: 0,
+    },
+  };
+  const [weather, setWeather] = useState<WeatherObj> (
+    {
+      cod:"",
+      cnt:0,
+      message:"",
+      list:[],
+      city:{
+        coord: {
+          lat: 0,
+          lon: 0,
+        },
+        country: "",
+        id: 0,
+        name: "",
+        population: 0,
+        sunrise: 0,
+        sunset: 0,
+        timezone: 0,
+      },
+    }
+  );
   //Manage weather load state, false when loading, true when loaded
   const [loadWeather, setLoadWeather] = useState(false);
   
@@ -85,7 +124,7 @@ export function Pin(obj: SkiObj) {
             sortByDepth={true}
           >
             <div className="col">
-              { 
+              {
                 loadWeather ? 
                   <WeatherDisplay 
                     weather={weather} 
