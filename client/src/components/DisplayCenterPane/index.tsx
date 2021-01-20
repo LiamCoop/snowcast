@@ -32,6 +32,10 @@ export function DisplayCenterPane(props: {
             <div className="row">
                 <div className="currentPane">
                     <div className="col">
+                        <h1>
+                            {currentTime.dt_txt.split(' ')[1].split(':')[0]}h
+                            {currentTime.dt_txt.split(' ')[1].split(':')[1]}
+                        </h1>
                         <Icon 
                             icID={currentTime.weather[0].icon} 
                             imgHeight={"80vh"} 
@@ -67,23 +71,22 @@ export function DisplayCenterPane(props: {
                         </div>
                     </div>
                     <div className="col">
-                        {
-                            currentTime.wind ? 
-                                <p>
-                                    Windspeed,dir: {currentTime.wind.speed} m/s, 
-                                    {currentTime.wind.speed}&deg;
-                                </p> : null
-                        }
+                        <p>
+                            Windspeed, direction:
+                            {Math.round(currentTime.wind.speed)}m/s, 
+                            {Math.round(currentTime.wind.speed)}&deg;
+                        </p>
                         {
                             currentTime.rain ? 
                                 <p>
-                                    Rainfall for previous 3hr: {currentTime.rain["3h"]}
+                                    Rainfall for previous 3hr interval:
+                                    {Math.round(currentTime.rain["3h"])} mm
                                 </p> : null
-                        }
-                        {
+                        } {
                             currentTime.snow ? 
                                 <p>
-                                    Snowfall for previous 3hr: {currentTime.snow["3h"]}
+                                    Snowfall for previous 3hr interval: 
+                                     {Math.round(currentTime.snow["3h"])} cm
                                 </p> : null
                         }
                     </div>
