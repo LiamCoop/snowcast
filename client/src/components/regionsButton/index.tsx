@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './RegionButton.scss';
 
 // found this button on code-pen, thought it fit the project theme.
@@ -6,7 +6,7 @@ import './RegionButton.scss';
 // https://codepen.io/sowmyaseshadri/pen/LYRjGpr?editors=1100
 export function RegionsButton() {
   return (
-    <>
+    <div className="btn">
       <div className="btn-name">View Regions</div>
       <div className="snowflake-grid to-left">
         <div className="snowflake-item border-bottom border-right">
@@ -67,6 +67,6 @@ export function RegionsButton() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
