@@ -1,19 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
     //components
     DisplayCenterPane,
     DayButton,
-    //interfaces
-    WeatherObj,
-    ConditionsObj,
-    DayObj,
+    //Typescript interfaces
+    WeatherObj, 
 } from '../../components';
 import './WeatherDisplay.css';
 
 export function WeatherDisplay(
     props: { weather: WeatherObj, skiAreaName: string }
 ) {
-    //each day is a slice of 8, 3-hour sections
+    //each day is 8, 3-hour sections
     const days = [
         {
             list: props.weather.list.slice(0,8),
@@ -33,13 +31,13 @@ export function WeatherDisplay(
         },
     ];
 
-    const [current, setCurrent] = useState(days[0]);
-    //add skiAreaName display
+    const [currentDay, setCurrentDay] = useState(days[0]);
+
     return (
         <div className="card">
             <div className="col">
                 <DisplayCenterPane
-                    current={current} 
+                    current={currentDay} 
                     city={props.weather.city.name}
                     skiAreaName={props.skiAreaName}
                 />
@@ -49,7 +47,7 @@ export function WeatherDisplay(
                             return (
                                 <button 
                                     id="dayButton"
-                                    onClick={() => setCurrent(day)} 
+                                    onClick={() => setCurrentDay(day)} 
                                     key={day.list[0].dt}
                                 > 
                                     <DayButton day={day} />
