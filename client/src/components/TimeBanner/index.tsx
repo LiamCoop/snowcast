@@ -9,7 +9,7 @@ export function TimeBanner(time: ConditionsObj) {
     return (
         <span id="banner">
             <p>
-                {time.dt_txt.split(' ')[1].split(':')[0]}:
+                {time.dt_txt.split(' ')[1].split(':')[0]}h
                 {time.dt_txt.split(' ')[1].split(':')[1]}
             </p>
             <Icon icID={time.weather[0].icon} imgHeight={"45vh"}/>
