@@ -92,7 +92,7 @@ export function DisplayCenterPane(props: {
                     </div>
                 </div>
                 <div className="col">
-                    <p>3 Hour Chunks</p>
+                    <p>3 Hour Intervals</p>
                     {
                         props.current.list.map((timeSlice) => {
                             return (
