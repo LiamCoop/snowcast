@@ -25,45 +25,43 @@ export function DisplayCenterPane(
             <h1>{props.current.date}</h1>
             <div className="row">
                 <div className="currentPane">
-                    <div className="row">
+                    <div className="col">
                         <h1>City: {props.city}</h1>
                         <h1>Ski Area: {props.skiAreaName}</h1>
                     </div>
-                    <div className="row">
+                    <div className="col">
+                        <Icon 
+                            icID={currentTime.weather[0].icon} 
+                            imgHeight={"80vh"} 
+                        />
                         <p>Conditions: {currentTime.weather[0].description}</p>
                     </div>
                     <div className="row">
-                        <div className="row">
-                            <div id="temp">
-                                <Icon 
-                                    icID={currentTime.weather[0].icon} 
-                                    imgHeight={"80vh"} 
-                                />
-                                <h1>{Math.round(currentTime.main.temp)}&deg;</h1>
-                                <p>
-                                    {Math.round(currentTime.main.temp_min)}&deg; / 
-                                    {Math.round(currentTime.main.temp_max)}&deg;
-                                </p>
-                            </div>
-                            <div id="weather">
-                                <p className="pop">
-                                    Precipitation: {Math.round(currentTime.pop*100)}%
-                                </p>
-                                <p className="hum">
-                                    Humidity: {Math.round(currentTime.main.humidity)}%
-                                </p>
-                                {
-                                    currentTime.visibility === 10000 ? 
-                                        <p className="vis">
-                                            Vis: &infin; m
-                                        </p> : <p className="vis">
-                                            Vis: {currentTime.visibility} m
-                                        </p>
-                                }
-                                <p className="cloudiness">
-                                    Cloud: {currentTime.clouds.all}%
-                                </p>
-                            </div>
+                        <div id="temp">
+                            <h1>{Math.round(currentTime.main.temp)}&deg;</h1>
+                            <p>
+                                {Math.round(currentTime.main.temp_min)}&deg; / 
+                                {Math.round(currentTime.main.temp_max)}&deg;
+                            </p>
+                        </div>
+                        <div id="weather">
+                            <p className="pop">
+                                Precipitation: {Math.round(currentTime.pop*100)}%
+                            </p>
+                            <p className="hum">
+                                Humidity: {Math.round(currentTime.main.humidity)}%
+                            </p>
+                            {
+                                currentTime.visibility === 10000 ? 
+                                    <p className="vis">
+                                        Vis: &infin; m
+                                    </p> : <p className="vis">
+                                        Vis: {currentTime.visibility} m
+                                    </p>
+                            }
+                            <p className="cloudiness">
+                                Cloud: {currentTime.clouds.all}%
+                            </p>
                         </div>
                     </div>
                     <div className="col">
