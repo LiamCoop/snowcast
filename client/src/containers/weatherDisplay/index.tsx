@@ -10,8 +10,6 @@ import {
 } from '../../components';
 import './WeatherDisplay.css';
 
-
-
 export function WeatherDisplay(
     props: { weather: WeatherObj, skiAreaName: string }
 ) {
@@ -40,7 +38,7 @@ export function WeatherDisplay(
     return (
         <div className="card">
             <div className="col">
-                <DisplayCenterPane 
+                <DisplayCenterPane
                     current={current} 
                     city={props.weather.city.name}
                     skiAreaName={props.skiAreaName}
