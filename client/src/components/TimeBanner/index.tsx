@@ -13,15 +13,14 @@ export function TimeBanner(time: ConditionsObj) {
                 {time.dt_txt.split(' ')[1].split(':')[1]}
             </p>
             <Icon icID={time.weather[0].icon} imgHeight={"45vh"}/>
-            <div id="tempSnow">
-                <p>
-                    { Math.round(
-                        (time.main.temp_min - time.main.temp_max) / 2 + 
-                            time.main.temp_max)
-                    } &deg;C
-                </p>
-                {<p>{time.snow ? time.snow?.['3h'] : '0'}cm</p>}
-            </div>
+            <p>
+                { Math.round(
+                    (time.main.temp_min - time.main.temp_max) / 2 + 
+                        time.main.temp_max)
+                } &deg;C
+            </p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+            {<p>Snow: {time.snow ? time.snow?.['3h'] : '0'}cm</p>}
         </span>
     );
 }
