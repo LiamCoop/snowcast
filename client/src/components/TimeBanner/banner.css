@@ -1,17 +1,18 @@
 #banner {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-    background-color: #161616;
+    justify-content: center;
     align-items: center;
+    background-color: #161616;
 }
 
 #banner p {
     color: #fff;
 }
+
 #tempSnow {
     display: flex;
     flex-direction: column;
-    /*justify-content: center;*/
-    height: 20vh;
+    justify-content: center;
+    height: 1vh;
 }
