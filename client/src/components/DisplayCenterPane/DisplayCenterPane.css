@@ -51,9 +51,11 @@
 #bannerbtn {
     background-color:#161616;
     border: #fff solid 1px;
-    border-radius: 8%;
-    width: 18vw;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
+    /*justify-content: center;*/
+    border-radius: 8%;
+    width: 18vw;
+    height: 10vh;
 }
