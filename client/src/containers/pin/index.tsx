@@ -16,25 +16,7 @@ export function Pin(obj: SkiObj) {
   //boolean to determine whether to show the popup or not.
   const [showPopup, setShowPopup] = useState(false);
   //Contains the weather data for a given pin
-  const weatherInit = {
-    cod:"",
-    cnt:0,
-    message:"",
-    list:[],
-    city:{
-      coord: {
-        lat: 0,
-        lon: 0,
-      },
-      country: "",
-      id: 0,
-      name: "",
-      population: 0,
-      sunrise: 0,
-      sunset: 0,
-      timezone: 0,
-    },
-  };
+  
   const [weather, setWeather] = useState<WeatherObj> (
     {
       cod:"",
@@ -73,7 +55,6 @@ export function Pin(obj: SkiObj) {
         }
       });
       const dt = await response.json();
-      //console.log(dt);
       setWeather(dt);
       setLoadWeather(true);
     });
@@ -84,7 +65,7 @@ export function Pin(obj: SkiObj) {
       setLoadWeather(true);
     }
   }, [showPopup, obj.SkiArea]);
-
+  const size = 32;
   return (
     <div style={{zIndex:-1}}>
       <Marker 
@@ -95,8 +76,8 @@ export function Pin(obj: SkiObj) {
         <div onClick={() => {setShowPopup(true)}}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="32" 
-            height="32"
+            width={size}
+            height={size}
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -104,6 +85,7 @@ export function Pin(obj: SkiObj) {
             strokeLinecap="round"
             strokeLinejoin="round"
             className="feather feather-map-pin"
+            style={{transform: `translate(${-size/2}px,${-size}px)`}}
           >
             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
             <circle cx="12" cy="10" r="3"></circle>
