@@ -47,19 +47,18 @@ export function DisplayCenterPane(
                             </div>
                             <div id="weather">
                                 <p className="pop">
-                                    Precipitation: {currentTime.pop*100}%
+                                    Precipitation: {Math.round(currentTime.pop*100)}%
                                 </p>
                                 <p className="hum">
-                                    Humidity: {currentTime.main.humidity}%
+                                    Humidity: {Math.round(currentTime.main.humidity)}%
                                 </p>
                                 {
                                     currentTime.visibility === 10000 ? 
                                         <p className="vis">
                                             Vis: &infin; m
                                         </p> : <p className="vis">
-                                            Vis: {currentTime.visibility === 10000 ? 
-                                                currentTime.visibility : '&infin;'}m
-                                    </p>
+                                            Vis: {currentTime.visibility} m
+                                        </p>
                                 }
                                 <p className="cloudiness">
                                     Cloud: {currentTime.clouds.all}%
