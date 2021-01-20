@@ -58,7 +58,12 @@ p {
 }
 
 #dayButton {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-color: #161616;
     border-radius: 8%;
     margin: 0 3px;
+    border: 1px solid #fff;
 }
