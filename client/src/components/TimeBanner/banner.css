@@ -10,10 +10,18 @@
     height: 5.5vh;
 }
 
-#banner {
+.bannerActive {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     background-color: #161616;
+}
+
+.bannerInActive {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #1f2420;
 }

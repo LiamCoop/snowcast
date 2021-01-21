@@ -8,17 +8,17 @@ import {
 import './DisplayCenterPane.css';
 
 export function DisplayCenterPane(props: { 
-    current: DayObj, city: string, skiAreaName: string 
+    currentDay: DayObj, city: string, skiAreaName: string 
 }) {
 
-    const [currentTime, setCurrentTime] = useState(props.current.list[0]);
+    const [currentTime, setCurrentTime] = useState(props.currentDay.list[0]);
 
     useEffect(() => {
-        setCurrentTime(props.current.list[0])
-    },[props.current]);
+        setCurrentTime(props.currentDay.list[0])
+    },[props.currentDay]);
 
     let dailySnow = 0;
-    props.current.list.map((timeSlice) => {
+    props.currentDay.list.map((timeSlice) => {
         dailySnow += timeSlice.snow ? timeSlice.snow?.['3h'] : 0;
     }); 
 
@@ -44,10 +44,10 @@ export function DisplayCenterPane(props: {
                     </div>
                     <div className="row">
                         <div id="temp">
-                            <h1>{Math.round(currentTime.main.temp)}&deg;</h1>
+                            <h1>{Math.round(currentTime.main.temp)}&deg;C</h1>
                             <p>
-                                {Math.round(currentTime.main.temp_min)}&deg; / 
-                                {Math.round(currentTime.main.temp_max)}&deg;
+                                {Math.round(currentTime.main.temp_min)}&deg;C 
+                                 / {Math.round(currentTime.main.temp_max)}&deg;C
                             </p>
                         </div>
                         <div id="weather">
@@ -79,14 +79,16 @@ export function DisplayCenterPane(props: {
                         {
                             currentTime.rain ? 
                                 <p>
-                                    Rainfall for previous 3hr interval:
-                                    {Math.round(currentTime.rain["3h"])} mm
+                                    Rainfall for previous 3 hours: {
+                                        Math.round(currentTime.rain["3h"])
+                                    } mm
                                 </p> : null
                         } {
                             currentTime.snow ? 
                                 <p>
-                                    Snowfall for previous 3hr interval: 
-                                     {Math.round(currentTime.snow["3h"])} cm
+                                    Snowfall over previous 3 hours: { 
+                                        Math.round(currentTime.snow["3h"])
+                                    } cm
                                 </p> : null
                         }
                     </div>
@@ -94,11 +96,14 @@ export function DisplayCenterPane(props: {
                 <div className="col">
                     <p>3 Hour Intervals</p>
                     {
-                        props.current.list.map((timeSlice) => {
+                        props.currentDay.list.map((timeSlice) => {
                             return (
-                                <button id="bannerbtn" onClick={() => {setCurrentTime(timeSlice)}}>
-                                    <TimeBanner {...timeSlice} />
-                                </button>
+                                <TimeBanner 
+                                    onClick={() => setCurrentTime(timeSlice)}
+                                    time={timeSlice} 
+                                    active={currentTime.dt === timeSlice.dt}
+                                    key={timeSlice.dt_txt}
+                                />
                             );
                         })
                     }

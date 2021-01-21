@@ -15,19 +15,19 @@ export function WeatherDisplay(
     const days = [
         {
             list: props.weather.list.slice(0,8),
-            date: props.weather.list.slice(0,8)[0].dt_txt.split(' ')[0],
+            dateTime: props.weather.list.slice(0,8)[0].dt_txt,
         },{ 
             list: props.weather.list.slice(8,16),
-            date: props.weather.list.slice(8,16)[0].dt_txt.split(' ')[0],
+            dateTime: props.weather.list.slice(8,16)[0].dt_txt,
         },{
             list: props.weather.list.slice(16,24),
-            date: props.weather.list.slice(16,24)[0].dt_txt.split(' ')[0],
+            dateTime: props.weather.list.slice(16,24)[0].dt_txt,
         },{ 
             list: props.weather.list.slice(24,32),
-            date: props.weather.list.slice(24,32)[0].dt_txt.split(' ')[0],
+            dateTime: props.weather.list.slice(24,32)[0].dt_txt,
         },{ 
             list: props.weather.list.slice(32,40),
-            date: props.weather.list.slice(24,32)[0].dt_txt.split(' ')[0],
+            dateTime: props.weather.list.slice(24,32)[0].dt_txt,
         },
     ];
 
@@ -37,7 +37,7 @@ export function WeatherDisplay(
         <div className="card">
             <div className="col">
                 <DisplayCenterPane
-                    current={currentDay} 
+                    currentDay={currentDay} 
                     city={props.weather.city.name}
                     skiAreaName={props.skiAreaName}
                 />
@@ -45,13 +45,12 @@ export function WeatherDisplay(
                     {
                         days.map((day) => {
                             return (
-                                <button 
-                                    id="dayButton"
-                                    onClick={() => setCurrentDay(day)} 
-                                    key={day.list[0].dt}
-                                > 
-                                    <DayButton day={day} />
-                                </button>
+                                <DayButton 
+                                    active={currentDay.dateTime === day.list[0].dt_txt}
+                                    day={day} 
+                                    onClick={() => setCurrentDay(day)}
+                                    key={day.list[0].dt_txt}
+                                />
                             );
                         })
                     }

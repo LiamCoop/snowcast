@@ -57,12 +57,23 @@ p {
     align-items: center;
 }
 
-#dayButton {
+.dayButtonActive {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: #161616;
+    border-radius: 8%;
+    margin: 0 3px;
+    border: 1px solid #fff;
+}
+
+.dayButtonInactive {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #1f2420;
     border-radius: 8%;
     margin: 0 3px;
     border: 1px solid #fff;

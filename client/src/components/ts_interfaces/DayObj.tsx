@@ -4,5 +4,5 @@ import {
 
 export interface DayObj {
     list: Array<ConditionsObj>;
-    date: string;
+    dateTime: string;
 }

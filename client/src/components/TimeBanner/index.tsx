@@ -5,22 +5,27 @@ import {
     Icon,
 } from '../'
 
-export function TimeBanner(time: ConditionsObj) {
+export function TimeBanner(props: {time: ConditionsObj, active:boolean, onClick: () => void}) {
     return (
-        <span id="banner">
+        <button 
+            className={ 
+                props.active ? "bannerActive" : "bannerInActive"
+            }
+            onClick={props.onClick}
+        >
             <p>
-                {time.dt_txt.split(' ')[1].split(':')[0]}h
-                {time.dt_txt.split(' ')[1].split(':')[1]}
+                {props.time.dt_txt.split(' ')[1].split(':')[0]}h
+                {props.time.dt_txt.split(' ')[1].split(':')[1]}
             </p>
-            <Icon icID={time.weather[0].icon} imgHeight={"45vh"}/>
+            <Icon icID={props.time.weather[0].icon} imgHeight={"45vh"}/>
             <p>
                 { Math.round(
-                    (time.main.temp_min - time.main.temp_max) / 2 + 
-                        time.main.temp_max)
+                    (props.time.main.temp_min - props.time.main.temp_max) / 2 + 
+                        props.time.main.temp_max)
                 } &deg;C
             </p>
             <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
-            {<p>Snow: {time.snow ? time.snow?.['3h'] : '0'}cm</p>}
-        </span>
+            {<p>Snow: {props.time.snow ? props.time.snow?.['3h'] : '0'}cm</p>}
+        </button>
     );
 }
