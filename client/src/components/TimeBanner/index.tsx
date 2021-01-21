@@ -25,7 +25,7 @@ export function TimeBanner(props: {time: ConditionsObj, active:boolean, onClick:
                 } &deg;C
             </p>
             <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
-            {<p>Snow: {props.time.snow ? props.time.snow?.['3h'] : '0'}cm</p>}
+            {<p>Snow: {props.time.snow ? Math.round(props.time.snow?.['3h']) : '0'}cm</p>}
         </button>
     );
 }
