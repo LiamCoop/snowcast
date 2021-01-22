@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Marker, Popup } from "react-map-gl";
-
 import { SkiObj, Loading, WeatherObj } from "../../components";
 import { WeatherDisplay } from "../weatherDisplay";
 
@@ -36,7 +35,7 @@ export function Pin(obj: SkiObj) {
 
     //when the user clicks a pin, trigger the fetching of the weather data for that pin.
     useEffect(() => {
-        const loadWeather = async () => {
+        const loadWeatherRapid = async () => {
             const response = await fetch(
                 "https://community-open-weather-map.p.rapidapi.com/forecast?lat=" +
                     obj.SkiArea.geo_lat +
@@ -57,14 +56,33 @@ export function Pin(obj: SkiObj) {
             setWeather(dt);
             setLoadWeather(true);
         };
+        const loadWeatherOWM = async () => {
+            const response = await fetch(
+                "https://api.openweathermap.org/data/2.5/forecast?" +
+                    "lat=" +
+                    obj.SkiArea.geo_lat +
+                    "&lon=" +
+                    obj.SkiArea.geo_lng +
+                    "&appid=" +
+                    process.env.OWMKEY +
+                    "&units=metric",
+                { method: "GET" }
+            );
+            const dt = await response.json();
+            setWeather(dt);
+            setLoadWeather(true);
+        };
 
         if (showPopup) {
-            //loadWeather();
+            //loadWeatherRapid();
+            //loadWeatherOWM();
             setWeather(wthr);
             setLoadWeather(true);
         }
     }, [showPopup, obj.SkiArea]);
+
     const size = 32;
+
     return (
         <div style={{ zIndex: -1 }}>
             <Marker

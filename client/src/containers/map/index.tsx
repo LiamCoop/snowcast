@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ReactMapGL from "react-map-gl";
-import "dotenv/config";
 import { SkiObj, RegionsButton } from "../../components";
 import { Pin } from "../pin";
-import { Sidebar } from "../Sidebar";
 import "./Map.css";
 
 const skiInfo = require("../../SkiInfo.json");
