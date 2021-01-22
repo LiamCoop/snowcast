@@ -27,7 +27,7 @@ export function WeatherDisplay(
             dateTime: props.weather.list.slice(24,32)[0].dt_txt,
         },{ 
             list: props.weather.list.slice(32,40),
-            dateTime: props.weather.list.slice(24,32)[0].dt_txt,
+            dateTime: props.weather.list.slice(32,40)[0].dt_txt,
         },
     ];
 
