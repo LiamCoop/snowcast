@@ -1,8 +1,6 @@
-import {
-    ConditionsObj,
-} from './Weather';
+import { ConditionsObj } from './Weather'
 
 export interface DayObj {
-    list: Array<ConditionsObj>;
-    dateTime: string;
+    list: Array<ConditionsObj>
+    dateTime: string
 }
