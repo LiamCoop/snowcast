@@ -52,7 +52,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 3vh);
-  width: 35vw;
+  column-gap: 20px;
   min-height: 5vh;
   max-height: 10vh;
 }
