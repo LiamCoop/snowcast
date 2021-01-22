@@ -89,7 +89,7 @@ export function DisplayCenterPane(props: {
                             currentTime.snow ? 
                                 <p>
                                     Snowfall over previous 3 hours: { 
-                                        Math.round(currentTime.snow["3h"])
+                                        Math.round(currentTime.snow["3h"] * 10) / 10
                                     } cm
                                 </p> : null
                         }
