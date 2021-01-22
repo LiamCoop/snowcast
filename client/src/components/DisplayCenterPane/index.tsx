@@ -24,10 +24,12 @@ export function DisplayCenterPane(props: {
 
     return (
         <>
-            <div id="titleblock">
-                <h1>City: {props.city}</h1>
-                <h1>{currentTime.dt_txt.split(' ')[0]}</h1>
-                <h1>Ski Area: {props.skiAreaName}</h1>
+            <div id="titlecontainer">
+                <h1 className="city title">City:</h1>
+                <h1 className="propCity title">{props.city}</h1>
+                <h1 className="dt title">{currentTime.dt_txt.split(' ')[0]}</h1>
+                <h1 className="area title">Ski Area:</h1>
+                <h1 className="propArea title">{props.skiAreaName}</h1>
             </div>
             <div className="row">
                 <div className="currentPane">
