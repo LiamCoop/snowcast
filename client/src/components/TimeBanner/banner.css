@@ -16,6 +16,8 @@
     justify-content: center;
     align-items: center;
     background-color: #161616;
+    opacity: 0.3;
+    filter: alpha(opacity=30);
 }
 
 .bannerInActive {
@@ -23,5 +25,5 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background-color: #1f2420;
+    background-color: #161616;
 }
