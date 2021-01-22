@@ -1,12 +1,12 @@
-import React, { useContext } from 'react'
-import './RegionButton.scss'
+import React, { useContext } from "react";
+import "./RegionButton.scss";
 
 // found this button on code-pen, thought it fit the project theme.
 // Shoutout Sowmya Seshadri for this!
 // https://codepen.io/sowmyaseshadri/pen/LYRjGpr?editors=1100
-export function RegionsButton() {
+export function RegionsButton(props: { onClick: () => void }) {
     return (
-        <div className="btn">
+        <div className="btn" onClick={props.onClick}>
             <div className="btn-name">View Regions</div>
             <div className="snowflake-grid to-left">
                 <div className="snowflake-item border-bottom border-right">
@@ -53,5 +53,5 @@ export function RegionsButton() {
                 </div>
             </div>
         </div>
-    )
+    );
 }

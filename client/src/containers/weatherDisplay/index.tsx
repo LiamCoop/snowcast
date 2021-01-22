@@ -1,16 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import {
     //components
     DisplayCenterPane,
     DayButton,
     //Typescript interfaces
     WeatherObj,
-} from '../../components'
-import './WeatherDisplay.css'
+} from "../../components";
+import "./WeatherDisplay.css";
 
 export function WeatherDisplay(props: {
-    weather: WeatherObj
-    skiAreaName: string
+    weather: WeatherObj;
+    skiAreaName: string;
 }) {
     //each day is 8, 3-hour sections
     const days = [
@@ -34,9 +34,9 @@ export function WeatherDisplay(props: {
             list: props.weather.list.slice(32, 40),
             dateTime: props.weather.list.slice(32, 40)[0].dt_txt,
         },
-    ]
+    ];
 
-    const [currentDay, setCurrentDay] = useState(days[0])
+    const [currentDay, setCurrentDay] = useState(days[0]);
 
     return (
         <div className="card">
@@ -57,10 +57,10 @@ export function WeatherDisplay(props: {
                                 onClick={() => setCurrentDay(day)}
                                 key={day.list[0].dt_txt}
                             />
-                        )
+                        );
                     })}
                 </div>
             </div>
         </div>
-    )
+    );
 }

@@ -1,30 +1,30 @@
-import React, { useState, useEffect } from 'react'
-import { DayObj, Icon, TimeBanner } from '../'
+import React, { useState, useEffect } from "react";
+import { DayObj, Icon, TimeBanner } from "../";
 
-import './DisplayCenterPane.css'
+import "./DisplayCenterPane.css";
 
 export function DisplayCenterPane(props: {
-    currentDay: DayObj
-    city: string
-    skiAreaName: string
+    currentDay: DayObj;
+    city: string;
+    skiAreaName: string;
 }) {
-    const [currentTime, setCurrentTime] = useState(props.currentDay.list[0])
+    const [currentTime, setCurrentTime] = useState(props.currentDay.list[0]);
 
     useEffect(() => {
-        setCurrentTime(props.currentDay.list[0])
-    }, [props.currentDay])
+        setCurrentTime(props.currentDay.list[0]);
+    }, [props.currentDay]);
 
-    let dailySnow = 0
+    let dailySnow = 0;
     props.currentDay.list.map((timeSlice) => {
-        dailySnow += timeSlice.snow ? timeSlice.snow?.['3h'] : 0
-    })
+        dailySnow += timeSlice.snow ? timeSlice.snow?.["3h"] : 0;
+    });
 
     return (
         <>
             <div id="titlecontainer">
                 <h1 className="city title">City:</h1>
                 <h1 className="propCity title">{props.city}</h1>
-                <h1 className="dt title">{currentTime.dt_txt.split(' ')[0]}</h1>
+                <h1 className="dt title">{currentTime.dt_txt.split(" ")[0]}</h1>
                 <h1 className="area title">Ski Area:</h1>
                 <h1 className="propArea title">{props.skiAreaName}</h1>
             </div>
@@ -32,12 +32,12 @@ export function DisplayCenterPane(props: {
                 <div className="currentPane">
                     <div className="col">
                         <h1>
-                            {currentTime.dt_txt.split(' ')[1].split(':')[0]}h
-                            {currentTime.dt_txt.split(' ')[1].split(':')[1]}
+                            {currentTime.dt_txt.split(" ")[1].split(":")[0]}h
+                            {currentTime.dt_txt.split(" ")[1].split(":")[1]}
                         </h1>
                         <Icon
                             icID={currentTime.weather[0].icon}
-                            imgHeight={'100vh'}
+                            imgHeight={"100vh"}
                         />
                         <p>Conditions: {currentTime.weather[0].description}</p>
                     </div>
@@ -45,17 +45,17 @@ export function DisplayCenterPane(props: {
                         <div id="temp">
                             <h1>{Math.round(currentTime.main.temp)}&deg;C</h1>
                             <p>
-                                {Math.round(currentTime.main.temp_min)}&deg;C /{' '}
+                                {Math.round(currentTime.main.temp_min)}&deg;C /{" "}
                                 {Math.round(currentTime.main.temp_max)}&deg;C
                             </p>
                         </div>
                         <div id="weather">
                             <p className="pop">
-                                Precipitation:{' '}
+                                Precipitation:{" "}
                                 {Math.round(currentTime.pop * 100)}%
                             </p>
                             <p className="hum">
-                                Humidity:{' '}
+                                Humidity:{" "}
                                 {Math.round(currentTime.main.humidity)}%
                             </p>
                             {currentTime.visibility === 10000 ? (
@@ -78,14 +78,14 @@ export function DisplayCenterPane(props: {
                         </p>
                         {currentTime.rain ? (
                             <p>
-                                Rainfall for previous 3 hours:{' '}
-                                {Math.round(currentTime.rain['3h'])} mm
+                                Rainfall for previous 3 hours:{" "}
+                                {Math.round(currentTime.rain["3h"])} mm
                             </p>
-                        ) : null}{' '}
+                        ) : null}{" "}
                         {currentTime.snow ? (
                             <p>
-                                Snowfall over previous 3 hours:{' '}
-                                {Math.round(currentTime.snow['3h'] * 10) / 10}{' '}
+                                Snowfall over previous 3 hours:{" "}
+                                {Math.round(currentTime.snow["3h"] * 10) / 10}{" "}
                                 cm
                             </p>
                         ) : null}
@@ -101,10 +101,10 @@ export function DisplayCenterPane(props: {
                                 active={currentTime.dt === timeSlice.dt}
                                 key={timeSlice.dt_txt}
                             />
-                        )
+                        );
                     })}
                 </div>
             </div>
         </>
-    )
+    );
 }

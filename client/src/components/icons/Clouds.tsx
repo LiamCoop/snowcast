@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 export function Clouds(hgt: string) {
     return (
@@ -7,5 +7,5 @@ export function Clouds(hgt: string) {
             alt="Clouds"
             height={hgt}
         />
-    )
+    );
 }

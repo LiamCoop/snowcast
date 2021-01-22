@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 export function ClearSky(hgt: string) {
     return (
@@ -7,5 +7,5 @@ export function ClearSky(hgt: string) {
             alt="ClearSky"
             height={hgt}
         />
-    )
+    );
 }

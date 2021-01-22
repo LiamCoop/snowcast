@@ -1,70 +1,70 @@
-import React, { useState, useEffect } from 'react'
-import { Marker, Popup } from 'react-map-gl'
+import React, { useState, useEffect } from "react";
+import { Marker, Popup } from "react-map-gl";
 
-import { SkiObj, Loading, WeatherObj } from '../../components'
-import { WeatherDisplay } from '../weatherDisplay'
+import { SkiObj, Loading, WeatherObj } from "../../components";
+import { WeatherDisplay } from "../weatherDisplay";
 
-import './Pin.css'
-const wthr = require('../../weather.json')
+import "./Pin.css";
+const wthr = require("../../weather.json");
 
 export function Pin(obj: SkiObj) {
     //boolean to determine whether to show the popup or not.
-    const [showPopup, setShowPopup] = useState(false)
+    const [showPopup, setShowPopup] = useState(false);
     //Contains the weather data for a given pin
 
     const [weather, setWeather] = useState<WeatherObj>({
-        cod: '',
+        cod: "",
         cnt: 0,
-        message: '',
+        message: "",
         list: [],
         city: {
             coord: {
                 lat: 0,
                 lon: 0,
             },
-            country: '',
+            country: "",
             id: 0,
-            name: '',
+            name: "",
             population: 0,
             sunrise: 0,
             sunset: 0,
             timezone: 0,
         },
-    })
+    });
     //Manage weather load state, false when loading, true when loaded
-    const [loadWeather, setLoadWeather] = useState(false)
+    const [loadWeather, setLoadWeather] = useState(false);
 
     //when the user clicks a pin, trigger the fetching of the weather data for that pin.
     useEffect(() => {
         const loadWeather = async () => {
             const response = await fetch(
-                'https://community-open-weather-map.p.rapidapi.com/forecast?lat=' +
+                "https://community-open-weather-map.p.rapidapi.com/forecast?lat=" +
                     obj.SkiArea.geo_lat +
-                    '&lon=' +
+                    "&lon=" +
                     obj.SkiArea.geo_lng +
-                    '&units=metric',
+                    "&units=metric",
                 {
-                    method: 'GET',
+                    method: "GET",
                     headers: {
-                        'x-rapidapi-key':
-                            'eaa029e7efmshe51c46837334214p1add8ejsn9eb660b86a63',
-                        'x-rapidapi-host':
-                            'community-open-weather-map.p.rapidapi.com',
+                        "x-rapidapi-key":
+                            "eaa029e7efmshe51c46837334214p1add8ejsn9eb660b86a63",
+                        "x-rapidapi-host":
+                            "community-open-weather-map.p.rapidapi.com",
                     },
-                },
-            )
-            const dt = await response.json()
-            setWeather(dt)
-            setLoadWeather(true)
-        }
+                }
+            );
+            const dt = await response.json();
+            setWeather(dt);
+            setLoadWeather(true);
+        };
 
         if (showPopup) {
             //loadWeather();
-            setWeather(wthr)
-            setLoadWeather(true)
+            setWeather(wthr);
+            setLoadWeather(true);
         }
-    }, [showPopup, obj.SkiArea])
-    const size = 32
+    }, [showPopup, obj.SkiArea]);
+    const size = 32;
     return (
         <div style={{ zIndex: -1 }}>
             <Marker
@@ -74,7 +74,7 @@ export function Pin(obj: SkiObj) {
             >
                 <div
                     onClick={() => {
-                        setShowPopup(true)
+                        setShowPopup(true);
                     }}
                 >
                     <svg
@@ -104,7 +104,7 @@ export function Pin(obj: SkiObj) {
                     closeButton={true}
                     closeOnClick={false}
                     onClose={() => {
-                        setShowPopup(!showPopup)
+                        setShowPopup(!showPopup);
                     }}
                     anchor="bottom"
                     offsetLeft={12}
@@ -124,5 +124,5 @@ export function Pin(obj: SkiObj) {
                 </Popup>
             ) : null}
         </div>
-    )
+    );
 }

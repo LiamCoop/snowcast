@@ -1,23 +1,24 @@
-import React, { useState, useEffect } from 'react'
-import ReactMapGL from 'react-map-gl'
-import 'dotenv/config'
-import { SkiObj, RegionsButton } from '../../components'
-import { Pin } from '../pin'
-import './Map.css'
+import React, { useState, useEffect } from "react";
+import ReactMapGL from "react-map-gl";
+import "dotenv/config";
+import { SkiObj, RegionsButton } from "../../components";
+import { Pin } from "../pin";
+import { Sidebar } from "../Sidebar";
+import "./Map.css";
 
-const skiInfo = require('../../SkiInfo.json')
+const skiInfo = require("../../SkiInfo.json");
 
 export function Map() {
-    const [regions, setRegions] = useState([])
-    const [currentRegion, setCurrentRegion] = useState()
-    const [currentSkiObjects, setCurrentSkiObjects] = useState([])
-    const [showdropdown, setShowdropdown] = useState(false)
+    const [regions, setRegions] = useState([]);
+    const [currentRegion, setCurrentRegion] = useState();
+    const [currentSkiObjects, setCurrentSkiObjects] = useState([]);
+    const [showdropdown, setShowdropdown] = useState(false);
 
     const [viewport, setViewport] = useState({
         latitude: 45.0,
         longitude: -106.0,
         zoom: 3,
-    })
+    });
 
     // display the names of all regions containing ski locations
     // occurs on first page load
@@ -26,14 +27,14 @@ export function Map() {
             Array.from(
                 new Set(
                     skiInfo.map((obj: SkiObj) =>
-                        typeof obj.Region[0] !== 'undefined'
+                        typeof obj.Region[0] !== "undefined"
                             ? obj.Region[0].name
-                            : 'null',
-                    ),
-                ),
-            ),
-        )
-    }, [])
+                            : "null"
+                    )
+                )
+            )
+        );
+    }, []);
 
     // filter skiInfo down to only the one in the selected region (currentRegion)
     // occurs on currentRegion update
@@ -41,15 +42,15 @@ export function Map() {
         setCurrentSkiObjects(
             skiInfo.filter((obj: SkiObj) => {
                 if (
-                    typeof obj.Region[0] === 'undefined' ||
+                    typeof obj.Region[0] === "undefined" ||
                     obj.SkiArea.geo_lat == null ||
                     obj.SkiArea.geo_lng == null
                 )
-                    return false
-                return obj.Region[0].name === currentRegion
-            }),
-        )
-    }, [currentRegion])
+                    return false;
+                return obj.Region[0].name === currentRegion;
+            })
+        );
+    }, [currentRegion]);
 
     return (
         <ReactMapGL
@@ -59,9 +60,7 @@ export function Map() {
             height="100vw"
             onViewportChange={(nextViewport) => setViewport(nextViewport)}
         >
-            <div onClick={() => setShowdropdown(!showdropdown)}>
-                <RegionsButton />
-            </div>
+            <RegionsButton onClick={() => setShowdropdown(!showdropdown)} />
             <div>
                 {showdropdown
                     ? regions.map((region) => (
@@ -69,8 +68,8 @@ export function Map() {
                               className="button"
                               key={region}
                               onClick={() => {
-                                  setCurrentRegion(region)
-                                  setShowdropdown(false)
+                                  setCurrentRegion(region);
+                                  setShowdropdown(false);
                               }}
                           >
                               {region}
@@ -82,5 +81,5 @@ export function Map() {
                 <Pin key={obj.SkiArea.name} {...obj} />
             ))}
         </ReactMapGL>
-    )
+    );
 }
