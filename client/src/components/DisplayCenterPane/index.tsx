@@ -40,7 +40,7 @@ export function DisplayCenterPane(props: {
                         </h1>
                         <Icon 
                             icID={currentTime.weather[0].icon} 
-                            imgHeight={"80vh"} 
+                            imgHeight={"100vh"} 
                         />
                         <p>Conditions: {currentTime.weather[0].description}</p>
                     </div>
