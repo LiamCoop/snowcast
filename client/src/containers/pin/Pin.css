@@ -14,3 +14,7 @@
 .mapboxgl-popup-close-button {
     color: #fff;
 }
+
+.markerDiv {
+    z-index: -1;
+}

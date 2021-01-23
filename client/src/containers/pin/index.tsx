@@ -84,7 +84,7 @@ export function Pin(obj: SkiObj) {
     const size = 32;
 
     return (
-        <div style={{ zIndex: -1 }}>
+        <div className="markerDiv">
             <Marker
                 captureClick={true}
                 latitude={Number(obj.SkiArea.geo_lat)}
