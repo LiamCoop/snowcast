@@ -60,6 +60,12 @@ export function WeatherDisplay(props: {
                         );
                     })}
                 </div>
+                <div className="linkfmt">
+                    <p>Location data courtesy of:&nbsp;</p>
+                    <a className="link" href="skimap.org">
+                        SkiMap.org
+                    </a>
+                </div>
             </div>
         </div>
     );
