@@ -54,6 +54,14 @@ p {
     align-items: center;
 }
 
+.socialBar {
+    padding: 10px 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
 .linkfmt {
     display: flex;
     flex-direction: row;

@@ -3,6 +3,7 @@ import {
     //components
     DisplayCenterPane,
     DayButton,
+    Link,
     //Typescript interfaces
     WeatherObj,
 } from "../../components";
@@ -60,12 +61,32 @@ export function WeatherDisplay(props: {
                         );
                     })}
                 </div>
+                <div className="socialBar">
+                    <Link
+                        link={"http://twitter.com/LiamCoopR"}
+                        className={"twitter"}
+                    />
+                    <Link
+                        link={"http://github.com/LiamCoopR"}
+                        className={"github"}
+                    />
+                    <Link
+                        link={"www.linkedin.com/in/liamcoop"}
+                        className={"linkedin"}
+                    />
+                    <Link
+                        link={"mailto:liamcoop@outlook.com"}
+                        className={"mail"}
+                    />
+                </div>
+                {/*
                 <div className="linkfmt">
                     <p>Location data courtesy of:&nbsp;</p>
                     <a className="link" href="skimap.org">
                         SkiMap.org
                     </a>
                 </div>
+                */}
             </div>
         </div>
     );
