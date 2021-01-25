@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReactMapGL from "react-map-gl";
-import { SkiObj, RegionsButton } from "../../components";
+import { SkiObj, RegionsButton, SocialBar } from "../../components";
 import { Pin } from "../pin";
 import "./Map.css";
 
@@ -59,6 +59,7 @@ export function Map() {
             onViewportChange={(nextViewport) => setViewport(nextViewport)}
         >
             <RegionsButton onClick={() => setShowdropdown(!showdropdown)} />
+            <SocialBar />
             <div>
                 {showdropdown
                     ? regions.map((region) => (

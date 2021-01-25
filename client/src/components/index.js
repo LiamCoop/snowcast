@@ -5,7 +5,7 @@ export { Icon } from "./icons";
 export { DayButton } from "./DayButton";
 export { TimeBanner } from "./TimeBanner";
 export { DisplayCenterPane } from "./DisplayCenterPane";
-export { Link } from "./Links";
+export { SocialBar } from "./Social";
 
 //typescript interfaces
 export { SkiObj, WeatherObj, ConditionsObj, DayObj } from "./ts_interfaces";
