@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ReactMapGL from "react-map-gl";
-import { SkiObj, RegionsButton, SocialBar } from "../../components";
-import { Pin } from "../pin";
+import { SkiObj, RegionsButton, SocialBar, Switch } from "../../components";
+import { Pin } from "../";
+import { UnitsContext } from "../../contexts";
 import "./Map.css";
 
 const skiInfo = require("../../SkiInfo.json");
@@ -50,16 +51,16 @@ export function Map() {
         );
     }, [currentRegion]);
 
+    //Need overlay grid to orient things to top left and top right?
     return (
         <ReactMapGL
             {...viewport}
-            mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_API_TOKEN}
             width="100vw"
-            height="100vw"
-            onViewportChange={(nextViewport) => setViewport(nextViewport)}
+            height="100vh"
+            mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_API_TOKEN}
+            onViewportChange={(viewport) => setViewport(viewport)}
         >
             <RegionsButton onClick={() => setShowdropdown(!showdropdown)} />
-            <SocialBar />
             <div>
                 {showdropdown
                     ? regions.map((region) => (
@@ -79,6 +80,8 @@ export function Map() {
             {currentSkiObjects.map((obj: SkiObj) => (
                 <Pin key={obj.SkiArea.name} {...obj} />
             ))}
+            <Switch />
+            <SocialBar />
         </ReactMapGL>
     );
 }
