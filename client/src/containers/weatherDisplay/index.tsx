@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
     //components
     DisplayCenterPane,
@@ -6,6 +6,8 @@ import {
     //Typescript interfaces
     WeatherObj,
 } from "../../components";
+import { Unit, UnitsContext } from "../../contexts";
+
 import "./WeatherDisplay.css";
 
 export function WeatherDisplay(props: {
@@ -37,6 +39,9 @@ export function WeatherDisplay(props: {
     ];
 
     const [currentDay, setCurrentDay] = useState(days[0]);
+    const { Units } = useContext(UnitsContext);
+    //const Unit1 = Unit.Imperial;
+    //const Unit2 = Unit.Metric;
 
     return (
         <div className="card">
@@ -45,6 +50,7 @@ export function WeatherDisplay(props: {
                     currentDay={currentDay}
                     city={props.weather.city.name}
                     skiAreaName={props.skiAreaName}
+                    unit={Units}
                 />
                 <div id="DayButtonDiv">
                     {days.map((day) => {
@@ -56,6 +62,7 @@ export function WeatherDisplay(props: {
                                 day={day}
                                 onClick={() => setCurrentDay(day)}
                                 key={day.list[0].dt_txt}
+                                unit={Units}
                             />
                         );
                     })}

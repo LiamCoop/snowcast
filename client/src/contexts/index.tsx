@@ -5,4 +5,4 @@ export enum Unit {
     Imperial = "imperial",
 }
 
-export const UnitsContext = React.createContext(Unit.Imperial);
+export const UnitsContext = React.createContext({ Units: Unit.Metric });

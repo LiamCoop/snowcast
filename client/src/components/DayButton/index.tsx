@@ -1,6 +1,7 @@
 import React from "react";
 
 import { DayObj, ConditionsObj, Icon } from "../";
+import { Unit } from "../../contexts";
 
 import "./DayButton.css";
 
@@ -22,12 +23,14 @@ export function DayButton(props: {
     day: DayObj;
     onClick: () => void;
     active: boolean;
+    unit: Unit;
 }) {
     let daySnow = 0;
     props.day.list.map((time) => {
         daySnow += time.snow ? time.snow?.["3h"] : 0;
     });
 
+    //should probably also show temp?
     return (
         <button
             className={props.active ? "dayButtonActive" : "dayButtonInactive"}
