@@ -13,6 +13,9 @@ export function Map() {
     const [currentSkiObjects, setCurrentSkiObjects] = useState([]);
     const [showdropdown, setShowdropdown] = useState(false);
 
+    //contexte
+    const [units, setUnits] = useState("metric");
+
     const [viewport, setViewport] = useState({
         latitude: 45.0,
         longitude: -106.0,
@@ -77,11 +80,12 @@ export function Map() {
                       ))
                     : null}
             </div>
-            {currentSkiObjects.map((obj: SkiObj) => (
-                <Pin key={obj.SkiArea.name} {...obj} />
-            ))}
-            <Switch />
-            <SocialBar />
+            <UnitsContext.Provider value={{ units, setUnits }}>
+                {currentSkiObjects.map((obj: SkiObj) => (
+                    <Pin key={obj.SkiArea.name} {...obj} />
+                ))}
+                <Switch />
+            </UnitsContext.Provider>
         </ReactMapGL>
     );
 }

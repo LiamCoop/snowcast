@@ -1,8 +1,6 @@
-import React from "react";
+import { createContext } from "react";
 
-export enum Unit {
-    Metric = "metric",
-    Imperial = "imperial",
-}
-
-export const UnitsContext = React.createContext({ Units: Unit.Metric });
+export const UnitsContext = createContext<{
+    units?: any;
+    setUnits?: React.Dispatch<any>;
+}>({});

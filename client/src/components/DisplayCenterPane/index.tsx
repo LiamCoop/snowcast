@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { DayObj, Icon, TimeBanner } from "../";
-import { Unit } from "../../contexts";
 
 import "./DisplayCenterPane.css";
 
@@ -8,7 +7,7 @@ export function DisplayCenterPane(props: {
     currentDay: DayObj;
     city: string;
     skiAreaName: string;
-    unit: Unit;
+    //unit: Unit;
 }) {
     const [currentTime, setCurrentTime] = useState(props.currentDay.list[0]);
 
