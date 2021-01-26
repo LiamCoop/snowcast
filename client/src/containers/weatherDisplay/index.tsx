@@ -39,6 +39,7 @@ export function WeatherDisplay(props: {
     ];
 
     const [currentDay, setCurrentDay] = useState(days[0]);
+    const units = useContext(UnitsContext);
 
     return (
         <div className="card">
@@ -47,6 +48,7 @@ export function WeatherDisplay(props: {
                     currentDay={currentDay}
                     city={props.weather.city.name}
                     skiAreaName={props.skiAreaName}
+                    units={units}
                 />
                 <div id="DayButtonDiv">
                     {days.map((day) => {
@@ -55,6 +57,7 @@ export function WeatherDisplay(props: {
                                 active={
                                     currentDay.dateTime === day.list[0].dt_txt
                                 }
+                                units={units}
                                 day={day}
                                 onClick={() => setCurrentDay(day)}
                                 key={day.list[0].dt_txt}

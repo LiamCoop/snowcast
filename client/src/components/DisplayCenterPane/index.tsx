@@ -7,7 +7,7 @@ export function DisplayCenterPane(props: {
     currentDay: DayObj;
     city: string;
     skiAreaName: string;
-    //unit: Unit;
+    units: string;
 }) {
     const [currentTime, setCurrentTime] = useState(props.currentDay.list[0]);
 

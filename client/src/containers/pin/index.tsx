@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Marker, Popup } from "react-map-gl";
 import { SkiObj, Loading, WeatherObj } from "../../components";
 import { WeatherDisplay } from "../weatherDisplay";
+import { UnitsContext } from "../../contexts";
 
 import "./Pin.css";
 const wthr = require("../../weather.json");
@@ -9,6 +10,7 @@ const wthr = require("../../weather.json");
 export function Pin(obj: SkiObj) {
     //boolean to determine whether to show the popup or not.
     const [showPopup, setShowPopup] = useState(false);
+    const units = useContext(UnitsContext);
     //Contains the weather data for a given pin
 
     const [weather, setWeather] = useState<WeatherObj>({
@@ -37,7 +39,8 @@ export function Pin(obj: SkiObj) {
     useEffect(() => {
         const loadWeatherRapid = async () => {
             const response = await fetch(
-                "https://community-open-weather-map.p.rapidapi.com/forecast?lat=" +
+                "https://community-open-weather-map.p.rapidapi.com/forecast?" +
+                    "lat=" +
                     obj.SkiArea.geo_lat +
                     "&lon=" +
                     obj.SkiArea.geo_lng +
@@ -65,7 +68,8 @@ export function Pin(obj: SkiObj) {
                     obj.SkiArea.geo_lng +
                     "&appid=" +
                     process.env.OWMKEY +
-                    "&units=metric",
+                    "&units=" +
+                    units,
                 { method: "GET" }
             );
             const dt = await response.json();
@@ -90,11 +94,7 @@ export function Pin(obj: SkiObj) {
                 latitude={Number(obj.SkiArea.geo_lat)}
                 longitude={Number(obj.SkiArea.geo_lng)}
             >
-                <div
-                    onClick={() => {
-                        setShowPopup(true);
-                    }}
-                >
+                <div onClick={() => setShowPopup(true)}>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width={size}
@@ -121,9 +121,7 @@ export function Pin(obj: SkiObj) {
                     longitude={Number(obj.SkiArea.geo_lng)}
                     closeButton={true}
                     closeOnClick={false}
-                    onClose={() => {
-                        setShowPopup(!showPopup);
-                    }}
+                    onClose={() => setShowPopup(!showPopup)}
                     anchor="bottom"
                     offsetLeft={12}
                     offsetTop={12}

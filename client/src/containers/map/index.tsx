@@ -54,6 +54,15 @@ export function Map() {
         );
     }, [currentRegion]);
 
+    const AdjustUnits = () => {
+        if (units === "metric") {
+            setUnits("imperial");
+            console.log(units);
+        } else if (units === "imperial") {
+            setUnits("metric");
+            console.log(units);
+        }
+    };
     //Need overlay grid to orient things to top left and top right?
     return (
         <ReactMapGL
@@ -80,12 +89,12 @@ export function Map() {
                       ))
                     : null}
             </div>
-            <UnitsContext.Provider value={{ units, setUnits }}>
+            <UnitsContext.Provider value={units}>
                 {currentSkiObjects.map((obj: SkiObj) => (
                     <Pin key={obj.SkiArea.name} {...obj} />
                 ))}
-                <Switch />
             </UnitsContext.Provider>
+            <Switch onChange={AdjustUnits} />
         </ReactMapGL>
     );
 }

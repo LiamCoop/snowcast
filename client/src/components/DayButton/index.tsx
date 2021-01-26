@@ -22,6 +22,7 @@ export function DayButton(props: {
     day: DayObj;
     onClick: () => void;
     active: boolean;
+    units: string;
 }) {
     let daySnow = 0;
     props.day.list.map((time) => {

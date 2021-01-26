@@ -1,12 +1,10 @@
-import React, { useContext } from "react";
-import { UnitsContext } from "../../contexts";
+import React from "react";
 import "./Switch.css";
 
-export function Switch() {
-    const { units, setUnits } = useContext(UnitsContext);
+export function Switch(props: { onChange: () => void }) {
     return (
         <label className="switch">
-            <input type="checkbox" />
+            <input type="checkbox" onChange={props.onChange} />
             <span className="slider"></span>
         </label>
     );
