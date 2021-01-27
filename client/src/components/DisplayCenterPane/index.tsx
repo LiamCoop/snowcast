@@ -52,7 +52,7 @@ export function DisplayCenterPane(props: {
                                 {Math.round(currentTime.main.temp_min)}&deg;
                                 {props.units === "metric" ? "C" : "F"} /{" "}
                                 {Math.round(currentTime.main.temp_max)}&deg;
-                                {props.units === "metric" ? "C" : "F"} /{" "}
+                                {props.units === "metric" ? "C" : "F"}
                             </p>
                         </div>
                         <div id="weather">
@@ -85,15 +85,14 @@ export function DisplayCenterPane(props: {
                         </p>
                         {currentTime.rain ? (
                             <p>
-                                Rainfall for previous 3 hours:{" "}
+                                Rainfall for previous 3hrs:{" "}
                                 {Math.round(currentTime.rain["3h"])} mm
                             </p>
                         ) : null}{" "}
                         {currentTime.snow ? (
                             <p>
-                                Snowfall over previous 3 hours:{" "}
-                                {Math.round(currentTime.snow["3h"] * 10) / 10}{" "}
-                                cm
+                                Snowfall over previous 3hrs: ~
+                                {Math.round(currentTime.snow["3h"] * 10)}cm
                             </p>
                         ) : null}
                     </div>
