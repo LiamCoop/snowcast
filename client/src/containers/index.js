@@ -1,2 +1,2 @@
-export { Map } from "./map";
-export { Pin } from "./pin";
+export { Map } from "./Map";
+export { Pin } from "./Pin";

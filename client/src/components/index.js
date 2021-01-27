@@ -1,7 +1,7 @@
 //components
-export { RegionsButton } from "./regionsButton";
-export { Loading } from "./loading";
-export { Icon } from "./icons";
+export { RegionsButton } from "./RegionsButton";
+export { Loading } from "./Loading";
+export { Icon } from "./Icons";
 export { DayButton } from "./DayButton";
 export { TimeBanner } from "./TimeBanner";
 export { DisplayCenterPane } from "./DisplayCenterPane";

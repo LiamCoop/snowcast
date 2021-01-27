@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ReactMapGL from "react-map-gl";
 import { SkiObj, RegionsButton, SocialBar, Switch } from "../../components";
-import { Pin } from "../";
+import { Pin } from "..";
 import { UnitsContext } from "../../contexts";
 import "./Map.css";
 
