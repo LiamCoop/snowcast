@@ -5,3 +5,29 @@
     height: 24px;
     z-index: 2;
 }
+
+.sw {
+    width: 220px;
+    height: 50px;
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    place-items: center;
+    background-color: #161616;
+}
+.sw > p {
+    color: #fff;
+}
+#pUnits {
+    grid-column: 1 / -1;
+    font-size: 15px;
+}
+#metric {
+    font-size: 14px;
+    grid-column-start: 1;
+}
+#imperial {
+    font-size: 14px;
+    grid-column: 3 / 4;
+}
