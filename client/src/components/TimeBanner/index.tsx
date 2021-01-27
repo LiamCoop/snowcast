@@ -10,14 +10,14 @@ export function TimeBanner(props: {
 }) {
     return (
         <button
-            className={props.active ? "bannerActive" : "bannerInActive"}
+            className={props.active ? "banner Active" : "banner Inactive"}
             onClick={props.onClick}
         >
             <p>
                 {props.time.dt_txt.split(" ")[1].split(":")[0]}h
                 {props.time.dt_txt.split(" ")[1].split(":")[1]}
             </p>
-            <Icon icID={props.time.weather[0].icon} imgHeight={"45vh"} />
+            <Icon icID={props.time.weather[0].icon} imgHeight={"35vw"} />
             <p>
                 {Math.round(
                     (props.time.main.temp_min - props.time.main.temp_max) / 2 +
@@ -30,9 +30,9 @@ export function TimeBanner(props: {
                 <p>
                     Snow:{" "}
                     {props.time.snow
-                        ? Math.round(props.time.snow?.["3h"] * 10)
+                        ? Math.round(props.time.snow?.["3h"] * 100) / 10
                         : "0"}
-                    cm
+                    mm
                 </p>
             }
         </button>

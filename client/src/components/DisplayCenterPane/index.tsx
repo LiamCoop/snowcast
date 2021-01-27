@@ -22,7 +22,7 @@ export function DisplayCenterPane(props: {
 
     return (
         <>
-            <div id="titlecontainer">
+            <div className="titlecontainer">
                 <h1 className="city title">City:</h1>
                 <h1 className="propCity title">{props.city}</h1>
                 <h1 className="dt title">{currentTime.dt_txt.split(" ")[0]}</h1>
@@ -43,7 +43,7 @@ export function DisplayCenterPane(props: {
                         <p>Conditions: {currentTime.weather[0].description}</p>
                     </div>
                     <div className="row">
-                        <div id="temp">
+                        <div className="temp">
                             <h1>
                                 {Math.round(currentTime.main.temp)}&deg;
                                 {props.units === "metric" ? "C" : "F"}
@@ -55,7 +55,7 @@ export function DisplayCenterPane(props: {
                                 {props.units === "metric" ? "C" : "F"}
                             </p>
                         </div>
-                        <div id="weather">
+                        <div className="weather">
                             <p className="pop">
                                 Precipitation:{" "}
                                 {Math.round(currentTime.pop * 100)}%
@@ -92,7 +92,7 @@ export function DisplayCenterPane(props: {
                         {currentTime.snow ? (
                             <p>
                                 Snowfall over previous 3hrs: ~
-                                {Math.round(currentTime.snow["3h"] * 10)}cm
+                                {Math.round(currentTime.snow["3h"] * 10) / 10}mm
                             </p>
                         ) : null}
                     </div>

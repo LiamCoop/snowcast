@@ -50,7 +50,7 @@ export function WeatherDisplay(props: {
                     skiAreaName={props.skiAreaName}
                     units={units}
                 />
-                <div id="DayButtonDiv">
+                <div className="DayButtonDiv">
                     {days.map((day) => {
                         return (
                             <DayButton

@@ -26,6 +26,7 @@ export function DayButton(props: {
 }) {
     let temp = 0;
     let daySnow = 0;
+
     props.day.list.map((time) => {
         daySnow += time.snow ? time.snow?.["3h"] : 0;
         temp += time.main.temp;
@@ -35,15 +36,17 @@ export function DayButton(props: {
     //should probably also show temp?
     return (
         <button
-            className={props.active ? "dayButtonActive" : "dayButtonInactive"}
+            className={props.active ? "dayButton Active" : "dayButton Inactive"}
             onClick={props.onClick}
         >
-            <h1>{props.day.dateTime.split(" ")[0]}</h1>
-            <p>
+            <h1 className="dayButton__date">
+                {props.day.dateTime.split(" ")[0]}
+            </h1>
+            <p className="dayButton__temp">
                 {temp} &deg;{props.units === "metric" ? "C" : "F"}
             </p>
-            <Icon icID={GetIcon(props.day.list)} imgHeight={"60vh"} />
-            <p>Snow: {Math.round(daySnow * 10) / 10}cm</p>
+            <Icon icID={GetIcon(props.day.list)} imgHeight={"50vh"} />
+            <p>Snow: {Math.round(daySnow * 100) / 10}mm</p>
         </button>
     );
 }

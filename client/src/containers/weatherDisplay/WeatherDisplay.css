@@ -17,15 +17,6 @@ p {
     background-color: #161616;
 }
 
-#buttonDiv {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    margin: 0 0.5vw;
-    border: 1px solid white;
-    background-color: #161616;
-}
-
 .currentPane {
     display: flex;
     flex-direction: column;
@@ -47,10 +38,10 @@ p {
     padding: 2vh;
 }
 
-#DayButtonDiv {
+.DayButtonDiv {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 
@@ -62,6 +53,7 @@ p {
     align-items: center;
 }
 
+/*
 .linkfmt {
     display: flex;
     flex-direction: row;
@@ -73,3 +65,4 @@ p {
     color: #fff;
     font-size: 14px;
 }
+*/

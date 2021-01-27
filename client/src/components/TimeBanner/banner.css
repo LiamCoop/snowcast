@@ -9,20 +9,12 @@
     height: 5.5vh;
 }
 
-.bannerActive {
+.banner {
+    width: 200px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     background-color: #161616;
-    opacity: 0.3;
     filter: alpha(opacity=30);
-}
-
-.bannerInActive {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    background-color: #161616;
 }

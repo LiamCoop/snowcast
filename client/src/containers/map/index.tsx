@@ -13,7 +13,7 @@ export function Map() {
     const [currentSkiObjects, setCurrentSkiObjects] = useState([]);
     const [showdropdown, setShowdropdown] = useState(false);
 
-    //contexte
+    //context
     const [units, setUnits] = useState("metric");
 
     const [viewport, setViewport] = useState({
@@ -62,13 +62,12 @@ export function Map() {
         }
     };
 
-    //Need overlay grid to orient things to top left and top right?
     return (
         <ReactMapGL
             {...viewport}
-            width="100vw"
-            height="100vh"
             mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_API_TOKEN}
+            width="100%"
+            height="100vh"
             onViewportChange={(viewport) => setViewport(viewport)}
         >
             <div className="ControlsContainer">

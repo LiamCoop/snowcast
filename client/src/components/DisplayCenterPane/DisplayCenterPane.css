@@ -15,12 +15,6 @@
 }
 
 .weather {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-#weather {
     display: inline-flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -28,61 +22,61 @@
     justify-content: flex-start;
 }
 
-#weather p {
+.weather p {
     margin-top: 2px;
 }
 
-#temp {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 0.5vh 3vw;
+.temp {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5vh 3vw;
 }
 
-#temp h1 {
-  font-size: 16px;
+.temp h1 {
+    font-size: 16px;
 }
 
-#temp p {
-  font-size: 14px;
+.temp p {
+    font-size: 14px;
 }
 
-#titlecontainer {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 3vh);
-  column-gap: 20px;
-  min-height: 5vh;
-  max-height: 10vh;
+.titlecontainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 3vh);
+    column-gap: 20px;
+    min-height: 5vh;
+    max-height: 10vh;
 }
 
 .title {
-  justify-self: center;
-  align-self: center;
+    justify-self: center;
+    align-self: center;
 }
 
 .city {
-  grid-column-start: 1;
-  grid-row-start: 1;
+    grid-column-start: 1;
+    grid-row-start: 1;
 }
 
 .propCity {
-  grid-column-start: 1;
-  grid-row-start: 2;
+    grid-column-start: 1;
+    grid-row-start: 2;
 }
 
 .dt {
-  grid-column-start: 2;
-  grid-row: span 2 / -1;
+    grid-column-start: 2;
+    grid-row: span 2 / -1;
 }
 
 .area {
-  grid-column-start: 3;
-  grid-row-start: 1;
+    grid-column-start: 3;
+    grid-row-start: 1;
 }
 
 .propArea {
-  grid-column-start: 3;
-  grid-row-start: 2;
+    grid-column-start: 3;
+    grid-row-start: 2;
 }
