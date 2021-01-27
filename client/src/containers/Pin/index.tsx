@@ -5,13 +5,13 @@ import { WeatherDisplay } from "../WeatherDisplay";
 import { UnitsContext } from "../../contexts";
 
 import "./Pin.css";
-const wthr = require("../../weather.json");
 
 export function Pin(obj: SkiObj) {
     //boolean to determine whether to show the popup or not.
     const [showPopup, setShowPopup] = useState(false);
     const units = useContext(UnitsContext);
     //Contains the weather data for a given pin
+    const OWMKEY = process.env.REACT_APP_OWMKEY;
 
     const [weather, setWeather] = useState<WeatherObj>({
         cod: "",
@@ -33,10 +33,11 @@ export function Pin(obj: SkiObj) {
         },
     });
     //Manage weather load state, false when loading, true when loaded
-    const [loadWeather, setLoadWeather] = useState(false);
+    //const [loadWeather, setLoadWeather] = useState(false);
 
     //when the user clicks a pin, trigger the fetching of the weather data for that pin.
     useEffect(() => {
+        /*
         const loadWeatherRapid = async () => {
             const response = await fetch(
                 "https://community-open-weather-map.p.rapidapi.com/forecast?" +
@@ -57,8 +58,8 @@ export function Pin(obj: SkiObj) {
             );
             const dt = await response.json();
             setWeather(dt);
-            setLoadWeather(true);
         };
+        */
         const loadWeatherOWM = async () => {
             const response = await fetch(
                 "https://api.openweathermap.org/data/2.5/forecast?" +
@@ -67,23 +68,20 @@ export function Pin(obj: SkiObj) {
                     "&lon=" +
                     obj.SkiArea.geo_lng +
                     "&appid=" +
-                    process.env.OWMKEY +
+                    OWMKEY +
                     "&units=" +
                     units,
                 { method: "GET" }
             );
             const dt = await response.json();
             setWeather(dt);
-            setLoadWeather(true);
         };
 
         if (showPopup) {
             //loadWeatherRapid();
-            //loadWeatherOWM();
-            setWeather(wthr);
-            setLoadWeather(true);
+            loadWeatherOWM();
         }
-    }, [showPopup, obj.SkiArea]);
+    }, [showPopup, obj.SkiArea, units]);
 
     const size = 32;
 
@@ -128,7 +126,7 @@ export function Pin(obj: SkiObj) {
                     sortByDepth={true}
                 >
                     <div className="col">
-                        {loadWeather ? (
+                        {weather.cod !== "" ? (
                             <WeatherDisplay
                                 weather={weather}
                                 skiAreaName={obj.SkiArea.name}
