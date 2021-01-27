@@ -30,7 +30,7 @@ export function TimeBanner(props: {
                 <p>
                     Snow:{" "}
                     {props.time.snow
-                        ? Math.round(props.time.snow?.["3h"])
+                        ? Math.round(props.time.snow?.["3h"] * 10)
                         : "0"}
                     cm
                 </p>
