@@ -44,10 +44,15 @@ export function DisplayCenterPane(props: {
                     </div>
                     <div className="row">
                         <div id="temp">
-                            <h1>{Math.round(currentTime.main.temp)}&deg;C</h1>
+                            <h1>
+                                {Math.round(currentTime.main.temp)}&deg;
+                                {props.units === "metric" ? "C" : "F"}
+                            </h1>
                             <p>
-                                {Math.round(currentTime.main.temp_min)}&deg;C /{" "}
-                                {Math.round(currentTime.main.temp_max)}&deg;C
+                                {Math.round(currentTime.main.temp_min)}&deg;
+                                {props.units === "metric" ? "C" : "F"} /{" "}
+                                {Math.round(currentTime.main.temp_max)}&deg;
+                                {props.units === "metric" ? "C" : "F"} /{" "}
                             </p>
                         </div>
                         <div id="weather">
@@ -74,7 +79,8 @@ export function DisplayCenterPane(props: {
                     <div className="col">
                         <p>
                             Windspeed, direction:
-                            {Math.round(currentTime.wind.speed)}m/s,
+                            {Math.round(currentTime.wind.speed)}
+                            {props.units === "metric" ? "m/s" : "mph"},
                             {Math.round(currentTime.wind.speed)}&deg;
                         </p>
                         {currentTime.rain ? (
@@ -101,6 +107,7 @@ export function DisplayCenterPane(props: {
                                 time={timeSlice}
                                 active={currentTime.dt === timeSlice.dt}
                                 key={timeSlice.dt_txt}
+                                units={props.units}
                             />
                         );
                     })}

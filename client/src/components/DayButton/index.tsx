@@ -24,10 +24,13 @@ export function DayButton(props: {
     active: boolean;
     units: string;
 }) {
+    let temp = 0;
     let daySnow = 0;
     props.day.list.map((time) => {
         daySnow += time.snow ? time.snow?.["3h"] : 0;
+        temp += time.main.temp;
     });
+    temp = Math.round(temp / 8);
 
     //should probably also show temp?
     return (
@@ -36,6 +39,9 @@ export function DayButton(props: {
             onClick={props.onClick}
         >
             <h1>{props.day.dateTime.split(" ")[0]}</h1>
+            <p>
+                {temp} &deg;{props.units === "metric" ? "C" : "F"}
+            </p>
             <Icon icID={GetIcon(props.day.list)} imgHeight={"60vh"} />
             <p>Snow: {Math.round(daySnow * 10) / 10}cm</p>
         </button>

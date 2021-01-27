@@ -6,6 +6,7 @@ export function TimeBanner(props: {
     time: ConditionsObj;
     active: boolean;
     onClick: () => void;
+    units: string;
 }) {
     return (
         <button
@@ -22,7 +23,7 @@ export function TimeBanner(props: {
                     (props.time.main.temp_min - props.time.main.temp_max) / 2 +
                         props.time.main.temp_max
                 )}{" "}
-                &deg;C
+                &deg;{props.units === "metric" ? "C" : "F"}
             </p>
             <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
             {
