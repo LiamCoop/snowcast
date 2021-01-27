@@ -5,6 +5,7 @@ import "./Links.css";
 export function SocialBar() {
     return (
         <div className="socialsDiv">
+            <Link className="generic" link="" />
             <Link className="twitter" link="https://twitter.com/LiamCoopR" />
             <Link className="github" link="https://github.com/LiamCoopR" />
             <Link

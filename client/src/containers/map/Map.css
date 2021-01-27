@@ -6,6 +6,19 @@
     z-index: 2;
 }
 
+.ControlsContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-flow: column;
+}
+
+.ButtonsContainer {
+    display: grid;
+    gap: 0px;
+    grid-template-rows: 1fr 1fr;
+    grid-auto-flow: row;
+}
+
 .sw {
     width: 220px;
     height: 50px;
@@ -16,18 +29,13 @@
     place-items: center;
     background-color: #161616;
 }
-.sw > p {
-    color: #fff;
-}
-#pUnits {
-    grid-column: 1 / -1;
-    font-size: 15px;
-}
-#metric {
+
+.metric {
     font-size: 14px;
     grid-column-start: 1;
 }
-#imperial {
+
+.imperial {
     font-size: 14px;
     grid-column: 3 / 4;
 }

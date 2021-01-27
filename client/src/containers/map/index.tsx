@@ -71,7 +71,23 @@ export function Map() {
             mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_API_TOKEN}
             onViewportChange={(viewport) => setViewport(viewport)}
         >
-            <RegionsButton onClick={() => setShowdropdown(!showdropdown)} />
+            <div className="ControlsContainer">
+                <div className="ButtonsContainer">
+                    <div className="sw">
+                        <p className="metric">
+                            {units === "metric" ? "Metric" : null}
+                        </p>
+                        <Switch onChange={AdjustUnits} />
+                        <p className="imperial">
+                            {units === "imperial" ? "Imperial" : null}
+                        </p>
+                    </div>
+                    <RegionsButton
+                        onClick={() => setShowdropdown(!showdropdown)}
+                    />
+                </div>
+                <SocialBar />
+            </div>
             <div>
                 {showdropdown
                     ? regions.map((region) => (
@@ -93,11 +109,6 @@ export function Map() {
                     <Pin key={obj.SkiArea.name} {...obj} />
                 ))}
             </UnitsContext.Provider>
-            <div className="sw">
-                <p id="metric">{units === "metric" ? "Metric" : null}</p>
-                <Switch onChange={AdjustUnits} />
-                <p id="imperial">{units === "imperial" ? "Imperial" : null}</p>
-            </div>
         </ReactMapGL>
     );
 }
