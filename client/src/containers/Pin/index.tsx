@@ -37,29 +37,6 @@ export function Pin(obj: SkiObj) {
 
     //when the user clicks a pin, trigger the fetching of the weather data for that pin.
     useEffect(() => {
-        /*
-        const loadWeatherRapid = async () => {
-            const response = await fetch(
-                "https://community-open-weather-map.p.rapidapi.com/forecast?" +
-                    "lat=" +
-                    obj.SkiArea.geo_lat +
-                    "&lon=" +
-                    obj.SkiArea.geo_lng +
-                    "&units=metric",
-                {
-                    method: "GET",
-                    headers: {
-                        "x-rapidapi-key":
-                            "eaa029e7efmshe51c46837334214p1add8ejsn9eb660b86a63",
-                        "x-rapidapi-host":
-                            "community-open-weather-map.p.rapidapi.com",
-                    },
-                }
-            );
-            const dt = await response.json();
-            setWeather(dt);
-        };
-        */
         const loadWeatherOWM = async () => {
             const response = await fetch(
                 "https://api.openweathermap.org/data/2.5/forecast?" +
