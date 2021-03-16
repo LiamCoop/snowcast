@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "./Link";
 import "./Links.css";
 
-export function SocialBar() {
+function SocialBar() {
     return (
         <div className="socialsDiv">
             <Link className="generic" link="" />
@@ -16,3 +16,5 @@ export function SocialBar() {
         </div>
     );
 }
+
+export default SocialBar;

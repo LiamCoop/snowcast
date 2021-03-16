@@ -18,7 +18,7 @@ function GetIcon(array: Array<ConditionsObj>): string {
     return icon;
 }
 
-export function DayButton(props: {
+function DayButton(props: {
     day: DayObj;
     onClick: () => void;
     active: boolean;
@@ -50,3 +50,5 @@ export function DayButton(props: {
         </button>
     );
 }
+
+export default DayButton;

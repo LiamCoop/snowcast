@@ -4,7 +4,7 @@ import "./RegionButton.scss";
 // found this button on code-pen, thought it fit the project theme.
 // Shoutout Sowmya Seshadri for this!
 // https://codepen.io/sowmyaseshadri/pen/LYRjGpr?editors=1100
-export function RegionsButton(props: { onClick: () => void }) {
+function RegionsButton(props: { onClick: () => void }) {
     return (
         <div className="btn" onClick={props.onClick}>
             <div className="btn-name">View Regions</div>
@@ -55,3 +55,5 @@ export function RegionsButton(props: { onClick: () => void }) {
         </div>
     );
 }
+
+export default RegionsButton;

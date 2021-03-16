@@ -3,7 +3,7 @@ import { DayObj, Icon, TimeBanner } from "../";
 
 import "./DisplayCenterPane.css";
 
-export function DisplayCenterPane(props: {
+function DisplayCenterPane(props: {
     currentDay: DayObj;
     city: string;
     skiAreaName: string;
@@ -116,3 +116,5 @@ export function DisplayCenterPane(props: {
         </>
     );
 }
+
+export default DisplayCenterPane;

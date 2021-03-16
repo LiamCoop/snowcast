@@ -2,7 +2,7 @@ import React from "react";
 import "./banner.css";
 import { ConditionsObj, Icon } from "../";
 
-export function TimeBanner(props: {
+function TimeBanner(props: {
     time: ConditionsObj;
     active: boolean;
     onClick: () => void;
@@ -38,3 +38,5 @@ export function TimeBanner(props: {
         </button>
     );
 }
+
+export default TimeBanner;

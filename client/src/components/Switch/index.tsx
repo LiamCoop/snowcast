@@ -1,7 +1,7 @@
 import React from "react";
 import "./Switch.css";
 
-export function Switch(props: { onChange: () => void }) {
+function Switch(props: { onChange: () => void }) {
     return (
         <label className="switch">
             <input type="checkbox" onChange={props.onChange} />
@@ -9,3 +9,5 @@ export function Switch(props: { onChange: () => void }) {
         </label>
     );
 }
+
+export default Switch;
