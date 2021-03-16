@@ -14,7 +14,7 @@ import {
 
 const skiInfo = require("../../SkiInfo.json");
 
-export function Map() {
+function Map() {
     const [regions, setRegions] = useState([]);
     const [currentRegion, setCurrentRegion] = useState();
     const [currentSkiObjects, setCurrentSkiObjects] = useState([]);
@@ -115,3 +115,5 @@ export function Map() {
         </ReactMapGL>
     );
 }
+
+export default Map;

@@ -7,13 +7,20 @@ import {
     WeatherObj,
 } from "../../components";
 import { UnitsContext } from "../../contexts";
+import {
+    H1,
+    P,
+    Card,
+    CurrentPane,
+    Col,
+    Row,
+    DayButtonContainer,
+    SocialBar,
+} from "./style";
 
 import "./WeatherDisplay.css";
 
-export function WeatherDisplay(props: {
-    weather: WeatherObj;
-    skiAreaName: string;
-}) {
+function WeatherDisplay(props: { weather: WeatherObj; skiAreaName: string }) {
     //each day is 8, 3-hour sections
     const days = [
         {
@@ -42,15 +49,15 @@ export function WeatherDisplay(props: {
     const units = useContext(UnitsContext);
 
     return (
-        <div className="card">
-            <div className="col">
+        <Card>
+            <Col>
                 <DisplayCenterPane
                     currentDay={currentDay}
                     city={props.weather.city.name}
                     skiAreaName={props.skiAreaName}
                     units={units}
                 />
-                <div className="DayButtonDiv">
+                <DayButtonContainer>
                     {days.map((day) => {
                         return (
                             <DayButton
@@ -64,7 +71,7 @@ export function WeatherDisplay(props: {
                             />
                         );
                     })}
-                </div>
+                </DayButtonContainer>
                 {/*
                 <div className="linkfmt">
                     <p>Location data courtesy of:&nbsp;</p>
@@ -73,7 +80,9 @@ export function WeatherDisplay(props: {
                     </a>
                 </div>
                 */}
-            </div>
-        </div>
+            </Col>
+        </Card>
     );
 }
+
+export default WeatherDisplay;

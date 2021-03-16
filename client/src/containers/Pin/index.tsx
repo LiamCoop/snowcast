@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Marker, Popup } from "react-map-gl";
 import { SkiObj, Loading, WeatherObj } from "../../components";
-import { WeatherDisplay } from "../WeatherDisplay";
+import WeatherDisplay from "../WeatherDisplay";
 import { UnitsContext } from "../../contexts";
 
 import "./Pin.css";
 
-export function Pin(obj: SkiObj) {
+function Pin(obj: SkiObj) {
     //boolean to determine whether to show the popup or not.
     const [showPopup, setShowPopup] = useState(false);
     const units = useContext(UnitsContext);
@@ -117,3 +117,5 @@ export function Pin(obj: SkiObj) {
         </div>
     );
 }
+
+export default Pin;

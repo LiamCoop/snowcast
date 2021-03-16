@@ -1,2 +1,2 @@
-export { Map } from "./Map";
-export { Pin } from "./Pin";
+export { default as Map } from "./Map";
+export { default as Pin } from "./Pin";
