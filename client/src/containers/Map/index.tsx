@@ -3,7 +3,14 @@ import ReactMapGL from "react-map-gl";
 import { SkiObj, RegionsButton, SocialBar, Switch } from "../../components";
 import { Pin } from "..";
 import { UnitsContext } from "../../contexts";
-import "./Map.css";
+import {
+    Button,
+    ControlsContainer,
+    ButtonsContainer,
+    Sw,
+    Metric,
+    Imperial,
+} from "./style";
 
 const skiInfo = require("../../SkiInfo.json");
 
@@ -70,28 +77,25 @@ export function Map() {
             height="100vh"
             onViewportChange={(viewport) => setViewport(viewport)}
         >
-            <div className="ControlsContainer">
-                <div className="ButtonsContainer">
-                    <div className="sw">
-                        <p className="metric">
-                            {units === "metric" ? "Metric" : null}
-                        </p>
+            <ControlsContainer>
+                <ButtonsContainer>
+                    <Sw>
+                        <Metric>{units === "metric" ? "Metric" : null}</Metric>
                         <Switch onChange={AdjustUnits} />
-                        <p className="imperial">
+                        <Imperial>
                             {units === "imperial" ? "Imperial" : null}
-                        </p>
-                    </div>
+                        </Imperial>
+                    </Sw>
                     <RegionsButton
                         onClick={() => setShowdropdown(!showdropdown)}
                     />
-                </div>
+                </ButtonsContainer>
                 <SocialBar />
-            </div>
+            </ControlsContainer>
             <div>
                 {showdropdown
                     ? regions.map((region) => (
-                          <button
-                              className="button"
+                          <Button
                               key={region}
                               onClick={() => {
                                   setCurrentRegion(region);
@@ -99,7 +103,7 @@ export function Map() {
                               }}
                           >
                               {region}
-                          </button>
+                          </Button>
                       ))
                     : null}
             </div>

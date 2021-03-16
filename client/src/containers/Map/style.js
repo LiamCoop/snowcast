@@ -1,25 +1,27 @@
-.button {
+import styled from "styled-components";
+
+export const Button = styled.button`
     background-color: #161616;
     color: #fff;
     position: relative;
     height: 24px;
     z-index: 2;
-}
+`;
 
-.ControlsContainer {
+export const ControlsContainer = styled.div`
     display: grid;
     grid-template-columns: 1fr;
     grid-auto-flow: column;
-}
+`;
 
-.ButtonsContainer {
+export const ButtonsContainer = styled.div`
     display: grid;
     gap: 0px;
     grid-template-rows: 1fr 1fr;
     grid-auto-flow: row;
-}
+`;
 
-.sw {
+export const Sw = styled.div`
     width: 220px;
     height: 50px;
     border-radius: 8px;
@@ -28,14 +30,14 @@
     grid-gap: 10px;
     place-items: center;
     background-color: #161616;
-}
+`;
 
-.metric {
+export const Metric = styled.p`
     font-size: 14px;
     grid-column-start: 1;
-}
+`;
 
-.imperial {
+export const Imperial = styled.p`
     font-size: 14px;
     grid-column: 3 / 4;
-}
+`;
