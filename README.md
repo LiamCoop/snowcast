@@ -1,12 +1,46 @@
-Small website showcasing front-end skills using Javascript, Typescript, React, nodeJS, HTML, and CSS.
+# Getting Started with Create React App
 
-SnowCast allows users to open a portal into current weather conditions and forecasted conditions for their favourite Ski Areas.
-Ski Area location data has been provided courtesy of SkiMap.org, while the weather data is fetched from OpenWeatherMap.
-The mapping has been accomplished using React-Map-GL npm package (https://github.com/visgl/react-map-gl), a React friendly API wrapper around MapboxGL JS.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Available Scripts
 
-Reflections:
+In the project directory, you can run:
 
-If I were to do this again I probably would've used styled-components. It would've minimized a lot of the confusion I had surrounding some of the CSS issues I wound up troubleshooting.
-I think I probably should've minimized the amount of things that I tried to learn over the course of this project as I may have bit off more than I could chew in trying to learn Typescript and React while still just being new to CSS/HTML.
+### `npm start`
 
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
+
+### `npm test`
+
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
