@@ -1,14 +1,20 @@
 import React, { useContext } from "react";
-import "./RegionButton.scss";
+import {
+    Btn,
+    BtnName,
+    SnowflakeGrid,
+    // SnowflakeItem,
+} from "./style";
+import "./RegionButton.css";
 
 // found this button on code-pen, thought it fit the project theme.
 // Shoutout Sowmya Seshadri for this!
 // https://codepen.io/sowmyaseshadri/pen/LYRjGpr?editors=1100
 function RegionsButton(props: { onClick: () => void }) {
     return (
-        <div className="btn" onClick={props.onClick}>
-            <div className="btn-name">View Regions</div>
-            <div className="snowflake-grid to-left">
+        <Btn onClick={props.onClick}>
+            <BtnName>View Regions</BtnName>
+            <SnowflakeGrid className="to-left">
                 <div className="snowflake-item border-bottom border-right">
                     <div className="sub-items border-right border-bottom pull-down">
                         <div className="m-w-15 m-h-15 border-right border-bottom m-3" />
@@ -29,8 +35,8 @@ function RegionsButton(props: { onClick: () => void }) {
                         <div className="m-w-15 m-h-15 border-right border-bottom m-3" />
                     </div>
                 </div>
-            </div>
-            <div className="snowflake-grid to-right">
+            </SnowflakeGrid>
+            <SnowflakeGrid className="to-right">
                 <div className="snowflake-item border-bottom border-right">
                     <div className="sub-items border-right border-bottom pull-down">
                         <div className="m-w-15 m-h-15 border-right border-bottom m-3" />
@@ -51,8 +57,8 @@ function RegionsButton(props: { onClick: () => void }) {
                         <div className="m-w-15 m-h-15 border-right border-bottom m-3" />
                     </div>
                 </div>
-            </div>
-        </div>
+            </SnowflakeGrid>
+        </Btn>
     );
 }
 
