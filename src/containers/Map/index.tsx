@@ -75,7 +75,7 @@ function Map() {
             mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_API_TOKEN}
             width="100%"
             height="100vh"
-            onViewportChange={(viewport) => setViewport(viewport)}
+            onViewportChange={(viewport: any) => setViewport(viewport)}
         >
             <ControlsContainer>
                 <ButtonsContainer>
