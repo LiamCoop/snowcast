@@ -61,8 +61,6 @@ export const Temp = styled.div`
   margin: 0.5vh 3vw;
 `;
 
-// Need to find role
-
 //.temp h1 {
 export const TempText = styled.h1`
   font-size: 16px;
@@ -83,7 +81,7 @@ export const TitleContainer = styled.div`
 `;
 
 // .title {
-export const Title = styled.div`
+export const Title = styled.h1`
   justify-self: center;
   align-self: center;
 `;

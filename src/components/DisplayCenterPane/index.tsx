@@ -1,27 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { DayObj, Icon, TimeBanner } from '../';
-import {
-  H1,
-  P,
-  Area,
-  Card,
-  City,
-  Col,
-  Row,
-  CurrentPane,
-  Dt,
-  PropArea,
-  PropCity,
-  Temp,
-  TempText,
-  TempTextp,
-  Title,
-  TitleContainer,
-  Weather,
-  WeatherText,
-} from './style';
-
-import './DisplayCenterPane.css';
+import { H1, P, Col, Row, CurrentPane, Temp, Title, Weather } from './style';
 
 function DisplayCenterPane(props: {
   currentDay: DayObj;
@@ -42,13 +21,9 @@ function DisplayCenterPane(props: {
 
   return (
     <>
-      <TitleContainer>
-        <Title>City:</Title>
-        <Title>{props.city}</Title>
-        <Title>{currentTime.dt_txt.split(' ')[0]}</Title>
-        <Title>Ski Area:</Title>
-        <Title>{props.skiAreaName}</Title>
-      </TitleContainer>
+      <Title>{`${props.skiAreaName} in ${props.city} on ${
+        currentTime.dt_txt.split(' ')[0]
+      }`}</Title>
       <Row>
         <CurrentPane>
           <Col>
