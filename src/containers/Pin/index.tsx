@@ -38,6 +38,7 @@ function Pin(obj: SkiObj) {
   //when the user clicks a pin, trigger the fetching of the weather data for that pin.
   useEffect(() => {
     const loadWeatherOWM = async () => {
+      console.log(units);
       const response = await fetch(
         'https://api.openweathermap.org/data/2.5/forecast?' +
           'lat=' +
@@ -51,19 +52,15 @@ function Pin(obj: SkiObj) {
         { method: 'GET' }
       );
       const dt = await response.json();
+      console.log('units, data', units, dt);
       setWeather(dt);
     };
 
-    if (showPopup) {
-      //loadWeatherRapid();
-      loadWeatherOWM();
-    }
+    if (showPopup) loadWeatherOWM();
   }, [showPopup, obj.SkiArea, units]);
 
-  const size = 32;
-
   return (
-    <div className="markerDiv">
+    <div style={{ zIndex: -1 }}>
       <Marker
         captureClick={true}
         latitude={Number(obj.SkiArea.geo_lat)}
@@ -72,8 +69,8 @@ function Pin(obj: SkiObj) {
         <div onClick={() => setShowPopup(true)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width={size}
-            height={size}
+            width="32"
+            height="32"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -82,7 +79,7 @@ function Pin(obj: SkiObj) {
             strokeLinejoin="round"
             className="feather feather-map-pin"
             style={{
-              transform: `translate(${-size / 2}px,${-size}px)`,
+              transform: `translate(-16px,-32px)`,
             }}
           >
             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>

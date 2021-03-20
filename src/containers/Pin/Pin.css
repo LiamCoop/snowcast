@@ -1,7 +1,3 @@
-#svgDiv {
-  z-index: -1;
-}
-
 .mapboxgl-popup .mapboxgl-popup-content {
   display: flex;
   flex-direction: row;
@@ -13,8 +9,4 @@
 
 .mapboxgl-popup-close-button {
   color: #fff;
-}
-
-.markerDiv {
-  z-index: -1;
 }
