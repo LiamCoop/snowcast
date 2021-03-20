@@ -1,26 +1,26 @@
 .dayButton {
-    height: 160px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #161616;
-    border-radius: 8%;
-    border: 1px solid #fff;
+  height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #161616;
+  border-radius: 8%;
+  border: 1px solid #fff;
 }
 
 .Active {
-    opacity: 0.3;
+  opacity: 0.3;
 }
 
 .Inactive {
-    opacity: 1;
+  opacity: 1;
 }
 
 .dayButton__date {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 .dayButton__temp {
-    font-size: 12px;
+  font-size: 12px;
 }

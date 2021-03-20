@@ -61,11 +61,11 @@ body {
 */
 
 .to-left {
-    position: absolute;
-    top: -4px;
-    left: -35px;
-    animation: swing 3s infinite;
-    /*
+  position: absolute;
+  top: -4px;
+  left: -35px;
+  animation: swing 3s infinite;
+  /*
     div {
         animation: flash 3s infinite;
     }
@@ -73,15 +73,15 @@ body {
 }
 
 .to-left div {
-    animation: flash 3s infinite;
+  animation: flash 3s infinite;
 }
 
 .to-right {
-    position: absolute;
-    top: -25px;
-    right: -35px;
-    animation: swing 2.5s infinite;
-    /*
+  position: absolute;
+  top: -25px;
+  right: -35px;
+  animation: swing 2.5s infinite;
+  /*
     div {
         animation: flash 2.5s infinite;
     }
@@ -89,86 +89,86 @@ body {
 }
 
 .to-right div {
-    animation: flash 2.5s infinite;
+  animation: flash 2.5s infinite;
 }
 
 .border-left {
-    border-left: 4px solid #e6dada;
+  border-left: 4px solid #e6dada;
 }
 
 .border-right {
-    border-right: 4px solid #e6dada;
+  border-right: 4px solid #e6dada;
 }
 
 .border-bottom {
-    border-bottom: 4px solid #e6dada;
+  border-bottom: 4px solid #e6dada;
 }
 
 .border-top {
-    border-top: 4px solid #e6dada;
+  border-top: 4px solid #e6dada;
 }
 
 .sub-items {
-    height: 28px;
-    width: 28px;
+  height: 28px;
+  width: 28px;
 }
 
 .m-w-15 {
-    width: 15px;
+  width: 15px;
 }
 
 .m-h-15 {
-    height: 15px;
+  height: 15px;
 }
 
 .r-270 {
-    transform: rotate(270deg);
+  transform: rotate(270deg);
 }
 
 .r-180 {
-    transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 .r-90 {
-    transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 
 .pull-down {
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
 }
 
 .pull-down-right {
-    position: absolute;
-    bottom: 5px;
-    left: 5px;
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
 }
 
 .pull-right {
-    position: absolute;
-    right: 5px;
-    top: 5px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
 }
 
 .pull-left {
-    position: absolute;
-    left: 5px;
-    top: 5px;
+  position: absolute;
+  left: 5px;
+  top: 5px;
 }
 
 .m-3 {
-    margin: 3px;
+  margin: 3px;
 }
 
 @keyframes swing {
-    50% {
-        transform: rotateZ(10deg) scale(0.4);
-    }
+  50% {
+    transform: rotateZ(10deg) scale(0.4);
+  }
 }
 
 @keyframes flash {
-    50% {
-        border-color: #485563;
-    }
+  50% {
+    border-color: #485563;
+  }
 }

@@ -1,20 +1,20 @@
 #bannerbtn {
-    background-color: #161616;
-    border: #fff solid 1px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    border-radius: 8%;
-    width: 18vw;
-    height: 5.5vh;
+  background-color: #161616;
+  border: #fff solid 1px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-radius: 8%;
+  width: 18vw;
+  height: 5.5vh;
 }
 
 .banner {
-    width: 230px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    background-color: #161616;
-    filter: alpha(opacity=30);
+  width: 230px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #161616;
+  filter: alpha(opacity=30);
 }

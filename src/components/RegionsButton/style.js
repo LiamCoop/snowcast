@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 /*
 body {
@@ -22,51 +22,51 @@ const flash = styled.keyframes`
 */
 
 export const Btn = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    width: 220px;
-    height: 50px;
+  width: 220px;
+  height: 50px;
 
-    background-color: #161616;
-    cursor: pointer;
-    font-size: 20px;
-    color: var(--color);
-    transition: all 0.3s;
-    position: relative;
+  background-color: #161616;
+  cursor: pointer;
+  font-size: 20px;
+  color: var(--color);
+  transition: all 0.3s;
+  position: relative;
 
-    text-align: center;
-    overflow: hidden;
+  text-align: center;
+  overflow: hidden;
 
-    border-radius: 5px;
-    box-shadow: 0 6px 30px -10px rgba(#cccccc, 1);
-    z-index: 1;
+  border-radius: 5px;
+  box-shadow: 0 6px 30px -10px rgba(#cccccc, 1);
+  z-index: 1;
 `;
 
 export const BtnName = styled.div`
-    position: relative;
-    color: #fff;
-    animation: flash 3s infinite;
-    z-index: 1;
+  position: relative;
+  color: #fff;
+  animation: flash 3s infinite;
+  z-index: 1;
 `;
 
 // .snowflake-grid {
 export const SnowflakeGrid = styled.div`
-    display: inline-grid;
-    grid-template-columns: 1fr 1fr;
-    grid-auto-rows: 50px;
-    gap: 5px;
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 50px;
+  gap: 5px;
 
-    width: 100px;
-    transform: scale(0.4);
-    div {
-        border-radius: 5px;
-    }
+  width: 100px;
+  transform: scale(0.4);
+  div {
+    border-radius: 5px;
+  }
 
-    .snowflake-item {
-        position: relative;
-    }
+  .snowflake-item {
+    position: relative;
+  }
 `;
 
 /*
