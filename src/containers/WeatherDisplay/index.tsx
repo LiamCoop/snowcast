@@ -7,20 +7,12 @@ import {
   WeatherObj,
 } from '../../components';
 import { UnitsContext } from '../../contexts';
-import {
-  H1,
-  P,
-  Card,
-  CurrentPane,
-  Col,
-  Row,
-  DayButtonContainer,
-  SocialBar,
-} from './style';
+import { Card, Col, DayButtonContainer } from './style';
 
 import './WeatherDisplay.css';
 
 function WeatherDisplay(props: { weather: WeatherObj; skiAreaName: string }) {
+  console.log('WeatherDisplayRender');
   //each day is 8, 3-hour sections
   const days = [
     {
@@ -71,13 +63,13 @@ function WeatherDisplay(props: { weather: WeatherObj; skiAreaName: string }) {
           })}
         </DayButtonContainer>
         {/*
-                <div className="linkfmt">
-                    <p>Location data courtesy of:&nbsp;</p>
-                    <a className="link" href="skimap.org">
-                        SkiMap.org
-                    </a>
-                </div>
-                */}
+          <div className="linkfmt">
+              <p>Location data courtesy of:&nbsp;</p>
+              <a className="link" href="skimap.org">
+                  SkiMap.org
+              </a>
+          </div>
+        */}
       </Col>
     </Card>
   );

@@ -9,6 +9,7 @@ function DisplayCenterPane(props: {
   units: string;
 }) {
   const [currentTime, setCurrentTime] = useState(props.currentDay.list[0]);
+  console.log(props.currentDay);
 
   useEffect(() => {
     setCurrentTime(props.currentDay.list[0]);
