@@ -1,6 +1,6 @@
 import React from 'react';
-import './banner.css';
 import { ConditionsObj, Icon } from '../';
+import { BannerBtn } from './style';
 
 function TimeBanner(props: {
   time: ConditionsObj;
@@ -9,8 +9,8 @@ function TimeBanner(props: {
   units: string;
 }) {
   return (
-    <button
-      className={props.active ? 'banner Active' : 'banner Inactive'}
+    <BannerBtn
+      style={props.active ? { opacity: 0.3 } : { opacity: 1 }}
       onClick={props.onClick}
     >
       <p>
@@ -35,7 +35,7 @@ function TimeBanner(props: {
           mm
         </p>
       }
-    </button>
+    </BannerBtn>
   );
 }
 

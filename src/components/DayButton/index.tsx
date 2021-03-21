@@ -1,8 +1,8 @@
 import React from 'react';
 
 import { DayObj, ConditionsObj, Icon } from '../';
-
-import './DayButton.css';
+import { Button, TxtSm, TxtMd } from './style';
+// import './DayButton.css';
 
 function GetIcon(array: Array<ConditionsObj>): string {
   const map = array.reduce(
@@ -35,17 +35,17 @@ function DayButton(props: {
 
   //should probably also show temp?
   return (
-    <button
-      className={props.active ? 'dayButton Active' : 'dayButton Inactive'}
+    <Button
+      style={props.active ? { opacity: 0.3 } : { opacity: 1 }}
       onClick={props.onClick}
     >
-      <h1 className="dayButton__date">{props.day.dateTime.split(' ')[0]}</h1>
-      <p className="dayButton__temp">
+      <TxtMd>{props.day.dateTime.split(' ')[0]}</TxtMd>
+      <TxtSm>
         {temp} &deg;{props.units === 'metric' ? 'C' : 'F'}
-      </p>
+      </TxtSm>
       <Icon icID={GetIcon(props.day.list)} imgHeight={'50vh'} />
       <p>Snow: {Math.round(daySnow * 100) / 10}mm</p>
-    </button>
+    </Button>
   );
 }
 
