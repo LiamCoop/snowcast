@@ -8,48 +8,8 @@ import './Pin.css';
 
 const Pin = (obj: SkiObj) => {
   const [showPopup, setShowPopup] = useState(false);
-  const units = useContext(UnitsContext);
-  const OWMKEY = process.env.REACT_APP_OWMKEY;
-
-  const [weather, setWeather] = useState<WeatherObj>({
-    cod: '',
-    cnt: 0,
-    message: '',
-    list: [],
-    city: {
-      coord: {
-        lat: 0,
-        lon: 0,
-      },
-      country: '',
-      id: 0,
-      name: '',
-      population: 0,
-      sunrise: 0,
-      sunset: 0,
-      timezone: 0,
-    },
-  });
-
-  useEffect(() => {
-    const loadWeatherOWM = async () => {
-      const response = await fetch(
-        'https://api.openweathermap.org/data/2.5/forecast?' +
-          'lat=' +
-          obj.SkiArea.geo_lat +
-          '&lon=' +
-          obj.SkiArea.geo_lng +
-          '&appid=' +
-          OWMKEY +
-          '&units=' +
-          units
-      );
-      const dt = await response.json();
-      setWeather(dt);
-    };
-
-    if (showPopup) loadWeatherOWM();
-  }, [showPopup, units]);
+  // const units = useContext(UnitsContext);
+  // const OWMKEY = process.env.REACT_APP_OWMKEY;
 
   return (
     <div style={{ zIndex: -1 }}>
@@ -91,11 +51,11 @@ const Pin = (obj: SkiObj) => {
           offsetTop={12}
           sortByDepth={true}
         >
-          {weather.cod !== '' ? (
-            <WeatherDisplay weather={weather} skiAreaName={obj.SkiArea.name} />
-          ) : (
-            <Loading />
-          )}
+          <WeatherDisplay
+            latitude={String(obj.SkiArea.geo_lat)}
+            longitude={String(obj.SkiArea.geo_lng)}
+            skiAreaName={obj.SkiArea.name}
+          />
         </Popup>
       ) : null}
     </div>
