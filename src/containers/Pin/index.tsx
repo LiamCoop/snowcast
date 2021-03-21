@@ -38,7 +38,6 @@ function Pin(obj: SkiObj) {
   //when the user clicks a pin, trigger the fetching of the weather data for that pin.
   useEffect(() => {
     const loadWeatherOWM = async () => {
-      console.log(units);
       const response = await fetch(
         'https://api.openweathermap.org/data/2.5/forecast?' +
           'lat=' +
@@ -48,11 +47,10 @@ function Pin(obj: SkiObj) {
           '&appid=' +
           OWMKEY +
           '&units=' +
-          units,
-        { method: 'GET' }
+          units
+        // { method: 'GET' }
       );
       const dt = await response.json();
-      console.log('units, data', units, dt);
       setWeather(dt);
     };
 
@@ -99,16 +97,11 @@ function Pin(obj: SkiObj) {
           offsetTop={12}
           sortByDepth={true}
         >
-          <div className="col">
-            {weather.cod !== '' ? (
-              <WeatherDisplay
-                weather={weather}
-                skiAreaName={obj.SkiArea.name}
-              />
-            ) : (
-              <Loading />
-            )}
-          </div>
+          {weather.cod !== '' ? (
+            <WeatherDisplay weather={weather} skiAreaName={obj.SkiArea.name} />
+          ) : (
+            <Loading />
+          )}
         </Popup>
       ) : null}
     </div>

@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { DayObj, Icon, TimeBanner } from '../';
+import { ConditionsObj, Icon, TimeBanner } from '../';
 import { H1, P, Col, Row, CurrentPane, Temp, Title, Weather } from './style';
 
 function DisplayCenterPane(props: {
-  currentDay: DayObj;
+  currentDay: Array<ConditionsObj>;
   city: string;
   skiAreaName: string;
   units: string;
 }) {
-  const [currentTime, setCurrentTime] = useState(props.currentDay.list[0]);
+  const [currentTime, setCurrentTime] = useState(props.currentDay[0]);
   console.log(props.currentDay);
 
   useEffect(() => {
-    setCurrentTime(props.currentDay.list[0]);
+    setCurrentTime(props.currentDay[0]);
   }, [props.currentDay]);
 
   let dailySnow = 0;
-  props.currentDay.list.map((timeSlice) => {
+  props.currentDay.map((timeSlice) => {
     dailySnow += timeSlice.snow ? timeSlice.snow?.['3h'] : 0;
   });
 
@@ -83,7 +83,7 @@ function DisplayCenterPane(props: {
         </CurrentPane>
         <Col>
           <P>3 Hour Intervals</P>
-          {props.currentDay.list.map((timeSlice) => {
+          {props.currentDay.map((timeSlice) => {
             return (
               <TimeBanner
                 onClick={() => setCurrentTime(timeSlice)}

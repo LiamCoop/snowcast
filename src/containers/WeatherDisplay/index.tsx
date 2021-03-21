@@ -12,32 +12,9 @@ import { Card, Col, DayButtonContainer } from './style';
 import './WeatherDisplay.css';
 
 function WeatherDisplay(props: { weather: WeatherObj; skiAreaName: string }) {
-  console.log('WeatherDisplayRender');
   //each day is 8, 3-hour sections
-  const days = [
-    {
-      list: props.weather.list.slice(0, 8),
-      dateTime: props.weather.list.slice(0, 8)[0].dt_txt,
-    },
-    {
-      list: props.weather.list.slice(8, 16),
-      dateTime: props.weather.list.slice(8, 16)[0].dt_txt,
-    },
-    {
-      list: props.weather.list.slice(16, 24),
-      dateTime: props.weather.list.slice(16, 24)[0].dt_txt,
-    },
-    {
-      list: props.weather.list.slice(24, 32),
-      dateTime: props.weather.list.slice(24, 32)[0].dt_txt,
-    },
-    {
-      list: props.weather.list.slice(32, 40),
-      dateTime: props.weather.list.slice(32, 40)[0].dt_txt,
-    },
-  ];
 
-  const [currentDay, setCurrentDay] = useState(days[0]);
+  const [currentDay, setCurrentDay] = useState(props.weather.list.slice(0, 8));
   const units = useContext(UnitsContext);
 
   return (
@@ -50,17 +27,36 @@ function WeatherDisplay(props: { weather: WeatherObj; skiAreaName: string }) {
           units={units}
         />
         <DayButtonContainer>
-          {days.map((day) => {
-            return (
-              <DayButton
-                active={currentDay.dateTime === day.list[0].dt_txt}
-                units={units}
-                day={day}
-                onClick={() => setCurrentDay(day)}
-                key={day.list[0].dt_txt}
-              />
-            );
-          })}
+          <DayButton
+            active={currentDay[0].dt_txt === props.weather.list[0].dt_txt}
+            day={props.weather.list.slice(0, 8)}
+            onClick={() => setCurrentDay(props.weather.list.slice(0, 8))}
+            units={units}
+          />
+          <DayButton
+            active={currentDay[0].dt_txt === props.weather.list[8].dt_txt}
+            day={props.weather.list.slice(8, 16)}
+            onClick={() => setCurrentDay(props.weather.list.slice(8, 16))}
+            units={units}
+          />
+          <DayButton
+            active={currentDay[0].dt_txt === props.weather.list[16].dt_txt}
+            day={props.weather.list.slice(16, 24)}
+            onClick={() => setCurrentDay(props.weather.list.slice(16, 24))}
+            units={units}
+          />
+          <DayButton
+            active={currentDay[0].dt_txt === props.weather.list[24].dt_txt}
+            day={props.weather.list.slice(24, 32)}
+            onClick={() => setCurrentDay(props.weather.list.slice(24, 32))}
+            units={units}
+          />
+          <DayButton
+            active={currentDay[0].dt_txt === props.weather.list[32].dt_txt}
+            day={props.weather.list.slice(32)}
+            onClick={() => setCurrentDay(props.weather.list.slice(32, 40))}
+            units={units}
+          />
         </DayButtonContainer>
         {/*
           <div className="linkfmt">
@@ -75,4 +71,15 @@ function WeatherDisplay(props: { weather: WeatherObj; skiAreaName: string }) {
   );
 }
 
+/*days.map((day) => {
+  return (
+    <DayButton
+      active={currentDay.dateTime === day.list[0].dt_txt}
+      units={units}
+      day={day}
+      onClick={() => setCurrentDay(day)}
+      key={day.list[0].dt_txt}
+    />
+  );
+})*/
 export default WeatherDisplay;

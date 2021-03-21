@@ -18,35 +18,31 @@ function GetIcon(array: Array<ConditionsObj>): string {
   return icon;
 }
 
-function DayButton(props: {
-  day: DayObj;
+const DayButton = (props: {
+  day: Array<ConditionsObj>;
   onClick: () => void;
   active: boolean;
   units: string;
-}) {
+}) => {
   let temp = 0;
   let daySnow = 0;
 
-  props.day.list.map((time) => {
+  props.day.map((time) => {
     daySnow += time.snow ? time.snow?.['3h'] : 0;
     temp += time.main.temp;
   });
   temp = Math.round(temp / 8);
 
-  //should probably also show temp?
   return (
-    <Button
-      style={props.active ? { opacity: 0.3 } : { opacity: 1 }}
-      onClick={props.onClick}
-    >
-      <TxtMd>{props.day.dateTime.split(' ')[0]}</TxtMd>
+    <Button style={{ opacity: props.active ? 0.3 : 1 }} onClick={props.onClick}>
+      {/*<TxtMd>{props.day[0].dateTime.split(' ')[0]}</TxtMd>*/}
       <TxtSm>
         {temp} &deg;{props.units === 'metric' ? 'C' : 'F'}
       </TxtSm>
-      <Icon icID={GetIcon(props.day.list)} imgHeight={'50vh'} />
-      <p>Snow: {Math.round(daySnow * 100) / 10}mm</p>
+      <Icon icID={GetIcon(props.day)} imgHeight={'50vh'} />
+      <TxtSm>Snow: {Math.round(daySnow * 100) / 10}mm</TxtSm>
     </Button>
   );
-}
+};
 
 export default DayButton;
