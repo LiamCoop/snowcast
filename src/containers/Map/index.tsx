@@ -14,11 +14,13 @@ import {
 
 const skiInfo = require('../../SkiInfo.json');
 
-function Map() {
+const Map = () => {
   const [regions, setRegions] = useState([]);
-  const [currentRegion, setCurrentRegion] = useState();
+  const [currentRegion, setCurrentRegion] = useState(null);
   const [currentSkiObjects, setCurrentSkiObjects] = useState([]);
   const [showdropdown, setShowdropdown] = useState(false);
+  // it would be cool to display how many pins are showing.
+  //  (currentSkiObjects.length)
 
   // context
   const [units, setUnits] = useState('metric');
@@ -52,20 +54,16 @@ function Map() {
           typeof obj.Region[0] === 'undefined' ||
           obj.SkiArea.geo_lat == null ||
           obj.SkiArea.geo_lng == null
-        ) {
+        )
           return false;
-        }
         return obj.Region[0].name === currentRegion;
       })
     );
   }, [currentRegion]);
 
   const AdjustUnits = () => {
-    if (units === 'metric') {
-      setUnits('imperial');
-    } else if (units === 'imperial') {
-      setUnits('metric');
-    }
+    if (units === 'metric') setUnits('imperial');
+    else if (units === 'imperial') setUnits('metric');
   };
 
   return (
@@ -109,6 +107,6 @@ function Map() {
       </UnitsContext.Provider>
     </ReactMapGL>
   );
-}
+};
 
 export default Map;

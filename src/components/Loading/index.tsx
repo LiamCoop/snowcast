@@ -1,8 +1,6 @@
 import React from 'react';
 import { Load } from './style';
 
-function Loading() {
-  return <Load />;
-}
+const Loading = () => <Load />;
 
 export default Loading;

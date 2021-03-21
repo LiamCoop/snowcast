@@ -35,7 +35,7 @@ const DayButton = (props: {
 
   return (
     <Button style={{ opacity: props.active ? 0.3 : 1 }} onClick={props.onClick}>
-      {/*<TxtMd>{props.day[0].dateTime.split(' ')[0]}</TxtMd>*/}
+      <TxtMd>{`${props.day[0].dt_txt.split(' ')[0]}`}</TxtMd>
       <TxtSm>
         {temp} &deg;{props.units === 'metric' ? 'C' : 'F'}
       </TxtSm>

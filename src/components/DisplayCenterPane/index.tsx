@@ -2,27 +2,33 @@ import React, { useState, useEffect } from 'react';
 import { ConditionsObj, Icon, TimeBanner } from '../';
 import { H1, P, Col, Row, CurrentPane, Temp, Title, Weather } from './style';
 
-function DisplayCenterPane(props: {
+interface DCPprops {
   currentDay: Array<ConditionsObj>;
   city: string;
   skiAreaName: string;
   units: string;
-}) {
-  const [currentTime, setCurrentTime] = useState(props.currentDay[0]);
-  console.log(props.currentDay);
+}
+
+const DisplayCenterPane = ({
+  currentDay,
+  city,
+  skiAreaName,
+  units,
+}: DCPprops) => {
+  const [currentTime, setCurrentTime] = useState(currentDay[0]);
 
   useEffect(() => {
-    setCurrentTime(props.currentDay[0]);
-  }, [props.currentDay]);
+    setCurrentTime(currentDay[0]);
+  }, [currentDay]);
 
   let dailySnow = 0;
-  props.currentDay.map((timeSlice) => {
+  currentDay.map((timeSlice) => {
     dailySnow += timeSlice.snow ? timeSlice.snow?.['3h'] : 0;
   });
 
   return (
     <>
-      <Title>{`${props.skiAreaName} in ${props.city} on ${
+      <Title>{`${skiAreaName} in ${city} on ${
         currentTime.dt_txt.split(' ')[0]
       }`}</Title>
       <Row>
@@ -39,13 +45,13 @@ function DisplayCenterPane(props: {
             <Temp>
               <H1>
                 {Math.round(currentTime.main.temp)}&deg;
-                {props.units === 'metric' ? 'C' : 'F'}
+                {units === 'metric' ? 'C' : 'F'}
               </H1>
               <P>
                 {Math.round(currentTime.main.temp_min)}&deg;
-                {props.units === 'metric' ? 'C' : 'F'} /{' '}
+                {units === 'metric' ? 'C' : 'F'} /{' '}
                 {Math.round(currentTime.main.temp_max)}&deg;
-                {props.units === 'metric' ? 'C' : 'F'}
+                {units === 'metric' ? 'C' : 'F'}
               </P>
             </Temp>
             <Weather>
@@ -63,7 +69,7 @@ function DisplayCenterPane(props: {
             <P>
               Windspeed, direction:
               {Math.round(currentTime.wind.speed)}
-              {props.units === 'metric' ? 'm/s' : 'mph'},
+              {units === 'metric' ? 'm/s' : 'mph'},
               {Math.round(currentTime.wind.speed)}&deg;
             </P>
             {currentTime.rain ? (
@@ -83,14 +89,14 @@ function DisplayCenterPane(props: {
         </CurrentPane>
         <Col>
           <P>3 Hour Intervals</P>
-          {props.currentDay.map((timeSlice) => {
+          {currentDay.map((timeSlice) => {
             return (
               <TimeBanner
                 onClick={() => setCurrentTime(timeSlice)}
                 time={timeSlice}
                 active={currentTime.dt === timeSlice.dt}
                 key={timeSlice.dt_txt}
-                units={props.units}
+                units={units}
               />
             );
           })}
@@ -98,6 +104,6 @@ function DisplayCenterPane(props: {
       </Row>
     </>
   );
-}
+};
 
 export default DisplayCenterPane;

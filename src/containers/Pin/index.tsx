@@ -6,11 +6,9 @@ import { UnitsContext } from '../../contexts';
 
 import './Pin.css';
 
-function Pin(obj: SkiObj) {
-  //boolean to determine whether to show the popup or not.
+const Pin = (obj: SkiObj) => {
   const [showPopup, setShowPopup] = useState(false);
   const units = useContext(UnitsContext);
-  //Contains the weather data for a given pin
   const OWMKEY = process.env.REACT_APP_OWMKEY;
 
   const [weather, setWeather] = useState<WeatherObj>({
@@ -32,10 +30,7 @@ function Pin(obj: SkiObj) {
       timezone: 0,
     },
   });
-  //Manage weather load state, false when loading, true when loaded
-  //const [loadWeather, setLoadWeather] = useState(false);
 
-  //when the user clicks a pin, trigger the fetching of the weather data for that pin.
   useEffect(() => {
     const loadWeatherOWM = async () => {
       const response = await fetch(
@@ -48,14 +43,13 @@ function Pin(obj: SkiObj) {
           OWMKEY +
           '&units=' +
           units
-        // { method: 'GET' }
       );
       const dt = await response.json();
       setWeather(dt);
     };
 
     if (showPopup) loadWeatherOWM();
-  }, [showPopup, obj.SkiArea, units]);
+  }, [showPopup, units]);
 
   return (
     <div style={{ zIndex: -1 }}>
@@ -106,6 +100,6 @@ function Pin(obj: SkiObj) {
       ) : null}
     </div>
   );
-}
+};
 
 export default Pin;
