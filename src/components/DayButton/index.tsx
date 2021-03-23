@@ -1,8 +1,7 @@
 import React from 'react';
 
-import { DayObj, ConditionsObj, Icon } from '../';
+import { ConditionsObj, Icon } from '../';
 import { Button, TxtSm, TxtMd } from './style';
-import { UnitsContext } from '../../contexts';
 // import './DayButton.css';
 
 function GetIcon(array: Array<ConditionsObj>): string {
@@ -38,7 +37,11 @@ const DayButton = ({ day, onClick, active, units }: DayButtonProps) => {
 
   return (
     <Button style={{ opacity: active ? 0.3 : 1 }} onClick={onClick}>
-      <TxtMd>{`${day[0].dt_txt.split(' ')[0]}`}</TxtMd>
+      <TxtMd>
+        {`${day[0].dt_txt.split(' ')[0].split('-')[1]}-${
+          day[0].dt_txt.split(' ')[0].split('-')[2]
+        }`}
+      </TxtMd>
       <TxtSm>{`${temp}° ${units === 'metric' ? 'C' : 'F'}`}</TxtSm>
       <Icon
         icID={GetIcon(day.filter((ob) => ob.dt_txt.length !== 1))}
