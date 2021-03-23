@@ -38,11 +38,9 @@ const DayButton = ({ day, onClick, active, units }: DayButtonProps) => {
   return (
     <Button style={{ opacity: active ? 0.3 : 1 }} onClick={onClick}>
       <TxtMd>{`${day[0].dt_txt.split(' ')[0]}`}</TxtMd>
-      <TxtSm>
-        {temp} &deg;{units === 'metric' ? 'C' : 'F'}
-      </TxtSm>
-      <Icon icID={GetIcon(day)} imgHeight={'50vh'} />
-      <TxtSm>Snow: {Math.round(daySnow * 100) / 10}mm</TxtSm>
+      <TxtSm>{`${temp}° ${units === 'metric' ? 'C' : 'F'}`}</TxtSm>
+      <Icon icID={GetIcon(day)} imgHeight="50vh" />
+      <TxtSm>Snow: {Math.round(daySnow)}mm</TxtSm>
     </Button>
   );
 };

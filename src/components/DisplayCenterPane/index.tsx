@@ -25,7 +25,7 @@ const DisplayCenterPane = ({
   currentDay.map((timeSlice) => {
     dailySnow += timeSlice.snow ? timeSlice.snow?.['3h'] : 0;
   });
-
+  const CorF = units === 'metric' ? 'C' : 'F';
   return (
     <>
       <Title>{`${skiAreaName} in ${city} on ${
@@ -43,26 +43,20 @@ const DisplayCenterPane = ({
           </Col>
           <Row>
             <Temp>
-              <H1>
-                {Math.round(currentTime.main.temp)}&deg;
-                {units === 'metric' ? 'C' : 'F'}
-              </H1>
+              <H1>{`${Math.round(currentTime.main.temp)}°${CorF}`}</H1>
               <P>
-                {Math.round(currentTime.main.temp_min)}&deg;
-                {units === 'metric' ? 'C' : 'F'} /{' '}
-                {Math.round(currentTime.main.temp_max)}&deg;
-                {units === 'metric' ? 'C' : 'F'}
+                {`${Math.round(currentTime.main.temp_min)}° / 
+                  ${Math.round(currentTime.main.temp_max)}°`}
               </P>
             </Temp>
             <Weather>
-              <P>Precipitation: {Math.round(currentTime.pop * 100)}%</P>
-              <P>Humidity: {Math.round(currentTime.main.humidity)}%</P>
-              {currentTime.visibility === 10000 ? (
-                <P>Vis: &infin; m</P>
-              ) : (
-                <P>Vis: {currentTime.visibility} m</P>
-              )}
-              <P>Cloud: {currentTime.clouds.all}%</P>
+              <P>{`Precipitation: ${Math.round(currentTime.pop * 100)}%`}</P>
+              <P>{`Humidity: ${Math.round(currentTime.main.humidity)}%`}</P>
+
+              <P>{`Vis: ${
+                currentTime.visibility === 10000 ? '∞' : currentTime.visibility
+              }`}</P>
+              <P>{`Cloud: ${currentTime.clouds.all}%`}</P>
             </Weather>
           </Row>
           <Col>
@@ -81,7 +75,7 @@ const DisplayCenterPane = ({
             {currentTime.snow ? (
               <P>
                 Snowfall over previous 3hrs: ~
-                {Math.round(currentTime.snow['3h'] * 100) / 10}
+                {Math.round(currentTime.snow['3h'])}
                 mm
               </P>
             ) : null}
