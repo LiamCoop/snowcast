@@ -10,7 +10,7 @@ export const Button = styled.button`
 
 export const ControlsContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(3, 1fr);
   grid-auto-flow: column;
 `;
 
@@ -26,7 +26,7 @@ export const Sw = styled.div`
   height: 50px;
   border-radius: 8px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr 3fr, 100px;
   grid-gap: 10px;
   place-items: center;
   background-color: #161616;

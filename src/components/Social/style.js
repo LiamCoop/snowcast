@@ -35,6 +35,7 @@ export const Socials = styled.div`
   height: 50px;
   width: 50px;
   place-items: center;
+  justify-self: end;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
   background-color: #161616;

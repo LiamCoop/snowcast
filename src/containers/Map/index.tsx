@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import ReactMapGL from 'react-map-gl';
-import { SkiObj, RegionsButton, SocialBar, Switch } from '../../components';
+import {
+  SkiObj,
+  Banner,
+  RegionsButton,
+  SocialBar,
+  Switch,
+} from '../../components';
 import { Pin } from '..';
 import { UnitsContext } from '../../contexts';
 import {
@@ -86,6 +92,7 @@ const Map = () => {
           </Sw>
           <RegionsButton onClick={() => setShowdropdown(!showdropdown)} />
         </ButtonsContainer>
+        <Banner pinCount={pinCount} />
         <SocialBar />
       </ControlsContainer>
       <div>
