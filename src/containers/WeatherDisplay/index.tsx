@@ -46,20 +46,21 @@ const WeatherDisplay = ({
   };
   const [weather, setWeather] = useState<WeatherObj>(weatherInit);
   const units = useContext(UnitsContext);
+  console.log(weather);
 
   useEffect(() => {
     const loadWeatherOWM = async () => {
-      const url =
+      const response = await fetch(
         'https://api.openweathermap.org/data/2.5/forecast?' +
-        'lat=' +
-        latitude +
-        '&lon=' +
-        longitude +
-        '&appid=' +
-        process.env.REACT_APP_OWMKEY +
-        '&units=' +
-        units;
-      const response = await fetch(url);
+          'lat=' +
+          latitude +
+          '&lon=' +
+          longitude +
+          '&appid=' +
+          process.env.REACT_APP_OWMKEY +
+          '&units=' +
+          units
+      );
       const dt = await response.json();
       setWeather(dt);
       setCurrentDay(dt.list.slice(0, 8));

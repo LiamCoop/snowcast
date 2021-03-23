@@ -6,18 +6,16 @@ export const BannerBtn = styled.button`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  border-radius: 8%;
-  width: 18vw;
-  height: 5.5vh;
+  align-items: center;
+  border-radius: 10%;
+  width: minmax(25vw, 28vw);
+  height: minmax(35px, 5.5vh);
 `;
 
-// .banner {
-export const Banner = styled.div`
-  width: 230px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  background-color: #161616;
-  filter: alpha(opacity=30);
+export const Time = styled.p``;
+
+export const Temp = styled.p``;
+
+export const Snow = styled.p`
+  width: 5vw;
 `;

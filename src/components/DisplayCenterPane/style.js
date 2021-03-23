@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-export const H1 = styled.h1`
+export const TxtL = styled.h1`
   font-size: 14px;
   color: #fff;
 `;
-export const P = styled.p`
+export const TxtM = styled.p`
   font-size: 12px;
   color: #fff;
 `;
