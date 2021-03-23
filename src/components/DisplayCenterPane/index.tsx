@@ -72,7 +72,7 @@ const DisplayCenterPane = ({
               <TxtM>{`Cloud: ${currentTime.clouds.all}%`}</TxtM>
               <TxtM>{`Vis: ${
                 currentTime.visibility === 10000 ? '∞' : currentTime.visibility
-              }`}</TxtM>
+              }m`}</TxtM>
             </Weather>
           </Row>
           <Col>
