@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState } from 'react';
 import { Marker, Popup } from 'react-map-gl';
-import { SkiObj, Loading, WeatherObj } from '../../components';
+import { SkiObj } from '../../components';
 import WeatherDisplay from '../WeatherDisplay';
-import { UnitsContext } from '../../contexts';
 
 import './Pin.css';
 
