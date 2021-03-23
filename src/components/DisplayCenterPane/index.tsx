@@ -4,6 +4,7 @@ import {
   TxtL,
   TxtM,
   Col,
+  Banners,
   Row,
   CurrentPane,
   Temp,
@@ -11,7 +12,7 @@ import {
   Weather,
 } from './style';
 
-interface DCPprops {
+interface DCprops {
   currentDay: Array<ConditionsObj>;
   city: string;
   skiAreaName: string;
@@ -23,10 +24,15 @@ const DisplayCenterPane = ({
   city,
   skiAreaName,
   units,
-}: DCPprops) => {
+}: DCprops) => {
   const [currentTime, setCurrentTime] = useState(currentDay[0]);
   const CorF = units === 'metric' ? 'C' : 'F';
+  console.log(currentDay);
 
+  // currentDay may be less than 8 in length
+  // if it is, we need to pad either before or after
+  // depends on the value of currentDay[0].dt_txt.split(' ')[1]
+  // console.log(currentDay[0].dt_txt.split(' ')[1]);
   let dailySnow = 0;
   currentDay.map((timeSlice) => {
     dailySnow += timeSlice.snow ? timeSlice.snow?.['3h'] : 0;
@@ -89,20 +95,20 @@ const DisplayCenterPane = ({
             ) : null}
           </Col>
         </CurrentPane>
-        <Col>
+        <Banners>
           <TxtM>3 Hour Intervals</TxtM>
           {currentDay.map((timeSlice) => {
             return (
               <TimeBanner
                 onClick={() => setCurrentTime(timeSlice)}
                 time={timeSlice}
-                active={currentTime.dt === timeSlice.dt}
+                active={currentTime.dt_txt === timeSlice.dt_txt}
                 key={timeSlice.dt_txt}
                 units={units}
               />
             );
           })}
-        </Col>
+        </Banners>
       </Row>
     </>
   );

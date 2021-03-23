@@ -19,8 +19,11 @@ const Map = () => {
   const [currentRegion, setCurrentRegion] = useState(null);
   const [currentSkiObjects, setCurrentSkiObjects] = useState([]);
   const [showdropdown, setShowdropdown] = useState(false);
+  const [pinCount, setPinCount] = useState(0);
+  console.log(`now showing ${pinCount} locations`);
   // it would be cool to display how many pins are showing.
   //  (currentSkiObjects.length)
+  // in useEffect for filtering skiInfo, call something to trigger banner?
 
   // context
   const [units, setUnits] = useState('metric');
@@ -48,17 +51,17 @@ const Map = () => {
   // filter skiInfo down to only the one in the selected region (currentRegion)
   // occurs on currentRegion update
   useEffect(() => {
-    setCurrentSkiObjects(
-      skiInfo.filter((obj: SkiObj) => {
-        if (
-          typeof obj.Region[0] === 'undefined' ||
-          obj.SkiArea.geo_lat == null ||
-          obj.SkiArea.geo_lng == null
-        )
-          return false;
-        return obj.Region[0].name === currentRegion;
-      })
-    );
+    const pins = skiInfo.filter((obj: SkiObj) => {
+      if (
+        typeof obj.Region[0] === 'undefined' ||
+        obj.SkiArea.geo_lat == null ||
+        obj.SkiArea.geo_lng == null
+      )
+        return false;
+      return obj.Region[0].name === currentRegion;
+    });
+    setCurrentSkiObjects(pins);
+    setPinCount(pins.length);
   }, [currentRegion]);
 
   const AdjustUnits = () => {
@@ -108,5 +111,14 @@ const Map = () => {
     </ReactMapGL>
   );
 };
+
+/*
+  <div className="linkfmt">
+      <p>Location data courtesy of:&nbsp;</p>
+      <a className="link" href="skimap.org">
+          SkiMap.org
+      </a>
+  </div>
+*/
 
 export default Map;

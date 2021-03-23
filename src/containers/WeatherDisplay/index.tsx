@@ -24,8 +24,9 @@ const WeatherDisplay = ({
   longitude,
   skiAreaName,
 }: WeatherDisplayProps) => {
-  const [currentDay, setCurrentDay] = useState<Array<ConditionsObj>>([]);
-  const weatherInit = {
+  const [currentDay, setCurrentDay] = useState<ConditionsObj[]>([]);
+  const [days, setDays] = useState<Array<ConditionsObj[]>>([]);
+  const [weather, setWeather] = useState<WeatherObj>({
     cod: '',
     cnt: 0,
     message: '',
@@ -43,10 +44,8 @@ const WeatherDisplay = ({
       sunset: 0,
       timezone: 0,
     },
-  };
-  const [weather, setWeather] = useState<WeatherObj>(weatherInit);
+  });
   const units = useContext(UnitsContext);
-  console.log(weather);
 
   useEffect(() => {
     const loadWeatherOWM = async () => {
@@ -61,16 +60,34 @@ const WeatherDisplay = ({
           '&units=' +
           units
       );
-      const dt = await response.json();
+      const dt: WeatherObj = await response.json();
       setWeather(dt);
-      setCurrentDay(dt.list.slice(0, 8));
+      // set currentDay to all 3hr slots that match
+      // the date on first day provided
+      setCurrentDay(
+        dt.list.filter(
+          (ob) =>
+            ob.dt_txt.split(' ')[0].split('-')[2] ===
+            dt.list[0].dt_txt.split(' ')[0].split('-')[2]
+        )
+      );
+      // gets every date (either 5 or 6 days depending
+      // on when in the day the fetch happens)
+      const dateList = Array.from(
+        new Set(dt.list.map((ob) => ob.dt_txt.split(' ')[0].split('-')[2]))
+      );
+      const dayslist = dateList.map((date) =>
+        dt.list.filter((ob) => ob.dt_txt.split(' ')[0].split('-')[2] === date)
+      );
+      setDays(dayslist);
+      setCurrentDay(dayslist[0]);
     };
     loadWeatherOWM();
   }, [units]);
 
   return (
     <Card>
-      {currentDay[0] !== undefined ? (
+      {currentDay ? (
         <Col>
           <DisplayCenterPane
             currentDay={currentDay}
@@ -79,36 +96,17 @@ const WeatherDisplay = ({
             units={units}
           />
           <DayButtonContainer>
-            <DayButton
-              active={currentDay[0].dt_txt === weather.list[0].dt_txt}
-              day={weather.list.slice(0, 8)}
-              onClick={() => setCurrentDay(weather.list.slice(0, 8))}
-              units={units}
-            />
-            <DayButton
-              active={currentDay[0].dt_txt === weather.list[8].dt_txt}
-              day={weather.list.slice(8, 16)}
-              onClick={() => setCurrentDay(weather.list.slice(8, 16))}
-              units={units}
-            />
-            <DayButton
-              active={currentDay[0].dt_txt === weather.list[16].dt_txt}
-              day={weather.list.slice(16, 24)}
-              onClick={() => setCurrentDay(weather.list.slice(16, 24))}
-              units={units}
-            />
-            <DayButton
-              active={currentDay[0].dt_txt === weather.list[24].dt_txt}
-              day={weather.list.slice(24, 32)}
-              onClick={() => setCurrentDay(weather.list.slice(24, 32))}
-              units={units}
-            />
-            <DayButton
-              active={currentDay[0].dt_txt === weather.list[32].dt_txt}
-              day={weather.list.slice(32)}
-              onClick={() => setCurrentDay(weather.list.slice(32, 40))}
-              units={units}
-            />
+            {days.map((day) => (
+              <DayButton
+                day={day}
+                onClick={() => setCurrentDay(day)}
+                active={
+                  day[0].dt_txt.split(' ')[0].split('-')[2] ===
+                  currentDay[0].dt_txt.split(' ')[0].split('-')[2]
+                }
+                units={units}
+              />
+            ))}
           </DayButtonContainer>
         </Col>
       ) : (
@@ -117,12 +115,5 @@ const WeatherDisplay = ({
     </Card>
   );
 };
-/*
-  <div className="linkfmt">
-      <p>Location data courtesy of:&nbsp;</p>
-      <a className="link" href="skimap.org">
-          SkiMap.org
-      </a>
-  </div>
-*/
+
 export default WeatherDisplay;

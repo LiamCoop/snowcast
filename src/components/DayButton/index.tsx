@@ -2,6 +2,7 @@ import React from 'react';
 
 import { DayObj, ConditionsObj, Icon } from '../';
 import { Button, TxtSm, TxtMd } from './style';
+import { UnitsContext } from '../../contexts';
 // import './DayButton.css';
 
 function GetIcon(array: Array<ConditionsObj>): string {
@@ -30,8 +31,8 @@ const DayButton = ({ day, onClick, active, units }: DayButtonProps) => {
   let daySnow = 0;
 
   day.map((time) => {
-    daySnow += time.snow ? time.snow?.['3h'] : 0;
-    temp += time.main.temp;
+    daySnow += time?.snow ? time.snow?.['3h'] : 0;
+    temp += time?.main ? time.main.temp : 0;
   });
   temp = Math.round(temp / 8);
 
@@ -39,7 +40,10 @@ const DayButton = ({ day, onClick, active, units }: DayButtonProps) => {
     <Button style={{ opacity: active ? 0.3 : 1 }} onClick={onClick}>
       <TxtMd>{`${day[0].dt_txt.split(' ')[0]}`}</TxtMd>
       <TxtSm>{`${temp}° ${units === 'metric' ? 'C' : 'F'}`}</TxtSm>
-      <Icon icID={GetIcon(day)} imgHeight="50vh" />
+      <Icon
+        icID={GetIcon(day.filter((ob) => ob.dt_txt.length !== 1))}
+        imgHeight="50vh"
+      />
       <TxtSm>Snow: {Math.round(daySnow)}mm</TxtSm>
     </Button>
   );

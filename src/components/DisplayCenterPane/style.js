@@ -27,6 +27,14 @@ export const Col = styled.div`
   align-items: center;
 `;
 
+export const Banners = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: #161616;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
 export const Row = styled.div`
   display: flex;
   flex-direction: row;
