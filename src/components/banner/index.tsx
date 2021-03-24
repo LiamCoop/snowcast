@@ -7,7 +7,7 @@ interface BannerProps {
 
 const Banner = ({ pinCount }: BannerProps) => (
   <Container>
-    <Text>Now displaying {pinCount} locations</Text>
+    <Text>Displaying {pinCount} locations</Text>
   </Container>
 );
 
