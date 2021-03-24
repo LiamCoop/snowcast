@@ -1,4 +1,5 @@
 .switch {
+  justify-self: center;
   position: relative;
   display: inline-block;
   width: 60px;

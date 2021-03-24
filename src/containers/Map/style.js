@@ -10,8 +10,26 @@ export const Button = styled.button`
 
 export const ControlsContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-flow: column;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+`;
+
+export const SwContainer = styled.div`
+  justify-self: end;
+  grid-column-start: -1;
+`;
+
+export const RegBtnContainer = styled.div`
+  justify-self: start;
+  row: 1 / -1;
+`;
+export const BannerContainer = styled.div``;
+
+export const SocialContainer = styled.div`
+  justify-self: end;
+  align-self: end;
+  grid-row-start: -1;
+  grid-column-start: -1;
 `;
 
 export const ButtonsContainer = styled.div`
@@ -22,13 +40,14 @@ export const ButtonsContainer = styled.div`
 `;
 
 export const Sw = styled.div`
-  width: 220px;
+  width: 250px;
   height: 50px;
   border-radius: 8px;
   display: grid;
-  grid-template-columns: 1fr 3fr, 100px;
+  grid-template-columns: 2fr 2fr 2fr;
   grid-gap: 10px;
-  place-items: center;
+  justify-content: center;
+  align-items: center;
   background-color: #161616;
 `;
 
@@ -39,11 +58,11 @@ export const DDcontainer = styled.div`
 `;
 
 export const Metric = styled.p`
+  justify-self: center;
   font-size: 14px;
-  grid-column-start: 1;
 `;
 
 export const Imperial = styled.p`
+  justify-self: center;
   font-size: 14px;
-  grid-column: 3 / 4;
 `;

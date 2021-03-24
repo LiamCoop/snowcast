@@ -14,6 +14,10 @@ import {
   ControlsContainer,
   DDcontainer,
   ButtonsContainer,
+  SwContainer,
+  RegBtnContainer,
+  BannerContainer,
+  SocialContainer,
   Sw,
   Metric,
   Imperial,
@@ -69,6 +73,11 @@ const Map = () => {
     if (units === 'metric') setUnits('imperial');
     else if (units === 'imperial') setUnits('metric');
   };
+  /*
+  <BannerContainer>
+  <Banner pinCount={pinCount} />
+  </BannerContainer>
+  */
 
   return (
     <ReactMapGL
@@ -79,32 +88,36 @@ const Map = () => {
       onViewportChange={(viewport: any) => setViewport(viewport)}
     >
       <ControlsContainer>
-        <ButtonsContainer>
+        <RegBtnContainer>
+          <RegionsButton onClick={() => setShowdropdown(!showdropdown)} />
+        </RegBtnContainer>
+        <SwContainer>
           <Sw>
             <Metric>{units === 'metric' ? 'Metric' : null}</Metric>
             <Switch onChange={AdjustUnits} />
             <Imperial>{units === 'imperial' ? 'Imperial' : null}</Imperial>
           </Sw>
-          <RegionsButton onClick={() => setShowdropdown(!showdropdown)} />
-        </ButtonsContainer>
-        <Banner pinCount={pinCount} />
-        <SocialBar />
+        </SwContainer>
+        <DDcontainer>
+          {showdropdown
+            ? regions.map((region) => (
+                <Button
+                  key={region}
+                  onClick={() => {
+                    setCurrentRegion(region);
+                    setShowdropdown(false);
+                  }}
+                >
+                  {region}
+                </Button>
+              ))
+            : null}
+        </DDcontainer>
+        <SocialContainer>
+          <SocialBar />
+        </SocialContainer>
       </ControlsContainer>
-      <DDcontainer>
-        {showdropdown
-          ? regions.map((region) => (
-              <Button
-                key={region}
-                onClick={() => {
-                  setCurrentRegion(region);
-                  setShowdropdown(false);
-                }}
-              >
-                {region}
-              </Button>
-            ))
-          : null}
-      </DDcontainer>
+
       <UnitsContext.Provider value={units}>
         {currentSkiObjects.map((obj: SkiObj) => (
           <Pin key={obj.SkiArea.name} {...obj} />
