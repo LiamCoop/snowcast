@@ -12,6 +12,7 @@ import { UnitsContext } from '../../contexts';
 import {
   Button,
   ControlsContainer,
+  DDcontainer,
   ButtonsContainer,
   Sw,
   Metric,
@@ -57,15 +58,9 @@ const Map = () => {
   // filter skiInfo down to only the one in the selected region (currentRegion)
   // occurs on currentRegion update
   useEffect(() => {
-    const pins = skiInfo.filter((obj: SkiObj) => {
-      if (
-        typeof obj.Region[0] === 'undefined' ||
-        obj.SkiArea.geo_lat == null ||
-        obj.SkiArea.geo_lng == null
-      )
-        return false;
-      return obj.Region[0].name === currentRegion;
-    });
+    const pins = skiInfo.filter(
+      (obj: SkiObj) => obj.Region[0]?.name === currentRegion
+    );
     setCurrentSkiObjects(pins);
     setPinCount(pins.length);
   }, [currentRegion]);
@@ -95,7 +90,7 @@ const Map = () => {
         <Banner pinCount={pinCount} />
         <SocialBar />
       </ControlsContainer>
-      <div>
+      <DDcontainer>
         {showdropdown
           ? regions.map((region) => (
               <Button
@@ -109,7 +104,7 @@ const Map = () => {
               </Button>
             ))
           : null}
-      </div>
+      </DDcontainer>
       <UnitsContext.Provider value={units}>
         {currentSkiObjects.map((obj: SkiObj) => (
           <Pin key={obj.SkiArea.name} {...obj} />

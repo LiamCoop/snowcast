@@ -32,6 +32,12 @@ export const Sw = styled.div`
   background-color: #161616;
 `;
 
+export const DDcontainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(6, 160px);
+  grid-auto-flow: row;
+`;
+
 export const Metric = styled.p`
   font-size: 14px;
   grid-column-start: 1;
