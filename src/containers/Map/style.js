@@ -21,12 +21,16 @@ export const BtnText = styled.p`
 export const DDcontainer = styled.div`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
+  grid-row-start: 2;
+  grid-row-end: -1;
 `;
 
 export const ControlsContainer = styled.div`
+  height: 100%;
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(2, minmax(250px, 1fr));
-  grid-template-rows: 50px auto 50px;
+  grid-template-rows: 50px auto 100px;
 `;
 
 export const SwContainer = styled.div`
@@ -35,14 +39,19 @@ export const SwContainer = styled.div`
   grid-column-start: 2;
 `;
 
-export const RegBtnContainer = styled.div``;
+export const RegBtnContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
 
 export const BannerContainer = styled.div``;
 
 export const SocialContainer = styled.div`
   align-self: end;
+  padding-bottom: 25px;
   justify-self: end;
   grid-column-end: -1;
+  grid-row-end: -1;
 `;
 
 export const Sw = styled.div`

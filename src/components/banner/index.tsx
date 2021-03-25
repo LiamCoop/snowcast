@@ -3,10 +3,11 @@ import { Container, Text } from './style';
 
 interface BannerProps {
   pinCount: number;
+  onClick: () => void;
 }
 
-const Banner = ({ pinCount }: BannerProps) => (
-  <Container>
+const Banner = ({ pinCount, onClick }: BannerProps) => (
+  <Container onClick={onClick}>
     <Text>Displaying {pinCount} locations</Text>
   </Container>
 );

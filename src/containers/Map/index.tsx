@@ -31,10 +31,6 @@ const Map = () => {
   const [currentSkiObjects, setCurrentSkiObjects] = useState([]);
   const [showdropdown, setShowdropdown] = useState(false);
   const [pinCount, setPinCount] = useState(0);
-  console.log(`now showing ${pinCount} locations`);
-  // it would be cool to display how many pins are showing.
-  //  (currentSkiObjects.length)
-  // in useEffect for filtering skiInfo, call something to trigger banner?
 
   // context
   const [units, setUnits] = useState('metric');
@@ -73,11 +69,24 @@ const Map = () => {
     if (units === 'metric') setUnits('imperial');
     else if (units === 'imperial') setUnits('metric');
   };
-  /*
-  <BannerContainer>
-  <Banner pinCount={pinCount} />
-  </BannerContainer>
-  */
+  // onClick of the banner should change viewport to
+  // average of all the locations showing
+  const adjustVP = () => {
+    if (currentSkiObjects.length == 0) return;
+    let lat = 0;
+    let lng = 0;
+    currentSkiObjects.map((ob: SkiObj) => {
+      lat += Number(ob.SkiArea.geo_lat);
+      lng += Number(ob.SkiArea.geo_lng);
+    });
+    lat = lat / currentSkiObjects.length;
+    lng = lng / currentSkiObjects.length;
+    setViewport({
+      latitude: lat,
+      longitude: lng,
+      zoom: 3,
+    });
+  };
 
   return (
     <ReactMapGL
@@ -90,6 +99,7 @@ const Map = () => {
       <ControlsContainer>
         <RegBtnContainer>
           <RegionsButton onClick={() => setShowdropdown(!showdropdown)} />
+          <Banner onClick={adjustVP} pinCount={pinCount} />
         </RegBtnContainer>
         {showdropdown ? (
           <DDcontainer>
