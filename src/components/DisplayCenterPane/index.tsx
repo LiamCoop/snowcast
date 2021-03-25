@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ConditionsObj, Icon, TimeBanner } from '../';
-import { TxtL, TxtM, Col, Grid, Row, Title } from './style';
+import { TxtL, TxtM, TxtInterval, Col, Grid, Row, Title } from './style';
 
 interface DCprops {
   currentDay: Array<ConditionsObj>;
@@ -26,13 +26,22 @@ const DisplayCenterPane = ({
   return (
     <Col>
       <Title>{`${skiAreaName} in ${city} on ${
-        currentTime.dt_txt.split(' ')[0]
-      }`}</Title>
+        currentTime.dt_txt.split(' ')[0].split('-')[1]
+      }-${currentTime.dt_txt.split(' ')[0].split('-')[2]}`}</Title>
       <Row>
         <Col>
           <TxtL>{currentTime.dt_txt.split(' ')[1].split(':')[0]}h</TxtL>
-          <Icon icID={currentTime.weather[0].icon} imgHeight={'80vh'} />
           <TxtM>{currentTime.weather[0].description}</TxtM>
+          <Row>
+            <Col>
+              <TxtM>{`${Math.round(currentTime.main.temp)}°${CorF}`}</TxtM>
+              <TxtM>
+                {`${Math.round(currentTime.main.temp_min)}° / 
+                  ${Math.round(currentTime.main.temp_max)}°`}
+              </TxtM>
+            </Col>
+            <Icon icID={currentTime.weather[0].icon} imgHeight={'80vh'} />
+          </Row>
           <Grid>
             <TxtM>{`Precip: ${Math.round(currentTime.pop * 100)}%`}</TxtM>
             <TxtM>{`Hum: ${Math.round(currentTime.main.humidity)}%`}</TxtM>
@@ -41,15 +50,6 @@ const DisplayCenterPane = ({
               currentTime.visibility === 10000 ? '∞' : currentTime.visibility
             }m`}</TxtM>
           </Grid>
-          <Row>
-            <Col>
-              <TxtL>{`${Math.round(currentTime.main.temp)}°${CorF}`}</TxtL>
-              <TxtM>
-                {`${Math.round(currentTime.main.temp_min)}° / 
-                  ${Math.round(currentTime.main.temp_max)}°`}
-              </TxtM>
-            </Col>
-          </Row>
           <TxtM>
             {`Wind: ${Math.round(currentTime.wind.speed)} 
               ${units === 'metric' ? 'm/s' : 'mph'}, 
@@ -68,7 +68,6 @@ const DisplayCenterPane = ({
           ) : null}
         </Col>
         <Col>
-          <TxtM>3 Hour Intervals</TxtM>
           {currentDay.map((timeSlice) => {
             return (
               <TimeBanner

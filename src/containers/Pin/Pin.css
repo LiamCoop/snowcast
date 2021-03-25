@@ -1,9 +1,4 @@
 .mapboxgl-popup .mapboxgl-popup-content {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: -2px;
   background: #161616;
 }
 

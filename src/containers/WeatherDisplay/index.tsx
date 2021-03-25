@@ -9,7 +9,7 @@ import {
   ConditionsObj,
 } from '../../components';
 import { UnitsContext } from '../../contexts';
-import { Card, Col, DayButtonContainer } from './style';
+import { Col, DayButtonContainer } from './style';
 
 import './WeatherDisplay.css';
 
@@ -62,8 +62,8 @@ const WeatherDisplay = ({
       );
       const dt: WeatherObj = await response.json();
       setWeather(dt);
-      // set currentDay to all 3hr slots that match
-      // the date on first day provided
+      // sets currentDay to all 3hr slots
+      // matching date provided
       setCurrentDay(
         dt.list.filter(
           (ob) =>
@@ -72,8 +72,8 @@ const WeatherDisplay = ({
         )
       );
 
-      // gets every date (either 5 or 6 days depending
-      // on when in the day the fetch happens)
+      // gets all dates (either 5 or 6 days depending
+      // on time of day when fetch happens)
       const dateList = Array.from(
         new Set(dt.list.map((ob) => ob.dt_txt.split(' ')[0].split('-')[2]))
       );
@@ -87,7 +87,7 @@ const WeatherDisplay = ({
   }, [units]);
 
   return (
-    <Card>
+    <>
       {currentDay.length !== 0 ? (
         <Col>
           <DisplayCenterPane
@@ -114,7 +114,7 @@ const WeatherDisplay = ({
       ) : (
         <Loading />
       )}
-    </Card>
+    </>
   );
 };
 

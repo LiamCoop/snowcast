@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { ConditionsObj, Icon } from '../';
-import { Button, TxtSm, TxtMd } from './style';
+import { Button, TxtMd } from './style';
 // import './DayButton.css';
 
 function GetIcon(array: Array<ConditionsObj>): string {
@@ -42,9 +42,9 @@ const DayButton = ({ day, onClick, active, units }: DayButtonProps) => {
           day[0].dt_txt.split(' ')[0].split('-')[2]
         }`}
       </TxtMd>
-      <TxtMd>{`${temp}° ${units === 'metric' ? 'C' : 'F'}`}</TxtMd>
       <Icon icID={GetIcon(day)} imgHeight="35vh" />
-      <TxtMd>{`️❄️${Math.round(daySnow)}mm`}</TxtMd>
+      <TxtMd>{`${temp}° ${units === 'metric' ? 'C' : 'F'}`}</TxtMd>
+      <TxtMd>{`️❄️ ${Math.round(daySnow)}mm`}</TxtMd>
     </Button>
   );
 };
