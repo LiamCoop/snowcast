@@ -1,16 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ConditionsObj, Icon, TimeBanner } from '../';
-import {
-  TxtL,
-  TxtM,
-  Col,
-  Banners,
-  Row,
-  CurrentPane,
-  Temp,
-  Title,
-  Weather,
-} from './style';
+import { TxtL, TxtM, Col, Banners, Row, Title } from './style';
 
 interface DCprops {
   currentDay: Array<ConditionsObj>;
@@ -27,7 +17,6 @@ const DisplayCenterPane = ({
 }: DCprops) => {
   const [currentTime, setCurrentTime] = useState(currentDay[0]);
   const CorF = units === 'metric' ? 'C' : 'F';
-  console.log(currentDay);
 
   // currentDay may be less than 8 in length
   // if it is, we need to pad either before or after
@@ -43,26 +32,26 @@ const DisplayCenterPane = ({
   }, [currentDay]);
 
   return (
-    <>
+    <Col>
       <Title>{`${skiAreaName} in ${city} on ${
         currentTime.dt_txt.split(' ')[0]
       }`}</Title>
       <Row>
-        <CurrentPane>
+        <Col>
           <Col>
             <TxtL>{currentTime.dt_txt.split(' ')[1].split(':')[0]}h</TxtL>
             <Icon icID={currentTime.weather[0].icon} imgHeight={'100vh'} />
             <TxtM>Conditions: {currentTime.weather[0].description}</TxtM>
           </Col>
           <Row>
-            <Temp>
+            <Col>
               <TxtL>{`${Math.round(currentTime.main.temp)}°${CorF}`}</TxtL>
               <TxtM>
                 {`${Math.round(currentTime.main.temp_min)}° / 
                   ${Math.round(currentTime.main.temp_max)}°`}
               </TxtM>
-            </Temp>
-            <Weather>
+            </Col>
+            <Col>
               <TxtM>{`Precipitation: ${Math.round(
                 currentTime.pop * 100
               )}%`}</TxtM>
@@ -73,7 +62,7 @@ const DisplayCenterPane = ({
               <TxtM>{`Vis: ${
                 currentTime.visibility === 10000 ? '∞' : currentTime.visibility
               }m`}</TxtM>
-            </Weather>
+            </Col>
           </Row>
           <Col>
             <TxtM>
@@ -94,7 +83,7 @@ const DisplayCenterPane = ({
               </TxtM>
             ) : null}
           </Col>
-        </CurrentPane>
+        </Col>
         <Banners>
           <TxtM>3 Hour Intervals</TxtM>
           {currentDay.map((timeSlice) => {
@@ -110,7 +99,7 @@ const DisplayCenterPane = ({
           })}
         </Banners>
       </Row>
-    </>
+    </Col>
   );
 };
 
