@@ -71,6 +71,7 @@ const WeatherDisplay = ({
             dt.list[0].dt_txt.split(' ')[0].split('-')[2]
         )
       );
+
       // gets every date (either 5 or 6 days depending
       // on when in the day the fetch happens)
       const dateList = Array.from(
@@ -94,6 +95,7 @@ const WeatherDisplay = ({
             city={weather.city.name}
             skiAreaName={skiAreaName}
             units={units}
+            key={currentDay[0].dt_txt}
           />
           <DayButtonContainer>
             {days.map((day) => (
