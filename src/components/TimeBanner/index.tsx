@@ -22,7 +22,7 @@ const TimeBanner = ({ time, active, onClick, units }: TimeBannerProps) => (
       )}°${units === 'metric' ? 'C' : 'F'}`}
     </Temp>
     <Snow>
-      {`Snow: ${time.snow ? Math.round(time.snow?.['3h'] * 10) / 10 : '0'}mm`}
+      {`❄️: ${time.snow ? Math.round(time.snow?.['3h'] * 10) / 10 : '0'}mm`}
     </Snow>
   </BannerBtn>
 );

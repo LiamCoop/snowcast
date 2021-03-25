@@ -42,12 +42,9 @@ const DayButton = ({ day, onClick, active, units }: DayButtonProps) => {
           day[0].dt_txt.split(' ')[0].split('-')[2]
         }`}
       </TxtMd>
-      <TxtSm>{`${temp}° ${units === 'metric' ? 'C' : 'F'}`}</TxtSm>
-      <Icon
-        icID={GetIcon(day.filter((ob) => ob.dt_txt.length !== 1))}
-        imgHeight="50vh"
-      />
-      <TxtSm>Snow: {Math.round(daySnow)}mm</TxtSm>
+      <TxtMd>{`${temp}° ${units === 'metric' ? 'C' : 'F'}`}</TxtMd>
+      <Icon icID={GetIcon(day)} imgHeight="35vh" />
+      <TxtMd>{`️❄️${Math.round(daySnow)}mm`}</TxtMd>
     </Button>
   );
 };

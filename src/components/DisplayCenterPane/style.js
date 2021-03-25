@@ -4,6 +4,7 @@ export const TxtL = styled.h1`
   font-size: 14px;
   color: #fff;
 `;
+
 export const TxtM = styled.p`
   font-size: 12px;
   color: #fff;
@@ -14,6 +15,15 @@ export const Col = styled.div`
   flex-direction: column;
   background-color: #161616;
   justify-content: center;
+  align-items: center;
+`;
+
+export const Grid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  column-gap: 8px;
+  justify-content: start;
   align-items: center;
 `;
 
