@@ -7,8 +7,6 @@ import './Pin.css';
 
 const Pin = (obj: SkiObj) => {
   const [showPopup, setShowPopup] = useState(false);
-  // const units = useContext(UnitsContext);
-  // const OWMKEY = process.env.REACT_APP_OWMKEY;
 
   return (
     <div style={{ zIndex: -1 }}>
