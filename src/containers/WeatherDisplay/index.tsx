@@ -87,7 +87,7 @@ const WeatherDisplay = ({
 
   return (
     <Card>
-      {currentDay ? (
+      {currentDay.length !== 0 ? (
         <Col>
           <DisplayCenterPane
             currentDay={currentDay}
