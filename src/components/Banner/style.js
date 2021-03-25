@@ -10,6 +10,7 @@ const fadeAway = keyframes`
 
 export const Container = styled.div`
   background: #161616;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: center;
