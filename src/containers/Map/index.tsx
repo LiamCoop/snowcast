@@ -13,9 +13,9 @@ import {
   Button,
   ControlsContainer,
   DDcontainer,
-  ButtonsContainer,
   SwContainer,
   RegBtnContainer,
+  BtnText,
   BannerContainer,
   SocialContainer,
   Sw,
@@ -91,6 +91,21 @@ const Map = () => {
         <RegBtnContainer>
           <RegionsButton onClick={() => setShowdropdown(!showdropdown)} />
         </RegBtnContainer>
+        {showdropdown ? (
+          <DDcontainer>
+            {regions.map((region) => (
+              <Button
+                key={region}
+                onClick={() => {
+                  setCurrentRegion(region);
+                  setShowdropdown(false);
+                }}
+              >
+                <BtnText>{region}</BtnText>
+              </Button>
+            ))}
+          </DDcontainer>
+        ) : null}
         <SwContainer>
           <Sw>
             <Metric>{units === 'metric' ? 'Metric' : null}</Metric>
@@ -98,21 +113,6 @@ const Map = () => {
             <Imperial>{units === 'imperial' ? 'Imperial' : null}</Imperial>
           </Sw>
         </SwContainer>
-        <DDcontainer>
-          {showdropdown
-            ? regions.map((region) => (
-                <Button
-                  key={region}
-                  onClick={() => {
-                    setCurrentRegion(region);
-                    setShowdropdown(false);
-                  }}
-                >
-                  {region}
-                </Button>
-              ))
-            : null}
-        </DDcontainer>
         <SocialContainer>
           <SocialBar />
         </SocialContainer>

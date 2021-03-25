@@ -3,40 +3,46 @@ import styled from 'styled-components';
 export const Button = styled.button`
   background-color: #161616;
   color: #fff;
+  height: 30px;
+  width: 110px;
   position: relative;
-  height: 24px;
   z-index: 2;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
+export const BtnText = styled.p`
+  font-size: 11px;
+`;
+export const DDcontainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
 `;
 
 export const ControlsContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(250px, 1fr));
+  grid-template-rows: 50px auto 50px;
 `;
 
 export const SwContainer = styled.div`
   justify-self: end;
-  grid-column-start: -1;
+  grid-row-start: 1;
+  grid-column-start: 2;
 `;
 
-export const RegBtnContainer = styled.div`
-  justify-self: start;
-  row: 1 / -1;
-`;
+export const RegBtnContainer = styled.div``;
+
 export const BannerContainer = styled.div``;
 
 export const SocialContainer = styled.div`
-  justify-self: end;
   align-self: end;
-  grid-row-start: -1;
-  grid-column-start: -1;
-`;
-
-export const ButtonsContainer = styled.div`
-  display: grid;
-  gap: 0px;
-  grid-template-rows: 1fr 1fr;
-  grid-auto-flow: row;
+  justify-self: end;
+  grid-column-end: -1;
 `;
 
 export const Sw = styled.div`
@@ -49,12 +55,6 @@ export const Sw = styled.div`
   justify-content: center;
   align-items: center;
   background-color: #161616;
-`;
-
-export const DDcontainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(6, 160px);
-  grid-auto-flow: row;
 `;
 
 export const Metric = styled.p`

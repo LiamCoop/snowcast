@@ -41,7 +41,7 @@ export const Socials = styled.div`
   background-color: #161616;
   border-radius: 50%;
   &:hover {
-    width: 14vw;
+    width: 180px;
     border-radius: 20px;
   }
   &:hover ${Generic} {
