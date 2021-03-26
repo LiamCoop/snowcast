@@ -13,7 +13,10 @@ export const Container = styled.div`
   width: 12vw;
   max-width: 200px;
   overflow: visible;
-  opacity: 0.15;
+  opacity: 0.25;
 `;
 
-export const Text = styled.p``;
+export const Text = styled.p`
+  font-size: 12px;
+  margin: 0px;
+`;
