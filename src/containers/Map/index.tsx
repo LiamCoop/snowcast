@@ -48,9 +48,9 @@ const Map = () => {
     setRegions(
       Array.from(
         new Set(
-          skiInfo
-            .filter((obj: SkiObj) => obj.Region[0]?.name)
-            .map((obj: SkiObj) => obj.Region[0].name)
+          skiInfo.flatMap((obj: SkiObj) =>
+            obj.Region[0]?.name ? [obj.Region[0]?.name] : []
+          )
         )
       )
     );
