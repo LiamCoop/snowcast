@@ -8,7 +8,7 @@ interface BannerProps {
 
 const Banner = ({ pinCount, onClick }: BannerProps) => (
   <Container onClick={onClick}>
-    <Text>Displaying {pinCount} locations</Text>
+    <Text>Showing {pinCount} pins</Text>
   </Container>
 );
 
