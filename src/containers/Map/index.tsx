@@ -16,7 +16,9 @@ import {
   SwContainer,
   RegBtnContainer,
   BtnText,
-  BannerContainer,
+  LinkFmt,
+  Txt,
+  Link,
   SocialContainer,
   Sw,
   Metric,
@@ -127,6 +129,16 @@ const Map = () => {
         <SocialContainer>
           <SocialBar />
         </SocialContainer>
+        <LinkFmt>
+          <Txt>Data supplied by&nbsp;</Txt>
+          <Link href="https://www.skimap.org" target="_blank">
+            SkiMap
+          </Link>
+          <Txt>&nbsp;and&nbsp;</Txt>
+          <Link href="https://openweathermap.org" target="_blank">
+            OpenWeatherMap
+          </Link>
+        </LinkFmt>
       </ControlsContainer>
       <UnitsContext.Provider value={units}>
         {currentSkiObjects.map((obj: SkiObj) => (
@@ -136,14 +148,5 @@ const Map = () => {
     </ReactMapGL>
   );
 };
-
-/*
-  <div className="linkfmt">
-      <p>Location data courtesy of:&nbsp;</p>
-      <a className="link" href="skimap.org">
-          SkiMap.org
-      </a>
-  </div>
-*/
 
 export default Map;

@@ -13,6 +13,27 @@ export const Button = styled.button`
   text-overflow: ellipsis;
 `;
 
+export const LinkFmt = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  align-self: end;
+  grid-row-start: -1;
+  margin-left: 100px;
+`;
+
+export const Txt = styled.p`
+  font-size: 12px;
+  line-height: 12px;
+  color: #161616;
+`;
+
+export const Link = styled.a`
+  font-size: 12px;
+  color: #161616;
+`;
+
 export const BtnText = styled.p`
   font-size: 12px;
   line-height: 10px;
@@ -23,21 +44,20 @@ export const DDcontainer = styled.div`
   display: grid;
   grid-template-columns: repeat(8, 150px);
   grid-row-start: 2;
-  grid-column: 1 / -1;
 `;
 
 export const ControlsContainer = styled.div`
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(2, minmax(250px, 1fr));
-  grid-template-rows: 50px auto 100px;
+  grid-template-columns: minmax(250px, 1fr) minmax(250px, 1fr);
+  grid-template-rows: 50px 1fr;
 `;
 
 export const SwContainer = styled.div`
   justify-self: end;
   grid-row-start: 1;
-  grid-column-start: 2;
+  grid-column-start: -1;
 `;
 
 export const RegBtnContainer = styled.div`
@@ -51,8 +71,8 @@ export const SocialContainer = styled.div`
   align-self: end;
   padding-bottom: 25px;
   justify-self: end;
-  grid-column-end: -1;
-  grid-row-end: -1;
+  grid-column: -1;
+  grid-row: -1;
 `;
 
 export const Sw = styled.div`
