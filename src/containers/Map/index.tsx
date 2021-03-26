@@ -32,7 +32,6 @@ const Map = () => {
   const [currentRegion, setCurrentRegion] = useState(null);
   const [currentSkiObjects, setCurrentSkiObjects] = useState([]);
   const [showdropdown, setShowdropdown] = useState(false);
-  const [pinCount, setPinCount] = useState(0);
 
   // context
   const [units, setUnits] = useState('metric');
@@ -42,7 +41,6 @@ const Map = () => {
     longitude: -106.0,
     zoom: 3,
   });
-
   // get names of all regions with valid ski locations
   // there's for sure a better way to do this,
   // only occurs only on first page load ~O(n^4)
@@ -65,13 +63,8 @@ const Map = () => {
       (obj: SkiObj) => obj.Region[0]?.name === currentRegion
     );
     setCurrentSkiObjects(pins);
-    setPinCount(pins.length);
   }, [currentRegion]);
 
-  const AdjustUnits = () => {
-    if (units === 'metric') setUnits('imperial');
-    else if (units === 'imperial') setUnits('metric');
-  };
   // onClick of the banner should change viewport to
   // average of all the locations showing
   const adjustVP = () => {
@@ -102,7 +95,7 @@ const Map = () => {
       <ControlsContainer>
         <RegBtnContainer>
           <RegionsButton onClick={() => setShowdropdown(!showdropdown)} />
-          <Banner onClick={adjustVP} pinCount={pinCount} />
+          <Banner onClick={adjustVP} pinCount={currentSkiObjects.length} />
         </RegBtnContainer>
         {showdropdown ? (
           <DDcontainer>
@@ -122,7 +115,11 @@ const Map = () => {
         <SwContainer>
           <Sw>
             <Metric>{units === 'metric' ? 'Metric' : null}</Metric>
-            <Switch onChange={AdjustUnits} />
+            <Switch
+              onChange={() =>
+                setUnits(units === 'metric' ? 'imperial' : 'metric')
+              }
+            />
             <Imperial>{units === 'imperial' ? 'Imperial' : null}</Imperial>
           </Sw>
         </SwContainer>
