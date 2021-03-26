@@ -1,28 +1,29 @@
 import styled from 'styled-components';
 
 export const Button = styled.button`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background-color: #161616;
   color: #fff;
-  height: 30px;
-  width: 110px;
-  position: relative;
+  width: auto;
+  height: 3.5vh;
   z-index: 2;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
   overflow: hidden;
   text-overflow: ellipsis;
 `;
 
 export const BtnText = styled.p`
-  font-size: 11px;
+  font-size: 12px;
+  line-height: 10px;
+  text-overflow: ellipsis;
 `;
+
 export const DDcontainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(8, 150px);
   grid-row-start: 2;
-  grid-row-end: -1;
+  grid-column: 1 / -1;
 `;
 
 export const ControlsContainer = styled.div`

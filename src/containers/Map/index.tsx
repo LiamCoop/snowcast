@@ -41,15 +41,16 @@ const Map = () => {
     zoom: 3,
   });
 
-  // display the names of all regions containing ski locations
-  // occurs on first page load
+  // get names of all regions with valid ski locations
+  // there's for sure a better way to do this,
+  // only occurs only on first page load ~O(n^4)
   useEffect(() => {
     setRegions(
       Array.from(
         new Set(
-          skiInfo.map((obj: SkiObj) =>
-            typeof obj.Region[0] !== 'undefined' ? obj.Region[0].name : 'null'
-          )
+          skiInfo
+            .filter((obj: SkiObj) => obj.Region[0]?.name)
+            .map((obj: SkiObj) => obj.Region[0].name)
         )
       )
     );
@@ -127,7 +128,6 @@ const Map = () => {
           <SocialBar />
         </SocialContainer>
       </ControlsContainer>
-
       <UnitsContext.Provider value={units}>
         {currentSkiObjects.map((obj: SkiObj) => (
           <Pin key={obj.SkiArea.name} {...obj} />
