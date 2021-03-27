@@ -1,13 +1,6 @@
 import React from 'react';
-import {
-  Container,
-} from './style';
+import { Container } from './style';
 
-const Dropdown = ({ children }) => (
-  <Container> 
-    {children}
-  </Container> 
-);
+const Dropdown = ({ children }: any) => <Container>{children}</Container>;
 
-export default Dropdwon;
-
+export default Dropdown;

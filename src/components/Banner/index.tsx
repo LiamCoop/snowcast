@@ -9,7 +9,7 @@ interface BannerProps {
 const Banner = ({ pinCount, onClick }: BannerProps) => (
   <Container onClick={onClick}>
     <Text>Showing {pinCount} pins</Text>
-    <Text>Click to focus</Text>
+    {pinCount !== 0 ? <Text>Click to focus</Text> : null}
   </Container>
 );
 
