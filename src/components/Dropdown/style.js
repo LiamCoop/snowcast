@@ -25,6 +25,7 @@ export const Button = styled.button`
   flex-direction: column;
   justify-content: center;
   background-color: #161616;
+  cursor: pointer;
   color: #fff;
   z-index: 2;
 `;

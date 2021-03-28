@@ -21,12 +21,22 @@ const Dropdown = ({ setRegion, setShow }: DDprops) => {
   return (
     <Container>
       <ButtonContainer>
-        <Button onMouseEnter={() => setCurrent(NorthAmerica)}>
+        <Button
+          onClick={() =>
+            setCurrent(current === NorthAmerica ? [] : NorthAmerica)
+          }
+        >
           North America
         </Button>
-        <Button onMouseEnter={() => setCurrent(Europe)}>Europe</Button>
-        <Button onMouseEnter={() => setCurrent(Asia)}>Asia</Button>
-        <Button onMouseEnter={() => setCurrent(Other)}>Other</Button>
+        <Button onClick={() => setCurrent(current === Europe ? [] : Europe)}>
+          Europe
+        </Button>
+        <Button onClick={() => setCurrent(current === Asia ? [] : Asia)}>
+          Asia
+        </Button>
+        <Button onClick={() => setCurrent(current === Other ? [] : Other)}>
+          Other
+        </Button>
       </ButtonContainer>
       <CurrentContainer>
         {current.map((region: string) => (
