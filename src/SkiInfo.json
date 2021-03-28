@@ -127153,34 +127153,6 @@
   },
   {
     "SkiArea": {
-      "id": "15181",
-      "name": "Col du Dernon",
-      "official_website": "",
-      "geo_lat": null,
-      "geo_lng": null,
-      "top_elevation": null,
-      "bottom_elevation": "1563",
-      "vertical_drop": null,
-      "operating_status": "3",
-      "has_downhill": true,
-      "has_nordic": false
-    },
-    "Region": [
-      {
-        "name": "Fantasy Land",
-        "id": "508",
-        "RegionsSkiArea": {
-          "id": "5398",
-          "ski_area_id": "15181",
-          "region_id": "508",
-          "temp_region": null,
-          "temp_country": null
-        }
-      }
-    ]
-  },
-  {
-    "SkiArea": {
       "id": "15200",
       "name": "Alpe Cheggio",
       "official_website": "",
@@ -127481,34 +127453,6 @@
           "id": "5413",
           "ski_area_id": "15217",
           "region_id": "41",
-          "temp_region": null,
-          "temp_country": null
-        }
-      }
-    ]
-  },
-  {
-    "SkiArea": {
-      "id": "15223",
-      "name": "5 Peaks Ski Resort",
-      "official_website": "",
-      "geo_lat": "59.43925225245642",
-      "geo_lng": "-84.90078125",
-      "top_elevation": null,
-      "bottom_elevation": null,
-      "vertical_drop": null,
-      "operating_status": "1",
-      "has_downhill": true,
-      "has_nordic": false
-    },
-    "Region": [
-      {
-        "name": "Fantasy Land",
-        "id": "508",
-        "RegionsSkiArea": {
-          "id": "5414",
-          "ski_area_id": "15223",
-          "region_id": "508",
           "temp_region": null,
           "temp_country": null
         }
