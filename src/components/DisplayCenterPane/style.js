@@ -14,10 +14,19 @@ export const TxtM = styled.p`
   color: #fff;
 `;
 
-export const TxtInterval = styled.p`
-  margin: 0px 2px 5px;
-  font-size: 12px;
+export const TempL = styled.h1`
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 11px;
+  color: #fff;
+`;
+
+export const TempM = styled.p`
+  margin: 6px 2px;
+  font-weight: 500;
+  font-size: 14px;
   line-height: 12px;
+  color: #fff;
 `;
 
 export const Col = styled.div`

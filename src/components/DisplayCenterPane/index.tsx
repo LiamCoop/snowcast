@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ConditionsObj, Icon, TimeBanner } from '../';
-import { TxtL, TxtM, TxtInterval, Col, Grid, Row, Title } from './style';
+import { TxtL, TxtM, TempL, TempM, Col, Grid, Row, Title } from './style';
 
 interface DCprops {
   currentDay: Array<ConditionsObj>;
@@ -34,11 +34,11 @@ const DisplayCenterPane = ({
           <TxtM>{currentTime.weather[0].description}</TxtM>
           <Row>
             <Col>
-              <TxtM>{`${Math.round(currentTime.main.temp)}°${CorF}`}</TxtM>
-              <TxtM>
+              <TempL>{`${Math.round(currentTime.main.temp)}°${CorF}`}</TempL>
+              <TempM>
                 {`${Math.round(currentTime.main.temp_min)}° / 
                   ${Math.round(currentTime.main.temp_max)}°`}
-              </TxtM>
+              </TempM>
             </Col>
             <Icon icID={currentTime.weather[0].icon} imgHeight={'80vh'} />
           </Row>
