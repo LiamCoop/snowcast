@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
 export const Container = styled.div`
   background: #161616;
@@ -19,4 +19,5 @@ export const Container = styled.div`
 export const Text = styled.p`
   font-size: 12px;
   margin: 0px;
+  color: #fff;
 `;

@@ -16,16 +16,18 @@ export const Button = styled.button`
 export const LinkFmt = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  width: 50vw;
+  flex-wrap: wrap;
   align-items: center;
-  align-self: end;
+  justify-items: center;
   grid-row-start: -1;
-  margin-left: 100px;
+  margin-bottom: 0px;
 `;
 
 export const Txt = styled.p`
   font-size: 12px;
   line-height: 12px;
+  margin: 0px;
   color: #161616;
 `;
 

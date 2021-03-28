@@ -3,6 +3,7 @@ import ReactMapGL from 'react-map-gl';
 import {
   SkiObj,
   Banner,
+  Dropdown,
   RegionsButton,
   SocialBar,
   Switch,
@@ -99,17 +100,7 @@ const Map = () => {
         </RegBtnContainer>
         {showdropdown ? (
           <DDcontainer>
-            {regions.map((region) => (
-              <Button
-                key={region}
-                onClick={() => {
-                  setCurrentRegion(region);
-                  setShowdropdown(false);
-                }}
-              >
-                <BtnText>{region}</BtnText>
-              </Button>
-            ))}
+            <Dropdown setRegion={setCurrentRegion} setShow={setShowdropdown} />
           </DDcontainer>
         ) : null}
         <SwContainer>
