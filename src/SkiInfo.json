@@ -115421,34 +115421,6 @@
   },
   {
     "SkiArea": {
-      "id": "14292",
-      "name": "Iso-Syote",
-      "official_website": "",
-      "geo_lat": null,
-      "geo_lng": null,
-      "top_elevation": null,
-      "bottom_elevation": null,
-      "vertical_drop": null,
-      "operating_status": "0",
-      "has_downhill": true,
-      "has_nordic": false
-    },
-    "Region": [
-      {
-        "name": "Finland",
-        "id": "63",
-        "RegionsSkiArea": {
-          "id": "4795",
-          "ski_area_id": "14292",
-          "region_id": "63",
-          "temp_region": null,
-          "temp_country": null
-        }
-      }
-    ]
-  },
-  {
-    "SkiArea": {
       "id": "14293",
       "name": "Joupiska",
       "official_website": "",
