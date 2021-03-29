@@ -85,6 +85,14 @@ const Map = () => {
     });
   };
 
+  const regionCallback = (dt: any) => {
+    setCurrentRegion(dt);
+  };
+
+  const dropdownCallback = (dt: any) => {
+    setShowdropdown(dt);
+  };
+
   return (
     <ReactMapGL
       {...viewport}
@@ -100,7 +108,7 @@ const Map = () => {
         </RegBtnContainer>
         {showdropdown ? (
           <DDcontainer>
-            <Dropdown setRegion={setCurrentRegion} setShow={setShowdropdown} />
+            <Dropdown setRegion={regionCallback} setShow={dropdownCallback} />
           </DDcontainer>
         ) : null}
         <SwContainer>
