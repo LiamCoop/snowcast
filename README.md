@@ -1,10 +1,9 @@
-Currently live! Take a look: https://snowcast-development.up.railway.app/
+Currently live! Have a look: https://snowcast-development.up.railway.app/
 
 # SnowCast
-A tool for viewing the current and short-term forecasted conditions at ski areas all over the world.
-Provides a highly granular view of conditions (5 days, 3 hour increments)
-Ski Area locations provided by SkiMap.org, and weather data fetched using OpenWeatherMap.
 
+Snowcast is a weather and forecasting tool for viewing the current and short-term forecasted conditions at ski resorts and areas all over the world.
+Provides multi-day, granular view of conditions and locations over time (5 days, 3 hour increments)
 
 
 # Tools Used
@@ -14,3 +13,7 @@ Ski Area locations provided by SkiMap.org, and weather data fetched using OpenWe
  - JSX / HTML
  - CSS
  - Railway: https://railway.app/
+
+
+#Notes
+Ski Area locations provided by SkiMap.org, and weather data fetched using OpenWeatherMap.
