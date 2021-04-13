@@ -1,4 +1,11 @@
 # SnowCast
-Web app using React, Typescript. Plots out pins for a ton of ski areas within a selected region, allows the user to check forecast data for each resort one by one.
+A tool for viewing the current and short-term forecasted conditions at ski areas all over the world.
+Ski Area locations provided by SkiMap.org, and weather data fetched using OpenWeatherMap.
 
-This project constitutes my first major project using React with Typescript, involved the use of useState, useEffect, and useContext hooks. State management was fairly simple so there was no real need to involve reducers or anything really other than the useState hook provided by React's API.
+
+# Tools Used
+ - TypeScript
+ - React
+ - NodeJS
+ - JSX / HTML
+ - CSS
