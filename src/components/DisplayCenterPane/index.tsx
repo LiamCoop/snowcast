@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { ConditionsObj, Icon, TimeBanner } from '../';
+import Icon from '../Icons';
+import TimeBanner from '../TimeBanner';
+import { ConditionsObj } from '../types';
 import { TxtL, TxtM, TempL, TempM, Col, Grid, Row, Title } from './style';
 
 interface DCprops {

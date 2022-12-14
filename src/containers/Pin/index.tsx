@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Marker, Popup } from 'react-map-gl';
-import { SkiObj } from '../../components';
+import { SkiObj } from '../../components/types';
 import WeatherDisplay from '../WeatherDisplay';
 
 import './Pin.css';

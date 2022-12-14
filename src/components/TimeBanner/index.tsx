@@ -1,5 +1,6 @@
 import React from 'react';
-import { ConditionsObj, Icon } from '../';
+import Icon from '../Icons';
+import { ConditionsObj } from '../types';
 import { BannerBtn, Text } from './style';
 
 interface TimeBannerProps {

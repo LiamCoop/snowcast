@@ -1,6 +1,7 @@
 import React from 'react';
+import Icon from '../Icons';
+import { ConditionsObj } from '../types';
 
-import { ConditionsObj, Icon } from '../';
 import { Button, TxtMd } from './style';
 // import './DayButton.css';
 

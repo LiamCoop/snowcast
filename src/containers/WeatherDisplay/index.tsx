@@ -1,13 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
-import {
-  //components
-  DisplayCenterPane,
-  DayButton,
-  Loading,
-  //Typescript interfaces
-  WeatherObj,
-  ConditionsObj,
-} from '../../components';
+import { DayButton, DisplayCenterPane, Loading } from '../../components';
+import { ConditionsObj, WeatherObj } from '../../components/types';
 import { UnitsContext } from '../../contexts';
 import { Col, DayButtonContainer } from './style';
 

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReactMapGL from 'react-map-gl';
 import {
-  SkiObj,
   Banner,
   Dropdown,
   RegionsButton,
@@ -25,6 +24,7 @@ import {
   Metric,
   Imperial,
 } from './style';
+import { SkiObj } from '../../components/types';
 
 const skiInfo = require('../../SkiInfo.json');
 
